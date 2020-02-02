@@ -5,87 +5,86 @@ $username = "avmr";
 $password = "xZMALC9baTIsSzFs";
 $dbname = "avmr_db";
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection to the database failed");
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+try {
+  $mysqli = new mysqli("$servername", "$username", "$password", "$dbname");
+  $mysqli->set_charset("utf8mb4");
+}
+catch(Exception $e) {
+  error_log($e->getMessage());
+  exit("Database connection issues");
 }
 
 //Login function
 function userlogin($login, $password) {
-	//Getting the conn variable from above.
-	global $conn; 
-	//search if the username OR the email exist in the database
-	$sql = "SELECT * FROM guestinfo WHERE email='" . $login . "' OR username = '" . $login . "'";
-	
-	//execute the query	
-	$result = $conn->query($sql);
-	//checks if there was results
-	if ($result->num_rows > 0) {
-		//converts result into an array
-		$row = $result->fetch_array();
-		//compares the passwords
-		if ($row[5] == $password) {
-			$_SESSION["name"] = $row[1]; //creates SESSION variable with the name in it.
-			$_SESSION["last_name"] = $row[2]; //creates SESSION variable with the last name in it.
-			return 1; //Since the user was found and the password matched, returns 1
-		}
-		else {
-			return 0; //Password didn't match, returns 0.
-		}
-	}
-	else {
-		return 0; //Email or Username wasn't found, returns 0.
-	}
+	//Getting the connection from above
+	global $mysqli;
+	//preparing the query and executing the query, first line is the template and the ? will be replaced
+	$stmt = $mysqli->prepare ("SELECT name_first, name_last, password FROM guestinfo WHERE email= ?  OR username= ?");
+  $stmt->bind_param("ss", $login, $login);  //replacing the ? in the query, first param are the type (s for string)
+	$stmt->execute(); //executing the query
+
+  $result = $stmt->get_result(); //getting results
+	if ($result->num_rows === 0) //no results means not registered
+    exit("Email or username not found"); //exit the script and sends a message
+
+	$row = $result->fetch_assoc();//converts result into an associative array
+	if (!($row["password"] === $password))//compares the passwords
+    exit("The password didn't match");//exit the script and sends a message
+
+	$_SESSION["name"] = $row["name_first"]; //creates SESSION variable with the name in it.
+	$_SESSION["last_name"] = $row["name_last"]; //creates SESSION variable with the last name in it.
+  return 1; //returning 1 since everything was successful
 }
 
 function select_room($checkindate, $checkoutdate, $pax) {
 	//Getting the conn variable from above.
-	global $conn; 
+	global $mysqli;
 	//search the room with the given ID
 	$booked_rooms = date_range_compare($checkindate, $checkoutdate);;
-	$booked_rooms_id = $booked_rooms->fetch_all();
 	$ids="";
-	for ($x=0; $x<count($booked_rooms_id);$x++){
-		$booked_rooms_id[$x][0];
-		$ids.= $booked_rooms_id[$x][0]. ",";
+	for ($x=0; $x<count($booked_rooms);$x++){
+		$booked_rooms[$x][0];
+		$ids.= $booked_rooms[$x][0]. ",";
 	}
 	$ids=rtrim($ids, ",");
 	//echo $ids;
-	
-	if(count($booked_rooms_id) > 0){
-		
-		//= implode(", ", $booked_rooms);
-		$sql = "SELECT * FROM `accommodationinfo` WHERE NOT `ID` IN (" . $ids . ") AND `room_num` >= " . $pax;
-		//$sql = "SELECT * FROM `accommodationinfo` WHERE NOT `ID` IN (10, 11, 12) AND `room_num` >= 5";
-		$result = $conn->query($sql);
+
+	if(count($booked_rooms) > 0){
+    $stmt = "SELECT * FROM accommodationinfo WHERE NOT ID IN ($ids) AND room_num >= $pax";
+		//$stmt = "SELECT * FROM `accommodationinfo` WHERE NOT `ID` IN (10, 11, 12) AND `room_num` >= 5";
+		$result = $mysqli->query($stmt);
 		$a_rooms = $result->fetch_all();
 		if (count($a_rooms) > 0) {
-			//$row = $result->fetch_array();//converts result into an array
 			return $a_rooms;//returns the array
 		}
 		else {
 			return 0; //room not found
 		}
 	}
-	else 
-		return 0; //not an array
+	else
+		return 0; //
 }
 
 function date_range_compare ($period_start, $period_end){
-	global $conn; 
-	//echo "$period_end $period_start";
+	global $mysqli;
 	//search the room with the given ID
-	$sql = "SELECT room_id FROM reservationqueue WHERE NOT date_in > $period_end OR date_out < $period_start";
-	//$sql = "SELECT `room_id` FROM `reservationqueue` WHERE NOT `date_in` >  20200229 OR `date_out` < 20200201";
-	$result = $conn->query($sql);
-	if ($result->num_rows > 0) {
+	$stmt = "SELECT room_id FROM reservationqueue WHERE NOT date_in > $period_end OR date_out < $period_start";
+	//$stmt = "SELECT `room_id` FROM `reservationqueue` WHERE NOT `date_in` >  20200229 OR `date_out` < 20200201";
+	$result = $mysqli->query($stmt);
+
+  //if there were results in the
+  if ($result->num_rows>0) {
+    // code...
+  }
+  //fetching all the array
+  $booked_rooms = $result->fetch_all();
+	if (count($booked_rooms)>0) {
 		//returns the resultset object (not an array)
-		return $result;
+		return $booked_rooms;
 	}
 	else {
-		return 0; //room not found
+		return 0; //rooms not found
 	}
 }
-?> 
+?>
