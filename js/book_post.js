@@ -8,9 +8,6 @@ $(document).ready(function () {
 		var input2 = $("#room_checkoutdate").val(); //getting the current dateout value into a variable
 		var input3 = $("#room_pax").val(); //getting the current pax value into a variable
 
-		//alert(input1);
-		//alert(input2);
-		//alert(input3);
 		$.post("src/book_post.php", //create a POST request
 		{
 			room_checkindate:  input1, //sending the variable with the password through POST
@@ -21,5 +18,6 @@ $(document).ready(function () {
 			alert (data);
 		}
 		);
+		var testdata = {"result":[{"0":["3","Terraza","3","6000","Beautiful place","6","1"]},{"1":["13","Cabana","4","9000","Beautiful place","6","1"]},{"2":["15","Pandan","1","7000","Beautiful place","5","1"]},{"3":["23","Nipahut","3","3500","Beautiful place","6","1"]},{"4":["27","Dorm","1","12000","Beautiful place","20","1"]},{"5":["28","Function hall","3","12000","Beautiful place","150","1"]}]}
 	});
 });

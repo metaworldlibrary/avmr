@@ -11,8 +11,9 @@
 	$results = select_room($sqldatein, $sqldateout, $_POST["room_pax"]);
 	if (count ($results)>0){
 		//return $results;
+		//var_export($results);
 		foreach ( $results as $var ) {
-			echo "$var[0] $var[1] $var[2] $var[2] $var[3] $var[4] $var[5] $var[6]\n";
+			echo "{$var['ID']} {$var['room_name']} {$var['room_accommodation_num']} {$var['price']} {$var['room_desc']} {$var['room_num']} {$var['status']}\n";
 		}
 	}
 	//if no available rooms.

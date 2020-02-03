@@ -58,6 +58,7 @@
 							</p>
 						</section>
 					</div>
+					<!--/Home Section-->
 
 					<!--Pricing Section-->
 					<div class="carousel-item">
@@ -81,11 +82,42 @@
 									</form>
 								</div>
 								<div class="col-md-8">
-									<div class="">
-										//search results here//
+									<!--cards-->
+									<div class="card-group">
+									  <div class="card border-secondary mb-3">
+									    <img src="img/room1.jpg" class="card-img-top" alt="...">
+									    <div class="card-body">
+									      <h5 class="card-title">Terraza</h5>
+									      <p class="card-text">Beautiful place</p>
+									      <p class="card-text"><small class="text-muted">$6000</small></p>
+									    </div>
+									  </div>
+									  <div class="card">
+									    <img src="img/room1.jpg" class="card-img-top" alt="...">
+											<div class="card-body">
+									      <h5 class="card-title">Terraza</h5>
+									      <p class="card-text">Beautiful place</p>
+									      <p class="card-text"><small class="text-muted">$6000</small></p>
+									    </div>
+									  </div>
+									  <div class="card">
+									    <img src="img/room1.jpg" class="card-img-top" alt="...">
+											<div class="card-body">
+									      <h5 class="card-title">Terraza</h5>
+									      <p class="card-text">Beautiful place</p>
+									      <p class="card-text"><small class="text-muted">$6000</small></p>
+									    </div>
+									  </div>
+										<div class="card">
+										 <img src="img/room1.jpg" class="card-img-top" alt="...">
+										 <div class="card-body">
+											 <h5 class="card-title">Terraza</h5>
+											 <p class="card-text">Beautiful place</p>
+											 <p class="card-text"><small class="text-muted">$6000</small></p>
+										 </div>
+									 </div>
 									</div>
-									<button class="btn btn-primary">Next</button>
-								</div>
+								<!--cards-->
 							</div>
 						</section>
 					</div>

@@ -54,7 +54,7 @@ function select_room($checkindate, $checkoutdate, $pax) {
     $stmt = "SELECT * FROM accommodationinfo WHERE NOT ID IN ($ids) AND room_num >= $pax";
 		//$stmt = "SELECT * FROM `accommodationinfo` WHERE NOT `ID` IN (10, 11, 12) AND `room_num` >= 5";
 		$result = $mysqli->query($stmt);
-		$a_rooms = $result->fetch_all();
+		$a_rooms = $result->fetch_all(MYSQLI_ASSOC);
 		if (count($a_rooms) > 0) {
 			return $a_rooms;//returns the array
 		}
