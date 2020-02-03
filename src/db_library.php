@@ -41,7 +41,7 @@ function select_room($checkindate, $checkoutdate, $pax) {
 	//Getting the conn variable from above.
 	global $mysqli;
 	//search the room with the given ID
-	$booked_rooms = date_range_compare($checkindate, $checkoutdate);;
+	$booked_rooms = date_range_compare($checkindate, $checkoutdate);
 	$ids="";
 	for ($x=0; $x<count($booked_rooms);$x++){
 		$booked_rooms[$x][0];

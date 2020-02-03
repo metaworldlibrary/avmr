@@ -36,33 +36,33 @@
 			<div class="collapse navbar-collapse justify-content-end text-white" id="navbarNav">
 				<b><a id="navbar-sign-in-label">Already got a reservation? sign in to check:</a></b>
 				<a class="btn btn-primary m-2" href="#" id="navbar-sign-in" data-target="#main-content" data-slide-to="5">Sign in</a>
-				<a class="btn btn btn-success m-2" id="navbar-dashboard" href="#" data-target="#main-content" data-slide-to="5">Dashboard</a>
-				<a class="btn btn btn-outline-primary m-2" id="navbar-sign-out">Sign out</a>
+				<a class="btn btn-success m-2" id="navbar-dashboard" href="#" data-target="#main-content" data-slide-to="5">Dashboard</a>
+				<a class="btn btn-outline-primary m-2" id="navbar-sign-out">Sign out</a>
 			</div>
 		</nav>
 		<!--/Navbar-->
 
 		<!--Content-->
-		<div class="site-content d-flex align-item-center justify-content-center">
-			<!--Carousel effect-->
-			<div id="main-content" class="container carousel slide" data-ride="carousel">
-				<!-- The slideshow -->
-				<div class="carousel-inner text-white">
-					<!--Home Section-->
-					<div class="carousel-item active">
-						<section id="home" class="">
-							<div class="h1 font-weight-bold title">AMAZING VIEW</div>
-							<div class="h6 font-weight-bold">MOUNTAIN RESORT</div><hr>
-							<p class="h5 font-weight-normal">Nestled in a high point overlooking Mabitac Valley and Sierra Madre mountain, it is the perfect backdrop for your unforgibable relaxing holidays!</p><hr>
-							<p class=""><a href="#" class="btn btn-lg btn-secondary">Learn more</a>
-							</p>
-						</section>
-					</div>
+		<div class="site-content container d-flex align-item-center justify-content-center">
+				<!--Carousel effect-->
+				<div id="main-content" class="container carousel slide h-100" data-ride="carousel">
+					<!-- The slideshow -->
+					<div class="container h-100 carousel-inner text-white">
+						<!--Home Section-->
+						<div class="container carousel-item active h-100">
+							<section id="home" class="container h-100 d-flex flex-column justify-content-center align-items-center">
+								<div class="h1 font-weight-bold title">AMAZING VIEW</div>
+								<div class="h6 font-weight-bold">MOUNTAIN RESORT</div><hr>
+								<p class="h5 font-weight-normal">Nestled in a high point overlooking Mabitac Valley and Sierra Madre mountain, it is the perfect backdrop for your unforgibable relaxing holidays!</p><hr>
+								<p class=""><a href="#" class="btn btn-lg btn-secondary">Learn more</a>
+								</p>
+							</section>
+						</div>
 					<!--/Home Section-->
 
 					<!--Pricing Section-->
-					<div class="carousel-item">
-						<section id="pricing" class= "text-center">
+					<div class="container carousel-item h-100">
+						<section id="pricing" class= "container text-center h-100 d-flex flex-column justify-content-center align-items-center">
 							<div class="row">
 								<div class="col-md-3">
 									<form class="form-horizontal">
@@ -78,47 +78,31 @@
 											<label >Number of Guest</label>
 											<input type="number" class="form-control" id="room_pax">
 										</div>
-										<button type="submit" class="btn btn-primary" id ="room_search">Search</button>
+										<a class="btn btn-primary m-2" id="room_search">Search</a>
 									</form>
 								</div>
-								<div class="col-md-8">
+
+								<div id="rooms-container" class="col-md-8 text-dark bg-white border border-secondary rounded-lg d-flex flex-column justify-content-center align-items-center" style="overflow-y: scroll; height:400px;">
 									<!--cards-->
-									<div class="card-group">
-									  <div class="card border-secondary mb-3">
-									    <img src="img/room1.jpg" class="card-img-top" alt="...">
-									    <div class="card-body">
-									      <h5 class="card-title">Terraza</h5>
-									      <p class="card-text">Beautiful place</p>
-									      <p class="card-text"><small class="text-muted">$6000</small></p>
-									    </div>
-									  </div>
-									  <div class="card">
-									    <img src="img/room1.jpg" class="card-img-top" alt="...">
-											<div class="card-body">
-									      <h5 class="card-title">Terraza</h5>
-									      <p class="card-text">Beautiful place</p>
-									      <p class="card-text"><small class="text-muted">$6000</small></p>
-									    </div>
-									  </div>
-									  <div class="card">
-									    <img src="img/room1.jpg" class="card-img-top" alt="...">
-											<div class="card-body">
-									      <h5 class="card-title">Terraza</h5>
-									      <p class="card-text">Beautiful place</p>
-									      <p class="card-text"><small class="text-muted">$6000</small></p>
-									    </div>
-									  </div>
-										<div class="card">
-										 <img src="img/room1.jpg" class="card-img-top" alt="...">
-										 <div class="card-body">
-											 <h5 class="card-title">Terraza</h5>
-											 <p class="card-text">Beautiful place</p>
-											 <p class="card-text"><small class="text-muted">$6000</small></p>
-										 </div>
-									 </div>
+									<div class="card m-3 border-dark">
+										<div class="row no-gutters">
+											<div class="col-md-5 fill">
+												<img src="img/room1.jpg" class="card-img">
+											</div>
+											<div class="col-md-7">
+												<div class="card-body">
+													<h4 class="card-title">Card title</h4>
+													<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+												</div>
+												<div class="card-footer">
+													<label for="select_room" class="">Price: 6000</label>
+      										<a class="btn btn-outline-primary btn-xs" id="select-room">Book it!</a>
+    										</div>
+											</div>
+										</div>
 									</div>
-								<!--cards-->
-							</div>
+									<!--cards-->
+								</div>
 						</section>
 					</div>
 					<!--/Pricing Section-->
