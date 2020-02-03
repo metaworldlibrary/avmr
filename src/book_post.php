@@ -11,13 +11,15 @@
 	$results = select_room($sqldatein, $sqldateout, $_POST["room_pax"]);
 	if (count ($results)>0){
 		//return $results;
-		//var_export($results);
+		/*/var_export($results);
 		foreach ( $results as $var ) {
 			echo "{$var['ID']} {$var['room_name']} {$var['room_accommodation_num']} {$var['price']} {$var['room_desc']} {$var['room_num']} {$var['status']}\n";
-		}
+		}*/
+		echo json_encode($results, JSON_FORCE_OBJECT); //converts the result from array to JSON
 	}
 	//if no available rooms.
 	else{
+		console.log("case2");
 		echo 0;
 	}
 	//closing database connection
