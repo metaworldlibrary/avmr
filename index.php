@@ -50,7 +50,7 @@
 					<div class="container-fluid h-100 carousel-inner text-white">
 						<!--Home Section-->
 						<div class="container-fluid carousel-item active h-100">
-							<section id="home" class="container-fluid h-100 d-flex flex-column justify-content-center align-items-center">
+							<section id="home" class="container-fluid h-100 column-center">
 								<div class="h1 font-weight-bold title">AMAZING VIEW</div>
 								<div class="h6 font-weight-bold">MOUNTAIN RESORT</div><hr>
 								<p class="h5 font-weight-normal">Nestled in a high point overlooking Mabitac Valley and Sierra Madre mountain, it is the perfect backdrop for your unforgibable relaxing holidays!</p><hr>
@@ -61,9 +61,9 @@
 					<!--/Home Section-->
 
 					<!--Pricing Section-->
-					<div class="container-fluid carousel-item h-100">
-						<section id="pricing" class= "container-fluid w-75 h-100 d-flex flex-row justify-content-center align-items-center">
-							<div class="row flex-row justify-content-center align-items-center">
+					<div class="container-fluid carousel-item h-100 row-center">
+						<section id="book-section" class= "container-fluid w-75 h-100 row-center">
+							<div class="container-fluid	row row-center">
 								<div class="col-md-3">
 									<form class="form-horizontal">
 										<div class="form-group">
@@ -82,7 +82,7 @@
 									</form>
 								</div>
 
-								<div id="rooms-container" class="col-md-8 bg-light border border-secondary rounded-lg d-flex flex-column justify-content-center align-items-center">
+								<div id="rooms-container" class="container-fluid col-md-8 bg-light border border-secondary rounded-lg column-center">
 									<!--cards-->
 									<div class="card bg-secondary border-dark w-100">
 										<div class="row no-gutters">
@@ -96,11 +96,34 @@
 												</div>
 												<div class="card-footer container-fluid text-center">
 													<div class="container-fluid">
-													  <div class="container-fluid row row-cols-3 no-gutters d-flex flex-row justify-content-center align-items-center">
-															<div class="col text-center no-gutters d-flex flex-row justify-content-center align-items-center"><i class="material-icons">attach_money</i><a>120,000</a></div>
-    													<div class="col text-center no-gutters d-flex flex-row justify-content-center align-items-center"><i class="material-icons mr-2">people</i><a>150</a></div>
-    													<div class="col text-center no-gutters"><a class="btn btn-success btn-xs" id="select-room">Book it!</a></div>
-													  </div>
+														<div class="container-fluid row row-cols-3 no-gutters row-center">
+															<div class="col text-center no-gutters row-center"><i class="material-icons">attach_money</i><a>120,000</a></div>
+															<div class="col text-center no-gutters row-center"><i class="material-icons mr-2">people</i><a>150</a></div>
+															<div class="col text-center no-gutters"><a class="btn btn-success btn-xs" id="select-room">Book it!</a></div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="card bg-secondary border-dark w-100">
+										<div class="row no-gutters">
+											<div class="col-md-5 fill">
+												<img src="img/room1.jpg" class="card-img">
+											</div>
+											<div class="col-md-7">
+												<div class="card-body">
+													<h4 class="card-title">Card title</h4>
+													<p class="card-text text-justify">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+												</div>
+												<div class="card-footer container-fluid text-center">
+													<div class="container-fluid">
+														<div class="container-fluid row row-cols-3 no-gutters row-center">
+															<div class="col text-center no-gutters row-center"><i class="material-icons">attach_money</i><a>120,000</a></div>
+															<div class="col text-center no-gutters row-center"><i class="material-icons mr-2">people</i><a>150</a></div>
+															<div class="col text-center no-gutters"><a class="btn btn-success btn-xs" id="select-room">Book it!</a></div>
+														</div>
 													</div>
 												</div>
 											</div>
