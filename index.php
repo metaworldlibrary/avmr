@@ -45,7 +45,7 @@
 		<!--Content-->
 		<div class="site-content container-fluid d-flex align-item-center justify-content-center">
 				<!--Carousel effect-->
-				<div id="main-content" class="container-fluid carousel slide h-100" data-ride="carousel">
+				<div id="main-content" class="container-fluid carousel slide carousel-fade  h-100" data-ride="carousel">
 					<!-- The slideshow -->
 					<div class="container-fluid h-100 carousel-inner text-white">
 						<!--Home Section-->
@@ -81,7 +81,7 @@
 										<a class="btn btn-primary m-2" id="room_search">Search</a>
 									</form>
 								</div>
-								<!--cards-->								
+								<!--cards-->
 								<div id="rooms-container" class="container-fluid col-md-8 bg-light border border-secondary rounded-lg column-center">
 								</div>
 								<!--cards-->
