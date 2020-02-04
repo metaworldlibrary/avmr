@@ -81,56 +81,10 @@
 										<a class="btn btn-primary m-2" id="room_search">Search</a>
 									</form>
 								</div>
-
+								<!--cards-->								
 								<div id="rooms-container" class="container-fluid col-md-8 bg-light border border-secondary rounded-lg column-center">
-									<!--cards-->
-									<div class="card bg-secondary border-dark w-100">
-										<div class="row no-gutters">
-											<div class="col-md-5 fill">
-												<img src="img/room1.jpg" class="card-img">
-											</div>
-											<div class="col-md-7">
-												<div class="card-body">
-													<h4 class="card-title">Card title</h4>
-													<p class="card-text text-justify">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-												</div>
-												<div class="card-footer container-fluid text-center">
-													<div class="container-fluid">
-														<div class="container-fluid row row-cols-3 no-gutters row-center">
-															<div class="col text-center no-gutters row-center"><i class="material-icons">attach_money</i><a>120,000</a></div>
-															<div class="col text-center no-gutters row-center"><i class="material-icons mr-2">people</i><a>150</a></div>
-															<div class="col text-center no-gutters"><a class="btn btn-success btn-xs" id="select-room">Book it!</a></div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-
-									<div class="card bg-secondary border-dark w-100">
-										<div class="row no-gutters">
-											<div class="col-md-5 fill">
-												<img src="img/room1.jpg" class="card-img">
-											</div>
-											<div class="col-md-7">
-												<div class="card-body">
-													<h4 class="card-title">Card title</h4>
-													<p class="card-text text-justify">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-												</div>
-												<div class="card-footer container-fluid text-center">
-													<div class="container-fluid">
-														<div class="container-fluid row row-cols-3 no-gutters row-center">
-															<div class="col text-center no-gutters row-center"><i class="material-icons">attach_money</i><a>120,000</a></div>
-															<div class="col text-center no-gutters row-center"><i class="material-icons mr-2">people</i><a>150</a></div>
-															<div class="col text-center no-gutters"><a class="btn btn-success btn-xs" id="select-room">Book it!</a></div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<!--cards-->
 								</div>
+								<!--cards-->
 						</section>
 					</div>
 					<!--/Pricing Section-->
