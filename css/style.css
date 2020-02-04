@@ -97,3 +97,8 @@ body {
 #navbar-sign-out, #navbar-dashboard, #member-area{
 	display:none;
 }
+
+#rooms-container{
+	overflow-y: scroll;
+	height: 400px;
+}
