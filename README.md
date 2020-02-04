@@ -1,13 +1,15 @@
 # Amazing View Mountain Resort
 
-Test all possible scenarios
-    -> book -> check in(room will not be available) -> check out (room now available)
-    -> book based on no of guests
-        ->need to rooms that can be selected
-        Ex. 10 guest - can offer a single room can be accomodated by 10 persons or several rooms that be selected to accomodate 10 persons
-    -> book -> cancel -> w/ refund (anchan note: ask me later about refund policy)
-    -> book -> cancel -> w/o refund
-    -> book -> rebook -> check in -> check out
+-Test all possible scenarios
+    - book 
+        - check in(room will not be available)
+        - check out (room now available)
+        - book based on number of guests.
+        - need to rooms that can be selected
+        - Ex. 10 guest - can offer a single room can be accomodated by 10 persons or several rooms that be selected to accomodate 10 -persons
+        - cancel w/ refund: (anchan note: ask me later about refund policy)
+        - cancel w/o refund
+        - rebook: check in -> check out
     ~~need to send copy of docu on or before feb 4~~ (anchan note: thats not something we are concern of)
     
     Admin Module
