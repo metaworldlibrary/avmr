@@ -1,6 +1,7 @@
 # Amazing View Mountain Resort
+website
 
--Test all possible scenarios
+    -Test all possible scenarios
     - book 
         - check in(room will not be available)
         - check out (room now available)
@@ -10,7 +11,7 @@
         - cancel w/ refund: (anchan note: ask me later about refund policy)
         - cancel w/o refund
         - rebook: check in -> check out
-    ~~need to send copy of docu on or before feb 4~~ (anchan note: thats not something we are concern of)
+        - ~~need to send copy of docu on or before feb 4~~ (anchan note: thats not something we are concern of)
     
     Admin Module
     - allow the user to modify from details
