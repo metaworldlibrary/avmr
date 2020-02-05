@@ -35,8 +35,8 @@
 
 			<div class="collapse navbar-collapse justify-content-end text-white" id="navbarNav">
 				<b><a id="navbar-sign-in-label">Already got a reservation? sign in to check:</a></b>
-				<a class="btn btn-primary m-2" href="#" id="navbar-sign-in" data-target="#main-content" data-slide-to="5">Sign in</a>
-				<a class="btn btn-success m-2" id="navbar-dashboard" href="#" data-target="#main-content" data-slide-to="5">Dashboard</a>
+				<a class="btn btn-primary m-2" href="#" id="navbar-sign-in" data-target="#main-content" data-slide-to="6">Sign in</a>
+				<a class="btn btn-success m-2" id="navbar-dashboard" href="#" data-target="#main-content" data-slide-to="6">Dashboard</a>
 				<a class="btn btn-outline-primary m-2" id="navbar-sign-out">Sign out</a>
 			</div>
 		</nav>
@@ -48,7 +48,8 @@
 				<div id="main-content" class="container-fluid carousel slide carousel-fade  h-100" data-ride="carousel">
 					<!-- The slideshow -->
 					<div class="container-fluid h-100 carousel-inner text-white">
-						<!--Home Section-->
+
+						<!--Home Section Carousel ITEM 0-->
 						<div class="container-fluid carousel-item active h-100">
 							<section id="home" class="container-fluid h-100 column-center">
 								<div class="h1 font-weight-bold title">AMAZING VIEW</div>
@@ -58,36 +59,35 @@
 								</p>
 							</section>
 						</div>
-					<!--/Home Section-->
+						<!--/Home Section Carousel ITEM 0-->
 
-					<!--Pricing Section-->
-					<div class="container-fluid carousel-item h-100 row-center">
-						<section id="book-section" class= "container-fluid w-75 h-100 row-center">
-							<div class="container-fluid	row row-center">
-								<div class="col-md-3">
-									<form class="form-horizontal">
-										<div class="form-group">
-											<label >Check-In Date</label>
-											<input type="date" class="form-control" id="room_checkindate">
-										</div>
-										<div class="form-group">
-											<label >Check-Out Date</label>
-											<input type="date" class="form-control" id="room_checkoutdate">
-										</div>
-										<div class="form-group">
-											<label >Number of Guest</label>
-											<input type="number" class="form-control" id="room_pax">
-										</div>
-										<a class="btn btn-primary m-2" id="room_search">Search</a>
-									</form>
-								</div>
-								<!--cards-->
-								<div id="rooms-container" class="container-fluid col-md-8 bg-light border border-secondary rounded-lg column-center">
-								</div>
-								<!--cards-->
-						</section>
-					</div>
-					<!--/Pricing Section-->
+						<!--Pricing Section Carousel ITEM 1-->
+						<div class="container-fluid carousel-item h-100 row-center">
+							<section id="book-section" class= "container-fluid w-75 h-100 row-center">
+								<div class="container-fluid	row row-center">
+									<div class="col-md-3">
+										<form class="form-horizontal">
+											<div class="form-group">
+												<label >Check-In Date</label>
+												<input type="date" class="form-control" id="room_checkindate">
+											</div>
+											<div class="form-group">
+												<label >Check-Out Date</label>
+												<input type="date" class="form-control" id="room_checkoutdate">
+											</div>
+											<div class="form-group">
+												<label >Number of Guest</label>
+												<input type="number" class="form-control" id="room_pax">
+											</div>
+											<a class="btn btn-primary m-2" id="room_search">Search</a>
+										</form>
+									</div>
+									<!--cards-->
+									<div id="rooms-container" class="container-fluid col-md-8 bg-light border border-secondary rounded-lg column-center"></div>
+									<!--cards-->
+							</section>
+						</div>
+						<!--/Pricing Section Carousel ITEM 1-->
 
 					<!--Activities Section-->
 					<div class="carousel-item">
@@ -97,63 +97,110 @@
 					</div>
 					<!--/Activities Section-->
 
-					<!--About Section-->
+					<!--About Section Carousel ITEM 2-->
 					<div class="carousel-item">
 						<section id="about">
 							<p class="h1 text-center">About</p>
 						</section>
 					</div>
-					<!--/Contact Section-->
+					<!--/About Section Carousel ITEM 2-->
 
-					<!--/Contact Section-->
-					<div class="carousel-item">
-						<section id="contact">
+					<!--/Contact Section Carousel ITEM 3-->
+					<div class="carousel-item container-fluid h-100 row-center">
+						<section id="contact" class="container-fluid w-75 h-100 row-center">
 							<p class="h1 text-center">Contact us</p>
 
 							<div class="container text-center text-white py-3">
 								<p>Amazing View Mountain and Farm Resort, KM 72 Sitio Little Baguio Brgy. Paagahan, Mabitac Laguna, Philippines</p>
 								<div class="row">
-									<div class="col-sm">
-										<i class="material-icons">local_phone</i>
-									</div>
-									<div class="col-sm">
-										<i class="material-icons">phone_android</i>
-										</div>
-									<div class="col-sm">
-										<i class="material-icons">mail_outline</i>
-									</div>
+									<div class="col-sm"><i class="material-icons">local_phone</i></div>
+									<div class="col-sm"><i class="material-icons">phone_android</i></div>
+									<div class="col-sm"><i class="material-icons">mail_outline</i></div>
 								</div>
 
 								<div class="row">
-									<div class="col-sm">
-										<a class="mx-2">+63(049) 0591 0711</a>
-									</div>
-									<div class="col-sm">
-										<a class="mx-2">+639464073550</a>
-										</div>
-									<div class="col-sm">
-										<a class="mx-2">reservation@amazingviewresort.com</a>
-									</div>
+									<div class="col-sm"><a class="mx-2">+63(049) 0591 0711</a></div>
+									<div class="col-sm"><a class="mx-2">+639464073550</a></div>
+									<div class="col-sm"><a class="mx-2">reservation@amazingviewresort.com</a></div>
 								</div>
 
 								<div class="row">
-									<div class="col-sm">
-										<a class="mx-2">5910698</a>
-									</div>
-									<div class="col-sm">
-										<a class="mx-2">+639174545980</a>
-										</div>
+									<div class="col-sm"><a class="mx-2">5910698</a></div>
+									<div class="col-sm"><a class="mx-2">+639174545980</a></div>
 								</div>
 							</div>
 						</section>
 					</div>
-					<!--/Contact Section-->
+					<!--/Contact Section Carousel ITEM 3-->
 
-					<!--Login Section-->
-					<div class="carousel-item">
-						<section id="login" class="text-center">
+					<!--/Sign up Section Carousel ITEM 4-->
+					<div class="carousel-item container-fluid h-100 row-center">
+						<section id="contact-info" class="container-fluid w-75 h-100 row-center">
+							<div class="container-fluid row h-100 w-100 row-center">
+								<div class="col-md-5 container-fluid h-100">
+									<form class="form-horizontal">
+										<label class="mt-3 h6 font-weight-bold">Guest Details</label>
+										<div class="form-inline">
+											<input type="text" class="form-control w-50" id="lastname" placeholder="Last Name">
+											<input type="text" class="form-control w-50" id="firstname" placeholder="First Name">
+										</div>
+										<div class="form-horizontal">
+											<label class="mt-3 h6 font-weight-bold">Email</label>
+											<input type="email" class="form-control" id="email">
+										</div>
+										<div class="form-group">
+											<label class="mt-3 mt-2 h6 font-weight-bold">Mobile No.</label>
+											<input type="text" class="form-control" id="NoMobile" placeholder="(+63)XXX-XXX-XXXX">
+										</div>
+										<div class="form-group">
+											<label class="mt-3 mt-2 h6 font-weight-bold">Landline No.</label>
+											<input type="text" class="form-control" id="NoLandline" placeholder="X-XXX-XXXX">
+										</div>
+										<div class="form-group">
+											<label class="mt-3 mt-2 h6 font-weight-bold">Username</label>
+											<input type="text" class="form-control" id="username" placeholder="">
+										</div>
+										<div class="form-group">
+											<label class="mt-3 mt-2 h6 font-weight-bold">Password</label>
+											<input type="password" class="form-control" id="password" placeholder="">
+										</div>
+										<div class="form-group">
+											<label class="mt-3 mt-2 h6 font-weight-bold">Re-Enter Password</label>
+											<input type="password" class="form-control" id="repassword" placeholder="">
+										</div>
+										<button type="submit" class="btn btn-primary" id="create">Submit</button>
+									</form>
+								</div>
+								<div class="col-md-2 container-fluid w-100 h-100 column-center"><a class="h1 font-weight-bold">OR</a></div>
+								<!--Login-->
+								<div class="col-md-5 container-fluid w-100 h-100 column-center">
+									<div><label class="h2 text-center font-weight-bold title" id="login-contact-label">Already have an Account?</label></div>
+									<form class="form-signin column-center" id="login-form2">
+										<h1 class="mb-3 h6 font-weight-bold">Please sign in</h1>
+										<label for="login_username" class="sr-only">Email address</label>
+										<input type="text" id="login_username2" class="form-control" placeholder="Email address or Username" required autofocus>
+										<label for="login_password" class="sr-only">Password</label>
+										<input type="password" id="login_password2" class="form-control" placeholder="Password" required>
+
+										<div class="checkbox mb-3">
+											<label>
+												<input type="checkbox" value="remember-me"> Remember me
+											</label>
+										</div>
+										<button class="btn btn-lg btn-primary btn-block" type="submit" id="form_send2">Sign in</button>
+									</form>
+								</div>
+								<!--/Login-->
+							</div>
+						</section>
+					</div>
+					<!--/Contact Section Carousel ITEM 4-->
+
+					<!--Login Section Carousel ITEM 5-->
+					<div class="carousel-item container-fluid h-100 column-center">
+						<section id="login" class="container-fluid w-75 h-100 column-center">
 							<!--Sign in form-->
-							<form class="form-signin" id="login-form">
+							<form class="form-signin column-center" id="login-form">
 								<img class="mb-4" src="img/logo2.png" alt="" width="200" height="144">
 								<h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
 								<label for="login_username" class="sr-only">Email address</label>
@@ -177,7 +224,7 @@
 							<!--/Members area-->
 						</section>
 					</div>
-					<!--/Login Section-->
+					<!--/Login Section Carousel ITEM 5-->
 				</div>
 				<!--/The slideshow-->
 			</div>

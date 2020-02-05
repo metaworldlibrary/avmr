@@ -1,6 +1,7 @@
 $(document).ready(function () {
 //stop the auto slides
- 	$("#myCarousel").carousel({interval: false});
+ 	$("#main-content").carousel({interval: false});
+	$('#main-content').carousel('pause');
 
 //Responsive functions, hidding menus on click for small screens
 	$('.navbar-nav>li>a').on('click', function(){

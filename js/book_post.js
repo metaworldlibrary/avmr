@@ -17,9 +17,11 @@ $(document).ready(function () {
 		function(data){ //If the POST request was successful, this function is executed.
 			try {
   			var obj = jQuery.parseJSON(data);
+				var rooms = $('#rooms-container');
+				rooms.empty();
+				var cards = $();
 				$.each(obj, function(key, value) {
-					var rooms = $('#rooms-container');
-					var cards =`<div class="card bg-secondary border-dark w-100 my-2">
+					cards =`<div class="card bg-secondary border-dark w-100 my-2">
 					<div class="row no-gutters">
 						<div class="col-md-5 fill">
 							<img src="img/room1.jpg" class="card-img">
@@ -34,7 +36,7 @@ $(document).ready(function () {
 									<div class="container-fluid row row-cols-3 no-gutters row-center">
 										<div class="col text-center no-gutters row-center"><i class="material-icons">attach_money</i><a>`+value.price+`</a></div>
 										<div class="col text-center no-gutters row-center"><i class="material-icons mr-2">people</i><a>`+value.room_num+`</a></div>
-										<div class="col text-center no-gutters"><a class="btn btn-success btn-xs" id="select-room">Select</a></div>
+										<div class="col text-center no-gutters"><a class="btn btn-success btn-xs" id="select-room" href="#" data-target="#main-content" data-slide-to="5">Select</a></div>
 									</div>
 								</div>
 							</div>
