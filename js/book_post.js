@@ -1,4 +1,5 @@
 $(document).ready(function () {
+	var room_id = $();
 	//AJAX JQuery script to send a POST request
 	//Quick test values
 	//Username: drogister0@umn.edu or drogister0
@@ -36,7 +37,7 @@ $(document).ready(function () {
 									<div class="container-fluid row row-cols-3 no-gutters row-center">
 										<div class="col text-center no-gutters row-center"><i class="material-icons">attach_money</i><a>`+value.price+`</a></div>
 										<div class="col text-center no-gutters row-center"><i class="material-icons mr-2">people</i><a>`+value.room_num+`</a></div>
-										<div class="col text-center no-gutters"><a class="btn btn-success btn-xs" id="select-room" href="#" data-target="#main-content" data-slide-to="5">Select</a></div>
+										<div class="col text-center no-gutters"><a class="btn btn-success btn-xs" id="`+value.ID+`" href="#" data-target="#main-content" data-slide-to="5">Select</a></div>
 									</div>
 								</div>
 							</div>
@@ -49,7 +50,12 @@ $(document).ready(function () {
 				catch (err) {
   			alert(err)
 			}
-		}
-		);
+		});
 	});
+
+	$('#rooms-container').on('click', '.btn', function(){
+		room_id = event.target.id;
+		alert("room ID: "+room_id);
+	});
+
 });
