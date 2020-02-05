@@ -5,15 +5,11 @@ $(document).ready(function () {
 	//Username: drogister0@umn.edu or drogister0
 	//Password: sN525spWNc
 	$('#room_search').on('click', function(){
-		var input1 = $("#room_checkindate").val(); //getting the current datein value into a variable
-		var input2 = $("#room_checkoutdate").val(); //getting the current dateout value into a variable
-		var input3 = $("#room_pax").val(); //getting the current pax value into a variable
-
 		$.post("src/book_post.php", //create a POST request
 		{
-			room_checkindate:  input1, //sending the variable with the password through POST
-			room_checkoutdate: input2,
-			room_pax: input3
+			room_checkindate:  $("#room_checkindate").val(), //sending the variable with the password through POST
+			room_checkoutdate: $("#room_checkoutdate").val(),
+			room_pax: $("#room_pax").val()
 		},
 		function(data){ //If the POST request was successful, this function is executed.
 			try {
@@ -59,25 +55,16 @@ $(document).ready(function () {
 	});
 
 	$('#signup-create').on('click', function(){
-		var input1 = $("#signup-lastname").val(); //getting the current datein value into a variable
-		var input2 = $("#signup-firstname").val(); //getting the current dateout value into a variable
-		var input3 = $("#signup-email").val(); //getting the current pax value into a variable
-		var input4 = $("#signup-NoMobile").val();
-		var input5 = $("#signup-NoLandline").val();
-		var input6 = $("#signup-username").val();
-		var input7 = $("#signup-password").val();
-		var input8 = $("#signup-repassword").val();
-
 		$.post("src/book_post.php", //create a POST request
 		{
-			signup_lastname:  input1, //sending the variable with the password through POST
-			signup_firstname: input2,
-			signup_email: input3,
-			signup_NoMobile: input4,
-			signup_NoLandline: input5,
-			signup_username: input6,
-			signup_password: input7,
-			signup_repassword: input8
+			signup_lastname:  $("#signup-lastname").val(), //sending the variable with the password through POST
+			signup_firstname: $("#signup-firstname").val(),
+			signup_email: $("#signup-email").val(),
+			signup_NoMobile: $("#signup-NoMobile").val(),
+			signup_NoLandline: $("#signup-NoLandline").val(),
+			signup_username: $("#signup-username").val(),
+			signup_password: $("#signup-password").val(),
+			signup_repassword: $("#signup-repassword").val()
 		},
 		function(data){ //If the POST request was successful, this function is executed.
 			try {

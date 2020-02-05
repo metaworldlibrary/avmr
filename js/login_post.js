@@ -4,12 +4,10 @@ $(document).ready(function () {
 	//Username: drogister0@umn.edu or drogister0
 	//Password: sN525spWNc
 	$("#form_send").click(function() { //When clicking "Sign in" in the login form.
-		var login_user = $("#login_username").val(); //getting the current username value into a variable
-		var login_pass = $("#login_password").val(); //getting the current password value into a variable
 		$.post("src/login_post.php", //create a POST request
 		{
-			login_username: login_user, //sending the variable with the username through POST
-			login_password: login_pass //sending the variable with the password through POST
+			login_username: $("#login_username").val(), //sending the variable with the username through POST
+			login_password: $("#login_password").val() //sending the variable with the password through POST
 		},
 		function(data){ //If the POST request was successful, this function is executed.
 			if (data != 0) { //checking the data, 0= failed login
@@ -27,12 +25,10 @@ $(document).ready(function () {
 	});
 
 	$("#form_send2").click(function() { //When clicking "Sign in" in the login form.
-		var login_user = $("#login_username2").val(); //getting the current username value into a variable
-		var login_pass = $("#login_password2").val(); //getting the current password value into a variable
 		$.post("src/login_post.php", //create a POST request
 		{
-			login_username: login_user, //sending the variable with the username through POST
-			login_password: login_pass //sending the variable with the password through POST
+			login_username: $("#login_username2").val(), //sending the variable with the username through POST
+			login_password: $("#login_password2").val() //sending the variable with the password through POST
 		},
 		function(data){ //If the POST request was successful, this function is executed.
 			if (data != 0) { //checking the data, 0= failed login
