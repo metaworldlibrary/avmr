@@ -141,34 +141,34 @@
 									<form class="form-horizontal">
 										<label class="mt-3 h6 font-weight-bold">Guest Details</label>
 										<div class="form-inline">
-											<input type="text" class="form-control w-50" id="lastname" placeholder="Last Name">
-											<input type="text" class="form-control w-50" id="firstname" placeholder="First Name">
+											<input type="text" class="form-control w-50" id="signup-lastname" placeholder="Last Name">
+											<input type="text" class="form-control w-50" id="signup-firstname" placeholder="First Name">
 										</div>
 										<div class="form-horizontal">
 											<label class="mt-3 h6 font-weight-bold">Email</label>
-											<input type="email" class="form-control" id="email">
+											<input type="email" class="form-control" id="signup-email">
 										</div>
 										<div class="form-group">
 											<label class="mt-3 mt-2 h6 font-weight-bold">Mobile No.</label>
-											<input type="text" class="form-control" id="NoMobile" placeholder="(+63)XXX-XXX-XXXX">
+											<input type="text" class="form-control" id="signup-NoMobile" placeholder="(+63)XXX-XXX-XXXX">
 										</div>
 										<div class="form-group">
 											<label class="mt-3 mt-2 h6 font-weight-bold">Landline No.</label>
-											<input type="text" class="form-control" id="NoLandline" placeholder="X-XXX-XXXX">
+											<input type="text" class="form-control" id="signup-NoLandline" placeholder="X-XXX-XXXX">
 										</div>
 										<div class="form-group">
 											<label class="mt-3 mt-2 h6 font-weight-bold">Username</label>
-											<input type="text" class="form-control" id="username" placeholder="">
+											<input type="text" class="form-control" id="signup-username" placeholder="">
 										</div>
 										<div class="form-group">
 											<label class="mt-3 mt-2 h6 font-weight-bold">Password</label>
-											<input type="password" class="form-control" id="password" placeholder="">
+											<input type="password" class="form-control" id="signup-password" placeholder="">
 										</div>
 										<div class="form-group">
 											<label class="mt-3 mt-2 h6 font-weight-bold">Re-Enter Password</label>
-											<input type="password" class="form-control" id="repassword" placeholder="">
+											<input type="password" class="form-control" id="signup-repassword" placeholder="">
 										</div>
-										<button type="submit" class="btn btn-primary" id="create">Submit</button>
+										<button type="submit" class="btn btn-primary" id="signup-create">Submit</button>
 									</form>
 								</div>
 								<div class="col-md-2 container-fluid w-100 h-100 column-center"><a class="h1 font-weight-bold">OR</a></div>

@@ -58,4 +58,36 @@ $(document).ready(function () {
 		alert("room ID: "+room_id);
 	});
 
+	$('#signup-create').on('click', function(){
+		var input1 = $("#signup-lastname").val(); //getting the current datein value into a variable
+		var input2 = $("#signup-firstname").val(); //getting the current dateout value into a variable
+		var input3 = $("#signup-email").val(); //getting the current pax value into a variable
+		var input4 = $("#signup-NoMobile").val();
+		var input5 = $("#signup-NoLandline").val();
+		var input6 = $("#signup-username").val();
+		var input7 = $("#signup-password").val();
+		var input8 = $("#signup-repassword").val();
+
+		$.post("src/book_post.php", //create a POST request
+		{
+			signup_lastname:  input1, //sending the variable with the password through POST
+			signup_firstname: input2,
+			signup_email: input3,
+			signup_NoMobile: input4,
+			signup_NoLandline: input5,
+			signup_username: input6,
+			signup_password: input7,
+			signup_repassword: input8
+		},
+		function(data){ //If the POST request was successful, this function is executed.
+			try {
+  			alert("success");
+			}
+				catch (err) {
+  			alert(err)
+			}
+		});
+	});
+
+
 });
