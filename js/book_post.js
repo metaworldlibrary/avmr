@@ -50,8 +50,20 @@ $(document).ready(function () {
 	});
 
 	$('#rooms-container').on('click', '.btn', function(){
-		room_id = event.target.id;
-		alert("room ID: "+room_id);
+		//room_id = event.target.id;
+		$.post("src/book_post.php", //create a POST request
+		{
+			room_id: event.target.id
+		},
+		function(data){ //If the POST request was successful, this function is executed.
+			try {
+  			//alert("success2");
+			}
+				catch (err) {
+  			alert(err)
+			}
+		});
+		//alert("room ID: "+room_id);
 	});
 
 	$('#signup-create').on('click', function(){
@@ -68,7 +80,7 @@ $(document).ready(function () {
 		},
 		function(data){ //If the POST request was successful, this function is executed.
 			try {
-  			alert("success");
+  			//alert("success");
 			}
 				catch (err) {
   			alert(err)

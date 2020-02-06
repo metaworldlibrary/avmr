@@ -51,7 +51,7 @@
 
 						<!--Home Section Carousel ITEM 0-->
 						<div class="container-fluid carousel-item active h-100">
-							<section id="home" class="container-fluid h-100 column-center">
+							<section id="home" class="container-fluid column-center">
 								<div class="h1 font-weight-bold title">AMAZING VIEW</div>
 								<div class="h6 font-weight-bold">MOUNTAIN RESORT</div><hr>
 								<p class="h5 font-weight-normal">Nestled in a high point overlooking Mabitac Valley and Sierra Madre mountain, it is the perfect backdrop for your unforgibable relaxing holidays!</p><hr>
@@ -62,8 +62,8 @@
 						<!--/Home Section Carousel ITEM 0-->
 
 						<!--Pricing Section Carousel ITEM 1-->
-						<div class="container-fluid carousel-item h-100 row-center">
-							<section id="book-section" class= "container-fluid w-75 h-100 row-center">
+						<div class="container-fluid carousel-item row-center">
+							<section id="book-section" class= "container-fluid w-75 row-center">
 								<div class="container-fluid	row row-center">
 									<div class="col-md-3">
 										<form class="form-horizontal">
@@ -89,25 +89,25 @@
 						</div>
 						<!--/Pricing Section Carousel ITEM 1-->
 
-					<!--Activities Section-->
+					<!--Activities Section Carousel ITEM 2-->
 					<div class="carousel-item">
 						<section id="activities">
 							<p class="h1 text-center">Activities</p>
 						</section>
 					</div>
-					<!--/Activities Section-->
+					<!--/Activities Section Carousel ITEM 2-->
 
-					<!--About Section Carousel ITEM 2-->
+					<!--About Section Carousel ITEM 3-->
 					<div class="carousel-item">
 						<section id="about">
 							<p class="h1 text-center">About</p>
 						</section>
 					</div>
-					<!--/About Section Carousel ITEM 2-->
+					<!--/About Section Carousel ITEM 3-->
 
-					<!--/Contact Section Carousel ITEM 3-->
-					<div class="carousel-item container-fluid h-100 row-center">
-						<section id="contact" class="container-fluid w-75 h-100 row-center">
+					<!--/Contact Section Carousel ITEM 4-->
+					<div class="carousel-item container-fluid row-center">
+						<section id="contact" class="container-fluid w-75 row-center">
 							<p class="h1 text-center">Contact us</p>
 
 							<div class="container text-center text-white py-3">
@@ -131,15 +131,15 @@
 							</div>
 						</section>
 					</div>
-					<!--/Contact Section Carousel ITEM 3-->
+					<!--/Contact Section Carousel ITEM 4-->
 
-					<!--/Sign up Section Carousel ITEM 4-->
-					<div class="carousel-item container-fluid h-100 row-center">
-						<section id="contact-info" class="container-fluid w-75 h-100 row-center">
+					<!--/Sign up Section Carousel ITEM 5-->
+					<div class="carousel-item container-fluid row-center">
+						<section id="contact-info" class="container-fluid w-75 row-center">
 							<div class="container-fluid row h-100 w-100 row-center">
 								<div class="col-md-5 container-fluid h-100">
 									<form class="form-horizontal">
-										<label class="mt-3 h6 font-weight-bold">Guest Details</label>
+										<label class="h1 mb-3 font-weight-bold title">Guest Details</label>
 										<div class="form-inline">
 											<input type="text" class="form-control w-50" id="signup-lastname" placeholder="Last Name">
 											<input type="text" class="form-control w-50" id="signup-firstname" placeholder="First Name">
@@ -168,14 +168,14 @@
 											<label class="mt-3 mt-2 h6 font-weight-bold">Re-Enter Password</label>
 											<input type="password" class="form-control" id="signup-repassword" placeholder="">
 										</div>
-										<button type="submit" class="btn btn-primary" id="signup-create">Submit</button>
+										<button type="submit" class="btn btn-primary" href="#" data-target="#main-content" data-slide-to="7" id="signup-create">Submit</button>
 									</form>
 								</div>
-								<div class="col-md-2 container-fluid w-100 h-100 column-center"><a class="h1 font-weight-bold">OR</a></div>
+								<div class="col-md-2 container-fluid w-100 column-center"><a class="h1 font-weight-bold">OR</a></div>
 								<!--Login-->
-								<div class="col-md-5 container-fluid w-100 h-100 column-center">
-									<div><label class="h2 text-center font-weight-bold title" id="login-contact-label">Already have an Account?</label></div>
+								<div class="col-md-5 container-fluid w-100 column-center">
 									<form class="form-signin column-center" id="login-form2">
+										<div><label class="h2 text-center font-weight-bold title" id="login-contact-label">Already have an Account?</label></div>
 										<h1 class="mb-3 h6 font-weight-bold">Please sign in</h1>
 										<label for="login_username" class="sr-only">Email address</label>
 										<input type="text" id="login_username2" class="form-control" placeholder="Email address or Username" required autofocus>
@@ -187,18 +187,18 @@
 												<input type="checkbox" value="remember-me"> Remember me
 											</label>
 										</div>
-										<button class="btn btn-lg btn-primary btn-block" type="submit" id="form_send2">Sign in</button>
+										<button class="btn btn-lg btn-primary btn-block" type="submit" href="#" data-target="#main-content" data-slide-to="7" id="form_send2">Sign in</button>
 									</form>
 								</div>
 								<!--/Login-->
 							</div>
 						</section>
 					</div>
-					<!--/Contact Section Carousel ITEM 4-->
+					<!--/Contact Section Carousel ITEM 5-->
 
-					<!--Login Section Carousel ITEM 5-->
-					<div class="carousel-item container-fluid h-100 column-center">
-						<section id="login" class="container-fluid w-75 h-100 column-center">
+					<!--Login Section Carousel ITEM 6-->
+					<div class="carousel-item container-fluid column-center">
+						<section id="login" class="container-fluid w-75 column-center">
 							<!--Sign in form-->
 							<form class="form-signin column-center" id="login-form">
 								<img class="mb-4" src="img/logo2.png" alt="" width="200" height="144">
@@ -213,7 +213,7 @@
 									  <input type="checkbox" value="remember-me"> Remember me
 									</label>
 								</div>
-								<button class="btn btn-lg btn-primary btn-block" type="submit" id="form_send">Sign in</button>
+								<button class="btn btn-lg btn-primary btn-block" type="button" id="form_send">Sign in</button>
 							</form>
 							<!--/Sign in form-->
 
@@ -224,7 +224,62 @@
 							<!--/Members area-->
 						</section>
 					</div>
-					<!--/Login Section Carousel ITEM 5-->
+					<!--/Login Section Carousel ITEM 6-->
+
+					<!--book confirmation Section Carousel ITEM 7-->
+					<div class="carousel-item container-fluid column-center text-white">
+						<section id="confirmation" class="container-fluid w-75 column-center">
+
+							<form class="form-horizontal column-center">
+								<label class="h1 mb-3 font-weight-bold title">CONFIRM RESERVATION</label>
+								<div class="form-inline text-left">
+									<label class="mx-1 h6 font-weight-bold">Name:</label>
+									<input type="text" class="form-control-plaintext w-50" id="confirm-firstname">
+								</div>
+								<div class="form-inline text-left">
+									<label class="mx-1 h6 font-weight-bold">Last name:</label>
+									<input type="text" class="form-control-plaintext w-50" id="confirm-lastname">
+								</div>
+								<div class="form-inline text-left">
+									<label class="mx-1 h6 font-weight-bold">Mobile No.</label>
+									<input type="text" class="form-control-plaintext w-50" id="confirm-NoMobile" placeholder="">
+								</div>
+								<div class="form-inline text-left">
+									<label class="mx-1 h6 font-weight-bold">Landline No.</label>
+									<input type="text" class="form-control-plaintext w-50" id="confirm-NoLandline" placeholder="">
+								</div>
+								<div class="form-inline text-left">
+									<label class="mx-1 h6 font-weight-bold">Username</label>
+									<input type="text" class="form-control-plaintext w-50" id="confirm-username" placeholder="">
+								</div>
+
+								<div class="card bg-secondary border-dark my-2 w-50">
+									<div class="row no-gutters">
+										<div class="col-md-5 fill">
+											<img src="img/room1.jpg" class="card-img">
+										</div>
+										<div class="col-md-7">
+											<div class="card-body">
+												<h4 class="card-title"></h4>
+												<p class="card-text text-justify"></p>
+											</div>
+											<div class="card-footer container-fluid text-center">
+												<div class="container-fluid">
+													<div class="container-fluid row row-cols-3 no-gutters row-center">
+														<div class="col text-center no-gutters row-center"><i class="material-icons">attach_money</i><a></a></div>
+														<div class="col text-center no-gutters row-center"><i class="material-icons mr-2">people</i><a></a></div>
+														<div class="hidden"></div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<button type="submit" class="mt-3 btn btn-primary" href="#" data-target="#main-content" data-slide-to="7" id="confirm-create">Submit</button>
+							</form>
+					</div>
+					<!--/book confirmation Section Carousel ITEM 7-->
+
 				</div>
 				<!--/The slideshow-->
 			</div>
