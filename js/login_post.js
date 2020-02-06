@@ -65,4 +65,7 @@ $(document).ready(function () {
 		$('#navbar-sign-in').show();
 		$('#navbar-sign-in-label').text('Already got a reservation? sign in to check:');
 	});
+
+	$('#to-confirm').click (function() {
+	});
 });
