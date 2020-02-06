@@ -187,7 +187,7 @@
 												<input type="checkbox" value="remember-me"> Remember me
 											</label>
 										</div>
-										<button class="btn btn-lg btn-primary btn-block" type="submit" href="#" data-target="#main-content" data-slide-to="7" id="form_send2">Sign in</button>
+										<button class="btn btn-lg btn-primary btn-block" type="submit" id="form_send2">Sign in</button>
 									</form>
 								</div>
 								<!--/Login-->

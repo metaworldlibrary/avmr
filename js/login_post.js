@@ -10,16 +10,21 @@ $(document).ready(function () {
 			login_password: $("#login_password").val() //sending the variable with the password through POST
 		},
 		function(data){ //If the POST request was successful, this function is executed.
-			if (data != 0) { //checking the data, 0= failed login
+			if (data == "username") { //checking the data, 0= failed login
+				alert("Username or email not found");
+				return;
+			}
+			else if (data=="password"){
+				alert("The password didn't match");
+				return;
+				}
+			else {
 				$('#navbar-sign-out').show();
 				$('#navbar-dashboard').show();
 				$('#member-area').show();
 				$('#login-form').hide();
 				$('#navbar-sign-in').hide();
 				$('#navbar-sign-in-label').text('Welcome, ' + data);
-			}
-			else {//failed login (returned 0)
-				if (login_pass!="") alert ("Incorrect username or password");
 			}
 		});
 	});
@@ -31,16 +36,22 @@ $(document).ready(function () {
 			login_password: $("#login_password2").val() //sending the variable with the password through POST
 		},
 		function(data){ //If the POST request was successful, this function is executed.
-			if (data != 0) { //checking the data, 0= failed login
+			if (data == "username") { //checking the data, 0= failed login
+				alert("Username or email not found");
+				return;
+			}
+			else if (data=="password"){
+				alert("The password didn't match");
+				return;
+				}
+			else {
 				$('#navbar-sign-out').show();
 				$('#navbar-dashboard').show();
-				$('#login-form2').hide();
-				$('#login-contact-label').hide();
+				$('#member-area').show();
+				$('#login-form').hide();
 				$('#navbar-sign-in').hide();
 				$('#navbar-sign-in-label').text('Welcome, ' + data);
-			}
-			else {//failed login (returned 0)
-				if (login_pass!="") alert ("Incorrect username or password");
+				$('#main-content').carousel(7);
 			}
 		});
 	});

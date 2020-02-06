@@ -1,4 +1,4 @@
- <?php
+<?php
 //connection string credentials
 $servername = "localhost";
 $username = "avmr";
@@ -26,11 +26,11 @@ function userlogin($login, $password) {
 
   $result = $stmt->get_result(); //getting results
 	if ($result->num_rows === 0) //no results means not registered
-    exit("Email or username not found"); //exit the script and sends a message
+    exit("username"); //exit the script and sends a message
 
 	$row = $result->fetch_assoc();//converts result into an associative array
 	if (!($row["password"] === $password))//compares the passwords
-    exit("The password didn't match");//exit the script and sends a message
+    exit("password");//exit the script and sends a message
 
 	$_SESSION["name"] = $row["name_first"]; //creates SESSION variable with the name in it.
 	$_SESSION["last_name"] = $row["name_last"]; //creates SESSION variable with the last name in it.
