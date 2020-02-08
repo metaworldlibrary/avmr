@@ -3,7 +3,7 @@ $(document).ready(function () {
 	//Quick test values
 	//Username: drogister0@umn.edu or drogister0
 	//Password: sN525spWNc
-	var room_id= $();
+	var room_id = $();
 	$('#room_search').on('click', function(){
 		$.post("src/book_post.php", //create a POST request
 		{
@@ -53,7 +53,7 @@ $(document).ready(function () {
 		room_id = event.target.id;
 		$.post("src/find_room_post.php", //create a POST request
 		{
-			room_id: room_id;
+			room_id: room_id
 		},
 		function(data){ //If the POST request was successful, this function is executed.
 			try {
@@ -101,7 +101,26 @@ $(document).ready(function () {
 			}
 		});
 
-		
+		$.post("src/signup_post.php", //create a POST request
+		{
+			signup_firstname: $("#signup-firstname").val(),
+			signup_lastname:  $("#signup-lastname").val(),
+			signup_email: $("#signup-email").val(),
+			signup_username: $("#signup-username").val(),
+			signup_password: $("#signup-password").val(),
+			signup_mobile: $("#signup-NoMobile").val(),
+			signup_landline: $("#signup-NoLandline").val()
+		},
+		function(data){ //If the POST request was successful, this function is executed.
+			try {
+				if (data==1) {
+					alert("Account created succesfully!");
+				}
+			}
+				catch (err) {
+				alert(err)
+			}
+		});
 	});
 
 });
