@@ -168,7 +168,7 @@
 											<label class="mt-3 mt-2 h6 font-weight-bold">Re-Enter Password</label>
 											<input type="password" class="form-control" id="signup-repassword" placeholder="">
 										</div>
-										<button type="submit" class="btn btn-primary" href="#" data-target="#main-content" data-slide-to="7" id="signup-create">Submit</button>
+										<button type="submit" class="btn btn-primary" id="signup-create">Submit</button>
 									</form>
 								</div>
 								<div class="col-md-2 container-fluid w-100 column-center"><a class="h1 font-weight-bold">OR</a></div>
@@ -227,30 +227,34 @@
 					<!--/Login Section Carousel ITEM 6-->
 
 					<!--book confirmation Section Carousel ITEM 7-->
-					<div class="carousel-item container-fluid column-center text-white">
+					<div class="carousel-item container-fluid column-center">
 						<section id="confirmation" class="container-fluid w-75 column-center">
 
-							<form class="form-horizontal column-center">
+							<form class="form-horizontal column-center ">
 								<label class="h1 mb-3 font-weight-bold title">CONFIRM RESERVATION</label>
 								<div class="form-inline text-left">
-									<label class="mx-1 h6 font-weight-bold">Name:</label>
-									<input type="text" class="form-control-plaintext w-50" id="confirm-firstname">
+									<label class="mx-1 h6 font-weight-bold">Name.</label>
+									<input type="text" class="form-control-plaintext w-50 text-white" id="confirm-firstname">
 								</div>
 								<div class="form-inline text-left">
-									<label class="mx-1 h6 font-weight-bold">Last name:</label>
-									<input type="text" class="form-control-plaintext w-50" id="confirm-lastname">
+									<label class="mx-1 h6 font-weight-bold">Last name.</label>
+									<input type="text" class="form-control-plaintext w-50 text-white" id="confirm-lastname">
+								</div>
+								<div class="form-inline text-left">
+									<label class="mx-1 h6 font-weight-bold">Username.</label>
+									<input type="text" class="form-control-plaintext w-50 text-white" id="confirm-username" placeholder="">
+								</div>
+								<div class="form-inline text-left">
+									<label class="mx-1 h6 font-weight-bold">E-Mail.</label>
+									<input type="text" class="form-control-plaintext w-50 text-white" id="confirm-email" placeholder="">
 								</div>
 								<div class="form-inline text-left">
 									<label class="mx-1 h6 font-weight-bold">Mobile No.</label>
-									<input type="text" class="form-control-plaintext w-50" id="confirm-NoMobile" placeholder="">
+									<input type="text" class="form-control-plaintext w-50 text-white" id="confirm-NoMobile" placeholder="">
 								</div>
 								<div class="form-inline text-left">
 									<label class="mx-1 h6 font-weight-bold">Landline No.</label>
-									<input type="text" class="form-control-plaintext w-50" id="confirm-NoLandline" placeholder="">
-								</div>
-								<div class="form-inline text-left">
-									<label class="mx-1 h6 font-weight-bold">Username</label>
-									<input type="text" class="form-control-plaintext w-50" id="confirm-username" placeholder="">
+									<input type="text" class="form-control-plaintext w-50 text-white" id="confirm-NoLandline" placeholder="">
 								</div>
 
 								<div class="card bg-secondary border-dark my-2 w-50">
@@ -260,22 +264,24 @@
 										</div>
 										<div class="col-md-7">
 											<div class="card-body">
-												<h4 class="card-title"></h4>
-												<p class="card-text text-justify"></p>
+												<h4 class="card-title" id="confirm-card-title"></h4>
+												<p class="card-text text-justify" id="confirm-card-description"></p>
 											</div>
 											<div class="card-footer container-fluid text-center">
 												<div class="container-fluid">
 													<div class="container-fluid row row-cols-3 no-gutters row-center">
-														<div class="col text-center no-gutters row-center"><i class="material-icons">attach_money</i><a></a></div>
-														<div class="col text-center no-gutters row-center"><i class="material-icons mr-2">people</i><a></a></div>
-														<div class="hidden"></div>
+														<div class="col text-center no-gutters row-center"><i class="material-icons">attach_money</i><a id="confirm-card-price"></a></div>
+														<div class="col text-center no-gutters row-center"><i class="material-icons mr-2">people</i><a id="confirm-card-numpeople"></a></div>
 													</div>
 												</div>
 											</div>
 										</div>
 									</div>
 								</div>
-								<button type="submit" class="mt-3 btn btn-primary" href="#" data-target="#main-content" data-slide-to="7" id="confirm-create">Submit</button>
+								<div class"container row-center">
+									<button type="button" class="mx-2 btn btn-danger" href="#" data-target="#main-content" data-slide-to="1" id="cancel-create">Cancel</button>
+									<button type="submit" class="mx-2 btn btn-success" href="#" data-target="#main-content" data-slide-to="7" id="confirm-create">Book room</button>
+								</div>
 							</form>
 					</div>
 					<!--/book confirmation Section Carousel ITEM 7-->
@@ -300,7 +306,7 @@
 		<!-- Popper, needed for bootstrap features-->
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 		<!-- Bootstrap core-->
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+		<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 		<!-- Custom JS/JQuery Script-->
 		<script src="js/login_post.js"></script>

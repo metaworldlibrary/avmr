@@ -48,7 +48,6 @@ function select_room($checkindate, $checkoutdate, $pax) {
 		$ids.= $booked_rooms[$x][0]. ",";
 	}
 	$ids=rtrim($ids, ",");
-	//echo $ids;
 
 	if(count($booked_rooms) > 0){
     $stmt = "SELECT * FROM accommodationinfo WHERE NOT ID IN ($ids) AND room_num >= $pax";
@@ -68,7 +67,7 @@ function select_room($checkindate, $checkoutdate, $pax) {
 
 function date_range_compare ($period_start, $period_end){
 	global $mysqli;
-	//search the room with the given ID
+	//search the room with the given date range
 	$stmt = "SELECT room_id FROM reservationqueue WHERE NOT date_in > $period_end OR date_out < $period_start";
 	//$stmt = "SELECT `room_id` FROM `reservationqueue` WHERE NOT `date_in` >  20200229 OR `date_out` < 20200201";
 	$result = $mysqli->query($stmt);
@@ -86,5 +85,31 @@ function date_range_compare ($period_start, $period_end){
 	else {
 		return 0; //rooms not found
 	}
+}
+
+function create_user($name, $lastname, $email, $username, $password, $mobile, $landline) {
+	//Getting the connection from above
+	global $mysqli;
+	//preparing the query and executing the query, first line is the template and the ? will be replaced
+	$stmt = $mysqli->prepare ("INSERT INTO guestinfo (name_first, name_last, email, username, password, no_mobile, no_landline) VALUES (?,?,?,?,?,?,?)");
+  $stmt->bind_param("sssssss", $name, $lastname, $email, $username, $password, $mobile, $landline);  //replacing the ? in the query, first param are the type (s for string)
+	$stmt->execute(); //executing the query
+  return 1;
+}
+
+function find_room_by_id($id) {
+	//Getting the connection from above
+	global $mysqli;
+	//preparing the query and executing the query, first line is the template and the ? will be replaced
+	$stmt = $mysqli->prepare ("SELECT room_name, room_accommodation_num, price, room_desc, room_num FROM accommodationinfo WHERE ID = ?");
+  $stmt->bind_param("i", $id);  //replacing the ? in the query, first param are the type (s for string)
+	$stmt->execute(); //executing the query
+
+  $result = $stmt->get_result(); //getting results
+	if ($result->num_rows === 0) //no results means not registered
+    exit("noroom"); //exit the script and sends a message
+
+  $row= $result->fetch_assoc();
+  return $row;
 }
 ?>
