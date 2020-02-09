@@ -61,7 +61,7 @@
 						</div>
 						<!--/Home Section Carousel ITEM 0-->
 
-						<!--Pricing Section Carousel ITEM 1-->
+						<!--book section room Section Carousel ITEM 1-->
 						<div class="container-fluid carousel-item row-center">
 							<section id="book-section" class= "container-fluid w-75 row-center">
 								<div class="container-fluid	row row-center">
@@ -73,9 +73,9 @@
 											</div>
 											<div class="form-group">
 												<label >Check-Out Date</label>
+												<div class="form-group">
 												<input type="date" class="form-control" id="room_checkoutdate">
 											</div>
-											<div class="form-group">
 												<label >Number of Guest</label>
 												<input type="number" class="form-control" id="room_pax">
 											</div>
@@ -87,7 +87,7 @@
 									<!--cards-->
 							</section>
 						</div>
-						<!--/Pricing Section Carousel ITEM 1-->
+						<!--/book section Carousel ITEM 1-->
 
 					<!--Activities Section Carousel ITEM 2-->
 					<div class="carousel-item">
@@ -309,8 +309,8 @@
 		<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 		<!-- Custom JS/JQuery Script-->
-		<script src="js/login_post.js"></script>
-		<script src="js/book_post.js"></script>
+
+
 		<script src="js/main.js"></script>
     </body>
 </html>

@@ -20,7 +20,7 @@ function userlogin($login, $password) {
 	//Getting the connection from above
 	global $mysqli;
 	//preparing the query and executing the query, first line is the template and the ? will be replaced
-	$stmt = $mysqli->prepare ("SELECT name_first, name_last, password FROM guestinfo WHERE email= ?  OR username= ?");
+	$stmt = $mysqli->prepare ("SELECT ID, name_first, name_last, password FROM guestinfo WHERE email= ?  OR username= ?");
   $stmt->bind_param("ss", $login, $login);  //replacing the ? in the query, first param are the type (s for string)
 	$stmt->execute(); //executing the query
 
@@ -32,9 +32,7 @@ function userlogin($login, $password) {
 	if (!($row["password"] === $password))//compares the passwords
     exit("password");//exit the script and sends a message
 
-	$_SESSION["name"] = $row["name_first"]; //creates SESSION variable with the name in it.
-	$_SESSION["last_name"] = $row["name_last"]; //creates SESSION variable with the last name in it.
-  return 1; //returning 1 since everything was successful
+  return $row; //returning 1 since everything was successful
 }
 
 function select_room($checkindate, $checkoutdate, $pax) {
@@ -97,11 +95,37 @@ function create_user($name, $lastname, $email, $username, $password, $mobile, $l
   return 1;
 }
 
+function create_reservation($guest_id, $room_id, $datein, $dateout) {
+	//Getting the connection from above
+	global $mysqli;
+	//preparing the query and executing the query, first line is the template and the ? will be replaced
+	$stmt = $mysqli->prepare ("INSERT INTO reservationqueue (guest_id, room_id, date_in, date_out) VALUES (?,?,?,?)");
+  $stmt->bind_param("iiss", $guest_id, $room_id, $datein, $dateout);  //replacing the ? in the query, first param are the type (s for string)
+	$stmt->execute(); //executing the query
+  return 1;
+}
+
 function find_room_by_id($id) {
 	//Getting the connection from above
 	global $mysqli;
 	//preparing the query and executing the query, first line is the template and the ? will be replaced
 	$stmt = $mysqli->prepare ("SELECT room_name, room_accommodation_num, price, room_desc, room_num FROM accommodationinfo WHERE ID = ?");
+  $stmt->bind_param("i", $id);  //replacing the ? in the query, first param are the type (s for string)
+	$stmt->execute(); //executing the query
+
+  $result = $stmt->get_result(); //getting results
+	if ($result->num_rows === 0) //no results means not registered
+    exit("noroom"); //exit the script and sends a message
+
+  $row= $result->fetch_assoc();
+  return $row;
+}
+
+function find_user_by_id($id) {
+	//Getting the connection from above
+	global $mysqli;
+	//preparing the query and executing the query, first line is the template and the ? will be replaced
+	$stmt = $mysqli->prepare ("SELECT * FROM guestinfo WHERE ID= ?");
   $stmt->bind_param("i", $id);  //replacing the ? in the query, first param are the type (s for string)
 	$stmt->execute(); //executing the query
 
