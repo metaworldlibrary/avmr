@@ -83,7 +83,7 @@
 										</form>
 									</div>
 									<!--cards-->
-									<div id="rooms-container" class="container-fluid col-md-8 bg-light border border-secondary rounded-lg column-center"></div>
+									<div id="rooms-container" class="d-inline-block container-fluid col-md-8 bg-light border border-secondary rounded-lg column-center"></div>
 									<!--cards-->
 							</section>
 						</div>
