@@ -20,7 +20,7 @@ function userlogin($login, $password) {
 	//Getting the connection from above
 	global $mysqli;
 	//preparing the query and executing the query, first line is the template and the ? will be replaced
-	$stmt = $mysqli->prepare ("SELECT ID, name_first, name_last, password FROM guestinfo WHERE email= ?  OR username= ?");
+	$stmt = $mysqli->prepare ("SELECT * FROM guestinfo WHERE email= ?  OR username= ?");
   $stmt->bind_param("ss", $login, $login);  //replacing the ? in the query, first param are the type (s for string)
 	$stmt->execute(); //executing the query
 

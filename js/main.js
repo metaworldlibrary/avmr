@@ -1,7 +1,6 @@
 $(document).ready(function () {
 	//default values and globalvariables
-	var room_id;
-	var user_id;
+	var room_id, login, password;
 
 	$("#main-content").carousel({interval: false});
 	$('#main-content').carousel('pause');
@@ -85,6 +84,8 @@ $(document).ready(function () {
 
 	//send contact info to confirmation page
 	$('#signup-create').on('click', function(){
+		login = $("#signup-email").val();
+		password = $("#signup-password").val();
 		$("#confirm-firstname").val($("#signup-firstname").val());
 		$("#confirm-lastname").val($("#signup-lastname").val());
 		$("#confirm-email").val($("#signup-email").val());
@@ -94,7 +95,7 @@ $(document).ready(function () {
 		$('#main-content').carousel(7);
 	});//send contact info to confirmation page end
 
-	//Confirmation page with new accout
+	//Confirmation page
 	$('#confirm-create').on('click', function(){
 		$("#confirm-create").attr("disabled", true);
 		//creating new account
@@ -102,9 +103,9 @@ $(document).ready(function () {
 		{
 			signup_firstname: $("#signup-firstname").val(),
 			signup_lastname:  $("#signup-lastname").val(),
-			signup_email: $("#signup-email").val(),
+			signup_email: login,
 			signup_username: $("#signup-username").val(),
-			signup_password: $("#signup-password").val(),
+			signup_password: password,
 			signup_mobile: $("#signup-NoMobile").val(),
 			signup_landline: $("#signup-NoLandline").val()
 		},
@@ -113,8 +114,8 @@ $(document).ready(function () {
   			if (data==1) {
 					$.post("src/login.php",
 					{
-						login_username: $("#signup-email").val(), //sending the variable with the username through POST
-						login_password: $("#signup-password").val() //sending the variable with the password through POST
+						login_username: login, //sending the variable with the username through POST
+						login_password: password //sending the variable with the password through POST
 					},
 					function(logindata){ //logged with new account
 						if (logindata != "username" && logindata != "password") {
@@ -155,7 +156,7 @@ $(document).ready(function () {
   			alert("There was an error with the system during the reservation process, please try again");
 			}
 		});//creating new account end
-	});////Confirmation page with new accout end
+	});////Confirmation page
 
 	//Login from navbar
 	$("#form_send").click(function() { //When clicking "Sign in" in the login form.
@@ -175,13 +176,14 @@ $(document).ready(function () {
 			}
 			else {
 				var obj = jQuery.parseJSON(data);
+				login = obj.email;
+				password = obj.password;
 				$('#navbar-sign-out').show();
 				$('#navbar-dashboard').show();
 				$('#member-area').show();
 				$('#login-form').hide();
 				$('#navbar-sign-in').hide();
 				$('#navbar-sign-in-label').text('Welcome, ' + obj.name_first + ' ' + obj.name_last);
-				user_id = obj.ID;
 			}
 		});
 	}); //login from navbar end
@@ -204,14 +206,22 @@ $(document).ready(function () {
 				}
 			else {
 				var obj = jQuery.parseJSON(data);
+				login = obj.email;
+				password = obj.password;
 				$('#navbar-sign-out').show();
 				$('#navbar-dashboard').show();
 				$('#member-area').show();
 				$('#login-form').hide();
 				$('#navbar-sign-in').hide();
 				$('#navbar-sign-in-label').text('Welcome, ' + obj.name_first + ' ' + obj.name_last);
+
+				$("#confirm-firstname").val(obj.name_first);
+				$("#confirm-lastname").val(obj.name_last);
+				$("#confirm-email").val(obj.email);
+				$("#confirm-NoMobile").val(obj.no_mobile);
+				$("#confirm-NoLandline").val(obj.no_landline);
+				$("#confirm-username").val(obj.username);
 				$('#main-content').carousel(7);
-				user_id = obj.ID;
 			}
 		});
 	});//login from booking end
