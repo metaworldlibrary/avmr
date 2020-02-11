@@ -1,4 +1,7 @@
 <?php
+	if(session_id() == ''){
+			session_start();
+	}
 	require "db_library.php"; //PHP file where the database proccessing is actually done
 
 	/*$_POST["room_checkindate"] and $_POST["room_checkoutdate"] were retrived from

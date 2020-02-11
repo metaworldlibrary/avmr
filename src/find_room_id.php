@@ -1,4 +1,7 @@
 <?php
+	if(session_id() == ''){
+			session_start();
+	}
 	require "db_library.php"; //PHP file where the database proccessing is actually done
 
 	$results = find_room_by_id($_POST['room_id']);

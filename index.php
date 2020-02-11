@@ -1,5 +1,8 @@
 <?php
-session_start();
+if(session_id() == ''){
+    session_start();
+}
+//var_dump($_SESSION);
 ?>
 <!doctype html>
 <html lang="en">
@@ -178,7 +181,7 @@ session_start();
 							<div class="col-md-5 container-fluid w-100 column-center">
 								<form class="form-signin column-center" id="login-form2">
 									<div><label class="h3 text-center font-weight-bold title" id="login-contact-label">ALREADY HAVE AN ACCOUNT?</label></div>
-									<h1 class="mb-3 h6 font-weight-bold">Please sign in</h1>
+									<h1 class="mb-3 h6 font-weight-bold" id="login-contact-label2">Please sign in</h1>
 									<label for="login_username" class="sr-only">Email address</label>
 									<input type="text" id="login_username2" class="form-control" placeholder="Email address or Username" required autofocus>
 									<label for="login_password" class="sr-only">Password</label>
@@ -189,14 +192,15 @@ session_start();
 											<input type="checkbox" value="remember-me"> Remember me
 										</label>
 									</div>
-									<button class="btn btn-lg btn-primary btn-block" type="submit" id="form_send2">Sign in</button>
+									<button class="btn btn-lg btn-primary btn-block" type="submit" id="form_send2">Next</button>
+									<button class="btn btn-lg btn-secondary btn-block" type="submit" id="sign-out2">This is not me</button>
 								</form>
 							</div>
 							<!--/Login-->
 						</div>
 					</section>
 				</div>
-				<!--/Contact Section Carousel ITEM 5-->
+				<!--/Sign up Section Carousel ITEM 5-->
 
 				<!--Login Section Carousel ITEM 6-->
 				<div class="carousel-item container-fluid column-center">
@@ -235,27 +239,27 @@ session_start();
 							<label class="h1 mb-3 font-weight-bold title">CONFIRM RESERVATION</label>
 							<div class="form-inline text-left">
 								<label class="mx-1 h6 font-weight-bold">Name.</label>
-								<input type="text" class="form-control-plaintext w-50 text-white" id="confirm-firstname">
+								<input type="text" class="form-control-plaintext w-50 text-white" id="confirm-firstname" disabled="true">
 							</div>
 							<div class="form-inline text-left">
 								<label class="mx-1 h6 font-weight-bold">Last name.</label>
-								<input type="text" class="form-control-plaintext w-50 text-white" id="confirm-lastname">
+								<input type="text" class="form-control-plaintext w-50 text-white" id="confirm-lastname" disabled="true">
 							</div>
 							<div class="form-inline text-left">
 								<label class="mx-1 h6 font-weight-bold">Username.</label>
-								<input type="text" class="form-control-plaintext w-50 text-white" id="confirm-username" placeholder="">
+								<input type="text" class="form-control-plaintext w-50 text-white" id="confirm-username" disabled="true">
 							</div>
 							<div class="form-inline text-left">
 								<label class="mx-1 h6 font-weight-bold">E-Mail.</label>
-								<input type="text" class="form-control-plaintext w-50 text-white" id="confirm-email" placeholder="">
+								<input type="text" class="form-control-plaintext w-50 text-white" id="confirm-email" disabled="true">
 							</div>
 							<div class="form-inline text-left">
 								<label class="mx-1 h6 font-weight-bold">Mobile No.</label>
-								<input type="text" class="form-control-plaintext w-50 text-white" id="confirm-NoMobile" placeholder="">
+								<input type="text" class="form-control-plaintext w-50 text-white" id="confirm-NoMobile" disabled="true">
 							</div>
 							<div class="form-inline text-left">
 								<label class="mx-1 h6 font-weight-bold">Landline No.</label>
-								<input type="text" class="form-control-plaintext w-50 text-white" id="confirm-NoLandline" placeholder="">
+								<input type="text" class="form-control-plaintext w-50 text-white" id="confirm-NoLandline" disabled="true">
 							</div>
 
 							<div class="card bg-secondary border-dark my-2 w-50">

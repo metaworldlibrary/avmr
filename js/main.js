@@ -1,11 +1,11 @@
 $(document).ready(function () {
 	//default values and globalvariables
-	var room_id, login, password;
-
+	var room_id, login, password, submit_mode;
 	$("#main-content").carousel({interval: false});
 	$('#main-content').carousel('pause');
 	$('#room_pax').val(5);
 
+	check_session(0);
 	$('.navbar-nav>li>a').on('click', function(){
 		$('.navbar-collapse').collapse('hide');
 	});
@@ -86,6 +86,7 @@ $(document).ready(function () {
 	$('#signup-create').on('click', function(){
 		login = $("#signup-email").val();
 		password = $("#signup-password").val();
+		submit_mode=0;
 		$("#confirm-firstname").val($("#signup-firstname").val());
 		$("#confirm-lastname").val($("#signup-lastname").val());
 		$("#confirm-email").val($("#signup-email").val());
@@ -98,102 +99,44 @@ $(document).ready(function () {
 	//Confirmation page
 	$('#confirm-create').on('click', function(){
 		$("#confirm-create").attr("disabled", true);
-		//creating new account
-		$.post("src/signup.php",
-		{
-			signup_firstname: $("#signup-firstname").val(),
-			signup_lastname:  $("#signup-lastname").val(),
-			signup_email: login,
-			signup_username: $("#signup-username").val(),
-			signup_password: password,
-			signup_mobile: $("#signup-NoMobile").val(),
-			signup_landline: $("#signup-NoLandline").val()
-		},
-		function(data){
-			try {//Post request to login
-  			if (data==1) {
-					$.post("src/login.php",
-					{
-						login_username: login, //sending the variable with the username through POST
-						login_password: password //sending the variable with the password through POST
-					},
-					function(logindata){ //logged with new account
-						if (logindata != "username" && logindata != "password") {
-							var obj = jQuery.parseJSON(logindata);
-							$('#navbar-sign-out').show();
-							$('#navbar-dashboard').show();
-							$('#member-area').show();
-							$('#login-form').hide();
-							$('#navbar-sign-in').hide();
-							$('#navbar-sign-in-label').text('Welcome, ' + obj.name_first + ' ' + obj.name_last);
-
-							//creating reservation
-							$.post("src/reservation_confirm.php",
-							{
-								guest_id: obj.ID,
-								room_id: room_id,
-								date_in: $("#room_checkindate").val(),
-								date_out: $("#room_checkoutdate").val()
-							},
-							function(bookdata){
-									if (bookdata==1) {
-										alert("Reservation succeed");
-										$('#main-content').carousel(6);
-									}
-									else {
-										alert("We couldn't process your reservation request, please try again.");
-										$('#main-content').carousel(0);
-									}
-							});//creating reservation end
-						}//logged with new accout
-						else {
-							alert("There was a problem trying to access to your account, try to login first before booking a room.");
-						}
-					});
-  			}//Post request to login end
-			}//login after creating account end
-			catch (err) {
-  			alert("There was an error with the system during the reservation process, please try again");
-			}
-		});//creating new account end
+		if (submit_mode==0){
+			$.post("src/logout.php");
+			signup_confirm(1);
+			//user_login(login, password, -1, 1);
+		}
+		else {
+			check_session(1);
+		}
 	});////Confirmation page
 
 	//Login from navbar
 	$("#form_send").click(function() { //When clicking "Sign in" in the login form.
-		$.post("src/login.php", //create a POST request
-		{
-			login_username: $("#login_username").val(), //sending the variable with the username through POST
-			login_password: $("#login_password").val() //sending the variable with the password through POST
-		},
-		function(data){ //If the POST request was successful, this function is executed.
-			if (data == "username") { //checking the data, 0= failed login
-				alert("Username or email not found");
-				return;
-			}
-			else if (data=="password"){
-				alert("The password didn't match");
-				return;
-			}
-			else {
-				var obj = jQuery.parseJSON(data);
-				login = obj.email;
-				password = obj.password;
-				$('#navbar-sign-out').show();
-				$('#navbar-dashboard').show();
-				$('#member-area').show();
-				$('#login-form').hide();
-				$('#navbar-sign-in').hide();
-				$('#navbar-sign-in-label').text('Welcome, ' + obj.name_first + ' ' + obj.name_last);
-			}
-		});
+		user_login($("#login_username").val(), $("#login_password").val(), 6, 0);
 	}); //login from navbar end
 
 	//Login from booking
 	$("#form_send2").click(function() { //When clicking "Sign in" in the login form.
+		user_login($("#login_username2").val(), $("#login_password2").val(), 7, 0);
+		submit_mode=1;
+	});//login from booking end
+
+	//sign off from
+	$('#navbar-sign-out').on('click', function(){
+		check_logout_ui();
+		$.post("src/logout.php");
+	});//sign off from navbar end
+
+	$('#sign-out2').on('click', function(){
+		check_logout_ui();
+		$.post("src/logout.php");
+	});//sign off from navbar end
+
+	//user login
+	function user_login(user, pass, redirect, isReserving){
 		$.post("src/login.php", //create a POST request
 		{
-			login_username: $("#login_username2").val(), //sending the variable with the username through POST
-			login_password: $("#login_password2").val() //sending the variable with the password through POST
+			login_username: user, //sending the variable with the username through POST
+			login_password: pass //sending the variable with the password through POST
 		},
 		function(data){ //If the POST request was successful, this function is executed.
 			if (data == "username") { //checking the data, 0= failed login
@@ -206,28 +149,57 @@ $(document).ready(function () {
 				}
 			else {
 				var obj = jQuery.parseJSON(data);
+				if (isReserving==1){
+					check_session(1);
+				}
+				check_session(0);
 				login = obj.email;
 				password = obj.password;
-				$('#navbar-sign-out').show();
-				$('#navbar-dashboard').show();
-				$('#member-area').show();
-				$('#login-form').hide();
-				$('#navbar-sign-in').hide();
-				$('#navbar-sign-in-label').text('Welcome, ' + obj.name_first + ' ' + obj.name_last);
-
-				$("#confirm-firstname").val(obj.name_first);
-				$("#confirm-lastname").val(obj.name_last);
-				$("#confirm-email").val(obj.email);
-				$("#confirm-NoMobile").val(obj.no_mobile);
-				$("#confirm-NoLandline").val(obj.no_landline);
-				$("#confirm-username").val(obj.username);
-				$('#main-content').carousel(7);
+				fill_confirm_view(obj);
+				if (redirect!=-1){
+					$('#main-content').carousel(redirect);
+				}
 			}
 		});
-	});//login from booking end
+	}//user login end
 
-	//sign off from the navbar
-	$('#navbar-sign-out').on('click', function(){
+	//check session
+	function check_session(isReserving){
+		$.post("src/check_session.php", function(data){
+			if(data!=0){
+				var obj = jQuery.parseJSON(data);
+				if (isReserving==1) {
+					reservation_confirm(obj.user_id, room_id);
+				}
+				session_status= check_login_ui(obj);
+				return session_status;
+			}
+			else {
+				session_status= check_logout_ui();
+				return session_status;
+			}
+		});
+	}//check session end
+
+	//login ui check
+	function check_login_ui(myCallback){
+		$('#navbar-sign-out').show();
+		$('#navbar-dashboard').show();
+		$('#member-area').show();
+		$('#login-form').hide();
+		$('#navbar-sign-in').hide();
+		$("#navbar-sign-in-label").text("Welcome, " + myCallback.name + " " + myCallback.last_name);
+		$('#login-contact-label').text('RE-ENTER PASSWORD')
+		$('#login-contact-label2').text('Current user: ' + myCallback.name + " " + myCallback.last_name);
+		$('#login_username2').attr("disabled", true);
+		$('#login_username2').val(myCallback.email);
+		$('#sign-out2').show();
+		var session_status = 1;
+		return session_status;
+	}//login ui check end
+
+	//logout ui check
+	function check_logout_ui(){
 		$('#navbar-sign-out').hide();
 		$('#navbar-dashboard').hide();
 		$('#member-area').hide();
@@ -235,7 +207,88 @@ $(document).ready(function () {
 		$('#login-form2').show();
 		$('#navbar-sign-in').show();
 		$('#navbar-sign-in-label').text('Already got a reservation? sign in to check:');
-	});//sing off from navbar end
+		$('#login-contact-label').text('ALREADY HAVE AN ACCOUNT?')
+		$('#login-contact-label2').text('Please sign in');
+		$('#login_username2').attr("disabled", false);
+		$('#sign-out2').hide();
+		var session_status = 0;
+		return session_status;
+	}//logout ui check end
+
+	//fill confirmation data
+	function fill_confirm_view(myCallback){
+		$("#confirm-firstname").val(myCallback.name_first);
+		$("#confirm-lastname").val(myCallback.name_last);
+		$("#confirm-email").val(myCallback.email);
+		$("#confirm-NoMobile").val(myCallback.no_mobile);
+		$("#confirm-NoLandline").val(myCallback.no_landline);
+		$("#confirm-username").val(myCallback.username);
+	}//fill confirmation data end
+
+	//signup confirm
+	function signup_confirm(isReserving){
+		//creating new account
+		$.post("src/signup.php",{
+			signup_firstname: $("#signup-firstname").val(),
+			signup_lastname:  $("#signup-lastname").val(),
+			signup_email: login,
+			signup_username: $("#signup-username").val(),
+			signup_password: password,
+			signup_mobile: $("#signup-NoMobile").val(),
+			signup_landline: $("#signup-NoLandline").val()
+		},
+		function(){
+			if (isReserving==1){
+				user_login(login, password, -1, 1);
+			}
+		});
+	}//sign up confirm end
+
+	//creating reservation
+	function reservation_confirm(guestid, roomid){
+		$.post("src/reservation_confirm.php",
+		{
+			guest_id: guestid,
+			room_id: roomid,
+			date_in: $("#room_checkindate").val(),
+			date_out: $("#room_checkoutdate").val()
+		},
+		function(bookdata){
+			if (bookdata==1) {
+				alert("Reservation succeed");
+				clear_all();
+				$('#main-content').carousel(6);
+			}
+			else {
+				alert("We couldn't process your reservation request, please try again.");
+				$('#main-content').carousel(0);
+			}
+		});
+	}//creating reservation end
+
+	function clear_all(){
+		$('#rooms-container').empty();
+		$("#confirm-firstname").empty();
+		$("#confirm-lastname").empty();
+		$("#confirm-email").empty();
+		$("#confirm-NoMobile").empty();
+		$("#confirm-NoLandline").empty();
+		$("#confirm-username").empty();
+
+		$('#confirm-card-title').empty();
+		$('#confirm-card-description').empty();
+		$('#confirm-card-price').empty();
+		$('#confirm-card-numpeople').empty();
+
+		$("#signup-firstname").empty(),
+		$("#signup-lastname").empty(),
+		$("#signup-email").empty(),
+		$("#signup-username").empty(),
+		$("#signup-password").empty(),
+		$("#signup-repassword").empty(),
+		$("#signup-NoMobile").empty(),
+		$("#signup-NoLandline").empty()
+	}
 });//Document.ready end
 
 //var d = new Date();

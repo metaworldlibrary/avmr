@@ -1,6 +1,9 @@
 <?php
+	if(session_id() == ''){
+			session_start();
+	}
 	require "db_library.php"; //PHP file where the database proccessing is actually done
-	
+
 	$sqldatein=date('Ymd',strtotime($_POST["date_in"]));
 	$sqldateout=date('Ymd',strtotime($_POST["date_out"]));
 

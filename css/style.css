@@ -115,7 +115,7 @@ bottom:0;
 width:100%;
 }
 
-#navbar-sign-out, #navbar-dashboard, #member-area{
+#navbar-sign-out, #navbar-dashboard, #member-area, #sign-out2, #login_password2b{
 	display:none;
 }
 
