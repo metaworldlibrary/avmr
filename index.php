@@ -10,19 +10,20 @@ if(session_id() == ''){
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Amazing view</title>
+	<title>Amazing view Mountain and Farm Resort</title>
 
 	<!-- Icons-->
-	<link rel="icon" href="img/logo2.ico">
+	<link rel="icon" href="img/logo2.png">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
 	<!-- Custom CSS-->
 	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/style1.css">
 </head>
 
 <body class="site">
 	<!-- Navbar -->
 	<nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark justify-content-between">
-		<a class="navbar-brand" href="#" data-target="#main-content" data-slide-to="0"><img src="img/logo2.png" width="30" height="30" class="d-inline-block align-top mr-2" alt="">Amazing View</a>
+		<a class="navbar-brand" href="#" data-target="#main-content" data-slide-to="0"><img src="img/logo2.png" width="30" height="30" class="d-inline-block align-top mr-2" alt=""></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -31,8 +32,7 @@ if(session_id() == ''){
 			<ul class="navbar-nav mx-2">
 				<li class="nav-item active"><a class="nav-link" href="#" data-target="#main-content" data-slide-to="0"><b>Home</b><span class="sr-only">(current)</span></a></li>
 				<li class="nav-item"><a class="nav-link" href="#" data-target="#main-content" data-slide-to="1">Pricing</a></li>
-				<li class="nav-item"><a class="nav-link" href="#" data-target="#main-content" data-slide-to="2">Activities</a></li>
-				<li class="nav-item"><a class="nav-link" href="#" data-target="#main-content" data-slide-to="3">About</a></li>
+				<li class="nav-item"><a class="nav-link" href="#" data-target="#main-content" data-slide-to="3">Gallery</a></li>
 				<li class="nav-item"><a class="nav-link" href="#" data-target="#main-content" data-slide-to="4">Contact us!</a></li>
 			</ul>
 			<a class="btn btn-success m-2" href="#" data-target="#main-content" data-slide-to="1">Book now!</a>
@@ -57,8 +57,7 @@ if(session_id() == ''){
 				<!--Home Section Carousel ITEM 0-->
 				<div class="container-fluid carousel-item active h-100">
 					<section id="home" class="container-fluid column-center">
-						<div class="h1 font-weight-bold title">AMAZING VIEW</div>
-						<div class="h6 font-weight-bold">MOUNTAIN RESORT</div><hr>
+						<div class="h1 font-weight-bold title">AMAZING VIEW MOUNTAIN AND FARM RESORT</div>
 						<p class="h5 font-weight-normal">Nestled in a high point overlooking Mabitac Valley and Sierra Madre mountain, it is the perfect backdrop for your unforgibable relaxing holidays!</p><hr>
 						<p class=""><a href="#" class="btn btn-lg btn-secondary">Learn more</a></p>
 					</section>
@@ -105,7 +104,48 @@ if(session_id() == ''){
 				<!--About Section Carousel ITEM 3-->
 				<div class="carousel-item">
 					<section id="about">
-						<p class="h1 text-center">About</p>
+						<p class="h1 text-center">Gallery</p>
+						<div style="display:flex;padding-left:10%;padding-right:10%" id="colorstrip"/>
+			<div style="width:40%;color:red;padding:10px;">
+				<div >
+				<span>La Terraza</span><br><br>
+				<span style = "text-align: justify; text-justify: inter-word;">Be astonished by the picture perfect scenery at the La Terraza, overlooking Mabitac Valley and Sierra Madre Mountains. Be amazed at the calming effect of sunrise and the serene dawning of sunset.</span>
+				</div>
+			</div>
+			<div style = "position: relative; height: 100%; width: 60%; padding-left: 50px;">
+				<meta name="viewport" content="width=device-width, initial-scale=1">
+				<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+				<div class="w3-content w3-display-container" style="max-width: 600px;">
+				  <img class="mySlides1" src="images\la terraza\laterraza.jpg" style="width:100%">
+				  <img class="mySlides1" src="images\la terraza\living.jpg" style="width:100%">
+				  <img class="mySlides1" src="images\la terraza\6pax.jpg" style="width:100%">
+				  <img class="mySlides1" src="images\la terraza\4pax.jpg" style="width:100%">
+
+				  <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1,0)">&#10094;</button>
+				  <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1,0)">&#10095;</button>
+				</div>
+			</div>
+		</div>
+		<div style="display:flex;padding-left:10%;padding-right:10%" id="colorstrip">
+			<div style = "position: relative; height: 100%; width: 60%; padding-right: 50px;">
+				<div class="w3-content w3-display-container" style="max-width: 600px;">
+				  <img class="mySlides2" src="image1.jpg" style="width:100%" id="start">
+				  <img class="mySlides2" src="image2.jpg" style="width:100%">
+				  <img class="mySlides2" src="image3.jpg" style="width:100%">
+				  <img class="mySlides2" src="1.jpg" style="width:100%">
+
+				  <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1,1)">&#10094;</button>
+				  <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1,1)">&#10095;</button>
+				</div>
+			</div>
+			<div style="width:40%;color:red;padding:10px;">
+				<span>Pavilion Villa</span><br><br>
+				<span style = "text-align: justify; text-justify: inter-word;">Experience the amazing view given by the Pavilion Dorm overlooking the whole resort, Mabitac Valley and Sierra Madre Mountains. Be soothed by the cold breeze in the morning and the beautiful sunset in the afternoon.</span>
+			</div>
+		</div>
+		
+		</div>
 					</section>
 				</div>
 				<!--/About Section Carousel ITEM 3-->
@@ -315,5 +355,6 @@ if(session_id() == ''){
 	<!-- Custom JS/JQuery Script-->
 
 	<script src="js/main.js"></script>
+	<script src="js/main1.js"></script>
 </body>
 </html>
