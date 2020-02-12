@@ -17,6 +17,7 @@ if(session_id() == ''){
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
 	<!-- Custom CSS-->
 	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/admin.css">
 </head>
 
 <body class="site">
@@ -142,7 +143,7 @@ if(session_id() == ''){
 				<div class="carousel-item container-fluid row-center">
 					<section id="contact-info" class="container-fluid w-75 row-center">
 						<div class="container-fluid row h-100 w-100 row-center">
-							<div class="col-md-5 container-fluid h-100">
+							<div class="col-md-5 container-fluid h-100" id="signup-container">
 								<form class="form-horizontal">
 									<label class="h2 my-3 font-weight-bold title">GUEST DETAILS</label>
 									<div class="form-inline">
@@ -176,7 +177,7 @@ if(session_id() == ''){
 									<button type="submit" class="btn btn-primary mb-3" id="signup-create">Submit</button>
 								</form>
 							</div>
-							<div class="col-md-2 container-fluid w-100 column-center"><a class="h1 font-weight-bold">OR</a></div>
+							<div class="col-md-2 container-fluid w-100 column-center" id="signup-or"><a class="h1 font-weight-bold">OR</a></div>
 							<!--Login-->
 							<div class="col-md-5 container-fluid w-100 column-center">
 								<form class="form-signin column-center" id="login-form2">
@@ -224,8 +225,97 @@ if(session_id() == ''){
 						<!--/Sign in form-->
 
 						<!--Members area-->
-						<div id="member-area">
-							<h1 class="h1 mb-3 font-weight-bold title">DASHBOARD</h1>
+						<div id="member-area" class="container-fluid column-center bg-light text-dark">
+							<div class="container-fluid">
+					      <div class="row">
+					        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+					          <div class="sidebar-sticky">
+
+											<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+					              <span>Booking</span>
+					              <a class="d-flex align-items-center text-muted" href="#">
+					                <span data-feather="plus-circle"></span>
+					              </a>
+					            </h6>
+
+					            <ul class="nav flex-column">
+					              <li class="nav-item">
+					                <a class="nav-link active mt-2" href="#">
+					                  <span data-feather="file-text"></span>
+					                  Edit reservations <span class="sr-only">(current)</span>
+					                </a>
+					              </li>
+					              <li class="nav-item">
+					                <a class="nav-link" href="#">
+					                  <span data-feather="file-text"></span>
+					                  Add room
+					                </a>
+					              </li>
+					              <li class="nav-item">
+					                <a class="nav-link" href="#">
+					                  <span data-feather="file-text"></span>
+					                  Cancel
+					                </a>
+					              </li>
+					            </ul>
+
+					            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+					              <span>Account</span>
+					              <a class="d-flex align-items-center text-muted" href="#">
+					                <span data-feather="plus-circle"></span>
+					              </a>
+					            </h6>
+					            <ul class="nav flex-column mb-2">
+					              <li class="nav-item">
+					                <a class="nav-link" href="#">
+					                  <span data-feather="file-text"></span>
+														Personal info
+					                </a>
+					              </li>
+					              <li class="nav-item">
+					                <a class="nav-link" href="#">
+					                  <span data-feather="file-text"></span>
+					                  Email and username
+					                </a>
+					              </li>
+					              <li class="nav-item">
+					                <a class="nav-link" href="#">
+					                  <span data-feather="file-text"></span>
+					                  Password
+					                </a>
+					              </li>
+					            </ul>
+					          </div>
+					        </nav>
+
+					        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+					          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+					            <h1 class="h1 mb-3 text-center font-weight-bold title">DASHBOARD</h1>
+					          </div>
+
+					          <h2>Edit reservations</h2>
+					          <div class="table-responsive">
+					            <table class="table table-striped table-sm">
+					              <thead>
+					                <tr>
+					                  <th>Reservation ID</th>
+					                  <th>Room</th>
+														<th>No. People</th>
+														<th>Price</th>
+					                  <th>Date-In</th>
+					                  <th>Date-out</th>
+					                  <th>Status</th>
+														<th></th>
+					                </tr>
+					              </thead>
+					              <tbody id="reservations-container">
+
+					              </tbody>
+					            </table>
+					          </div>
+					        </main>
+					      </div>
+					    </div>
 						</div>
 						<!--/Members area-->
 					</section>
@@ -235,31 +325,32 @@ if(session_id() == ''){
 				<!--book confirmation Section Carousel ITEM 7-->
 				<div class="carousel-item container-fluid column-center">
 					<section id="confirmation" class="container-fluid w-75 column-center">
-						<form class="form-horizontal column-center ">
+						<form class="form-horizontal column-center">
 							<label class="h1 mb-3 font-weight-bold title">CONFIRM RESERVATION</label>
-							<div class="form-inline text-left">
+
+							<div class="form-inline">
 								<label class="mx-1 h6 font-weight-bold">Name.</label>
-								<input type="text" class="form-control-plaintext w-50 text-white" id="confirm-firstname" disabled="true">
+								<input type="text" class="form-control w-50" id="confirm-firstname" disabled="true">
 							</div>
-							<div class="form-inline text-left">
+							<div class="form-inline">
 								<label class="mx-1 h6 font-weight-bold">Last name.</label>
-								<input type="text" class="form-control-plaintext w-50 text-white" id="confirm-lastname" disabled="true">
+								<input type="text" class="form-control w-50" id="confirm-lastname" disabled="true">
 							</div>
-							<div class="form-inline text-left">
+							<div class="form-inline">
 								<label class="mx-1 h6 font-weight-bold">Username.</label>
-								<input type="text" class="form-control-plaintext w-50 text-white" id="confirm-username" disabled="true">
+								<input type="text" class="form-control w-50" id="confirm-username" disabled="true">
 							</div>
-							<div class="form-inline text-left">
+							<div class="form-inline">
 								<label class="mx-1 h6 font-weight-bold">E-Mail.</label>
-								<input type="text" class="form-control-plaintext w-50 text-white" id="confirm-email" disabled="true">
+								<input type="text" class="form-control w-50" id="confirm-email" disabled="true">
 							</div>
-							<div class="form-inline text-left">
+							<div class="form-inline">
 								<label class="mx-1 h6 font-weight-bold">Mobile No.</label>
-								<input type="text" class="form-control-plaintext w-50 text-white" id="confirm-NoMobile" disabled="true">
+								<input type="text" class="form-control w-50" id="confirm-NoMobile" disabled="true">
 							</div>
-							<div class="form-inline text-left">
+							<div class="form-inline">
 								<label class="mx-1 h6 font-weight-bold">Landline No.</label>
-								<input type="text" class="form-control-plaintext w-50 text-white" id="confirm-NoLandline" disabled="true">
+								<input type="text" class="form-control w-50" id="confirm-NoLandline" disabled="true">
 							</div>
 
 							<div class="card bg-secondary border-dark my-2 w-50">
@@ -313,7 +404,10 @@ if(session_id() == ''){
 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 	<!-- Custom JS/JQuery Script-->
-
+	<script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+	<script>
+		feather.replace()
+	</script>
 	<script src="js/main.js"></script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 $(document).ready(function () {
 	//default values and globalvariables
 	var room_id, login, password, submit_mode;
-	$("#main-content").carousel({interval: false});
+	$("#main-content").carousel({interval: 0});
 	$('#main-content').carousel('pause');
 	$('#room_pax').val(5);
 
@@ -63,23 +63,7 @@ $(document).ready(function () {
 	//dynamic buttons click
 	$('#rooms-container').on('click', '.btn', function(){
 		room_id = event.target.id;
-		$.post("src/find_room_id.php", //create a POST request
-		{
-			room_id: room_id
-		},
-		function(data){
-			try {
-				var obj = jQuery.parseJSON(data);
-  			$('#confirm-card-title').text(obj.room_name + " #" + obj.room_accommodation_num);
-				$('#confirm-card-description').text(obj.room_desc);
-				$('#confirm-card-price').text(obj.price);
-				$('#confirm-card-numpeople').text(obj.room_num);
-				$("#confirm-create").attr("disabled", false);
-			}
-			catch (err) {
-  			alert(err);
-			}
-		});
+		find_room_by_id(room_id, 1);
 	});//dynamic buttons click end
 
 	//send contact info to confirmation page
@@ -120,16 +104,17 @@ $(document).ready(function () {
 		submit_mode=1;
 	});//login from booking end
 
-	//sign off from
+	//sign off from navbar
 	$('#navbar-sign-out').on('click', function(){
 		check_logout_ui();
 		$.post("src/logout.php");
 	});//sign off from navbar end
 
+	//sign off from booking
 	$('#sign-out2').on('click', function(){
 		check_logout_ui();
 		$.post("src/logout.php");
-	});//sign off from navbar end
+	});//sign off from booking end
 
 	//user login
 	function user_login(user, pass, redirect, isReserving){
@@ -158,20 +143,23 @@ $(document).ready(function () {
 				fill_confirm_view(obj);
 				if (redirect!=-1){
 					$('#main-content').carousel(redirect);
+					$("#main-content").carousel({interval: 0});
+					$('#main-content').carousel('pause');
 				}
 			}
 		});
 	}//user login end
 
 	//check session
-	function check_session(isReserving){
+	function check_session(action){
 		$.post("src/check_session.php", function(data){
 			if(data!=0){
 				var obj = jQuery.parseJSON(data);
-				if (isReserving==1) {
+				if (action==1) {
 					reservation_confirm(obj.user_id, room_id);
 				}
 				session_status= check_login_ui(obj);
+				fill_reservations(obj.user_id);
 				return session_status;
 			}
 			else {
@@ -188,6 +176,8 @@ $(document).ready(function () {
 		$('#member-area').show();
 		$('#login-form').hide();
 		$('#navbar-sign-in').hide();
+		$('#signup-container').hide();
+		$('#signup-or').hide();
 		$("#navbar-sign-in-label").text("Welcome, " + myCallback.name + " " + myCallback.last_name);
 		$('#login-contact-label').text('RE-ENTER PASSWORD')
 		$('#login-contact-label2').text('Current user: ' + myCallback.name + " " + myCallback.last_name);
@@ -206,6 +196,8 @@ $(document).ready(function () {
 		$('#login-form').show();
 		$('#login-form2').show();
 		$('#navbar-sign-in').show();
+		$('#signup-container').show();
+		$('#signup-or').show();
 		$('#navbar-sign-in-label').text('Already got a reservation? sign in to check:');
 		$('#login-contact-label').text('ALREADY HAVE AN ACCOUNT?')
 		$('#login-contact-label2').text('Please sign in');
@@ -258,13 +250,71 @@ $(document).ready(function () {
 				alert("Reservation succeed");
 				clear_all();
 				$('#main-content').carousel(6);
+				$("#main-content").carousel({interval: 0});
+				$('#main-content').carousel('pause');
 			}
 			else {
 				alert("We couldn't process your reservation request, please try again.");
 				$('#main-content').carousel(0);
+				$("#main-content").carousel({interval: 0});
+				$('#main-content').carousel('pause');
 			}
 		});
 	}//creating reservation end
+
+	//find reservation list
+	function fill_reservations(guestid){
+		$.post("src/reservation_list.php",{
+			user_id: guestid
+		},
+		function(data){
+			if (data!=0) {
+				var obj = jQuery.parseJSON(data);
+				alert(Object.keys(obj).length);
+				$.each(obj, function(key, value) {
+					$('#reservations-container').append(`
+					<tr>
+						<td>`+ value.ID + `</td>
+						<td id="reservation-room-name"></td>
+						<td id="reservation-num-people"></td>
+						<td id="reservation-price"></td>
+						<td>`+ value.date_in + `</td>
+						<td>`+ value.date_out + `</td>
+						<td>`+ value.status + `</td>
+						<td><button class="btn btn-lg btn-primary btn-block" type="button" id="edit-submit">Edit</button></td>
+					</tr>`);
+				});
+				find_room_by_id(obj, 2);
+			}
+		});
+	}//find reservation list end
+
+	function find_room_by_id(myCallback, action){
+		$.post("src/find_room_id.php", //create a POST request
+		{
+			room_id: myCallback.ID
+		},
+		function(data){
+			try {
+				var obj = jQuery.parseJSON(data);
+				switch (action) {
+					case 1:
+						$('#confirm-card-title').text(obj.room_name + " #" + obj.room_accommodation_num);
+						$('#confirm-card-description').text(obj.room_desc);
+						$('#confirm-card-price').text(obj.price);
+						$('#confirm-card-numpeople').text(obj.room_num);
+						$("#confirm-create").attr("disabled", false);
+						break;
+					case 2:
+						$('#reservation-room-name').text(obj.room_name + " #" + obj.room_accommodation_num);
+					default:
+				}
+			}
+			catch (err) {
+  			alert("There was an issue with your request, please check if the information is valid");
+			}
+		});
+	};
 
 	function clear_all(){
 		$('#rooms-container').empty();
