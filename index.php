@@ -106,48 +106,51 @@ if(session_id() == ''){
 					<section id="about">
 						<p class="h1 text-center">Gallery</p>
 						<div style="display:flex;padding-left:10%;padding-right:10%" id="colorstrip"/>
-			<div style="width:40%;color:red;padding:10px;">
-				<div >
-				<span>La Terraza</span><br><br>
-				<span style = "text-align: justify; text-justify: inter-word;">Be astonished by the picture perfect scenery at the La Terraza, overlooking Mabitac Valley and Sierra Madre Mountains. Be amazed at the calming effect of sunrise and the serene dawning of sunset.</span>
-				</div>
-			</div>
-			<div style = "position: relative; height: 100%; width: 60%; padding-left: 50px;">
-				<meta name="viewport" content="width=device-width, initial-scale=1">
-				<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        			<div style="width:40%;color:red;padding:10px;">
+        				<div >
+        				<span>La Terraza</span><br><br>
+        				<span style = "text-align: justify; text-justify: inter-word;">Be astonished by the picture perfect scenery at the La Terraza, overlooking Mabitac Valley and Sierra Madre Mountains. Be amazed at the calming effect of sunrise and the serene dawning of sunset.</span>
+        				</div>
+        			</div>
 
-				<div class="w3-content w3-display-container" style="max-width: 600px;">
-				  <img class="mySlides1" src="images\la terraza\laterraza.jpg" style="width:100%">
-				  <img class="mySlides1" src="images\la terraza\living.jpg" style="width:100%">
-				  <img class="mySlides1" src="images\la terraza\6pax.jpg" style="width:100%">
-				  <img class="mySlides1" src="images\la terraza\4pax.jpg" style="width:100%">
+        			<div style = "position: relative; height: 100%; width: 60%; padding-left: 50px;">
+        				<meta name="viewport" content="width=device-width, initial-scale=1">
+        				<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
-				  <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1,0)">&#10094;</button>
-				  <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1,0)">&#10095;</button>
-				</div>
-			</div>
-		</div>
-		<div style="display:flex;padding-left:10%;padding-right:10%" id="colorstrip">
-			<div style = "position: relative; height: 100%; width: 60%; padding-right: 50px;">
-				<div class="w3-content w3-display-container" style="max-width: 600px;">
-				  <img class="mySlides2" src="image1.jpg" style="width:100%" id="start">
-				  <img class="mySlides2" src="image2.jpg" style="width:100%">
-				  <img class="mySlides2" src="image3.jpg" style="width:100%">
-				  <img class="mySlides2" src="1.jpg" style="width:100%">
+        				<div class="w3-content w3-display-container" style="max-width: 600px;">
+        				  <img class="mySlides1" src="images\la terraza\laterraza.jpg" style="width:100%">
+        				  <img class="mySlides1" src="images\la terraza\living.jpg" style="width:100%">
+        				  <img class="mySlides1" src="images\la terraza\6pax.jpg" style="width:100%">
+        				  <img class="mySlides1" src="images\la terraza\4pax.jpg" style="width:100%">
 
-				  <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1,1)">&#10094;</button>
-				  <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1,1)">&#10095;</button>
-				</div>
-			</div>
-			<div style="width:40%;color:red;padding:10px;">
-				<span>Pavilion Villa</span><br><br>
-				<span style = "text-align: justify; text-justify: inter-word;">Experience the amazing view given by the Pavilion Dorm overlooking the whole resort, Mabitac Valley and Sierra Madre Mountains. Be soothed by the cold breeze in the morning and the beautiful sunset in the afternoon.</span>
-			</div>
-		</div>
-		
-		</div>
-					</section>
-				</div>
+        				  <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1,0)">&#10094;</button>
+        				  <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1,0)">&#10095;</button>
+        				</div>
+        			</div>
+
+              <div style="display:flex;padding-left:10%;padding-right:10%" id="colorstrip">
+          			<div style = "position: relative; height: 100%; width: 60%; padding-right: 50px;">
+          				<div class="w3-content w3-display-container" style="max-width: 600px;">
+          				  <img class="mySlides2" src="image1.jpg" style="width:100%" id="start">
+          				  <img class="mySlides2" src="image2.jpg" style="width:100%">
+          				  <img class="mySlides2" src="image3.jpg" style="width:100%">
+          				  <img class="mySlides2" src="1.jpg" style="width:100%">
+
+          				  <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1,1)">&#10094;</button>
+          				  <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1,1)">&#10095;</button>
+          				</div>
+          			</div>
+          			<div style="width:40%;color:red;padding:10px;">
+          				<span>Pavilion Villa</span><br><br>
+          				<span style = "text-align: justify; text-justify: inter-word;">Experience the amazing view given by the Pavilion Dorm overlooking the whole resort, Mabitac Valley and Sierra Madre Mountains. Be soothed by the cold breeze in the morning and the beautiful sunset in the afternoon.</span>
+          			</div>
+          		</div>
+
+          </section>
+		    </div>
+
+
+
 				<!--/About Section Carousel ITEM 3-->
 
 				<!--/Contact Section Carousel ITEM 4-->
@@ -352,9 +355,9 @@ if(session_id() == ''){
 	<!-- Bootstrap core-->
 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-	<!-- Custom JS/JQuery Script-->
-
+	<!-- Custom JS/JQuery Script
+-->
+  <script src="js/main1.js"></script>
 	<script src="js/main.js"></script>
-	<script src="js/main1.js"></script>
 </body>
 </html>
