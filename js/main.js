@@ -159,7 +159,7 @@ $(document).ready(function () {
 					reservation_confirm(obj.user_id, room_id);
 				}
 				session_status= check_login_ui(obj);
-				fill_reservations(obj.user_id);
+				//fill_reservations(obj.user_id);
 				return session_status;
 			}
 			else {
@@ -284,15 +284,15 @@ $(document).ready(function () {
 						<td><button class="btn btn-lg btn-primary btn-block" type="button" id="edit-submit">Edit</button></td>
 					</tr>`);
 				});
-				find_room_by_id(obj, 2);
+				//find_room_by_id(obj, 2);
 			}
 		});
 	}//find reservation list end
 
-	function find_room_by_id(myCallback, action){
+	function find_room_by_id(roomid, action){
 		$.post("src/find_room_id.php", //create a POST request
 		{
-			room_id: myCallback.ID
+			room_id: roomid
 		},
 		function(data){
 			try {
