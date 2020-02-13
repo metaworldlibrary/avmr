@@ -240,19 +240,19 @@ if(session_id() == ''){
 
 					            <ul class="nav flex-column">
 					              <li class="nav-item">
-					                <a class="nav-link active mt-2" href="#">
+					                <a class="nav-link active mt-2" href="#" id="dashboard-edit-reservation">
 					                  <span data-feather="file-text"></span>
 					                  Edit reservations <span class="sr-only">(current)</span>
 					                </a>
 					              </li>
 					              <li class="nav-item">
-					                <a class="nav-link" href="#">
+					                <a class="nav-link" href="#" id="dashboard-add-room">
 					                  <span data-feather="file-text"></span>
 					                  Add room
 					                </a>
 					              </li>
 					              <li class="nav-item">
-					                <a class="nav-link" href="#">
+					                <a class="nav-link" href="#" id="dashboard-cancel-reservation">
 					                  <span data-feather="file-text"></span>
 					                  Cancel
 					                </a>
@@ -267,19 +267,19 @@ if(session_id() == ''){
 					            </h6>
 					            <ul class="nav flex-column mb-2">
 					              <li class="nav-item">
-					                <a class="nav-link" href="#">
+					                <a class="nav-link" href="#" id="dashboard-edit-info">
 					                  <span data-feather="file-text"></span>
 														Personal info
 					                </a>
 					              </li>
 					              <li class="nav-item">
 					                <a class="nav-link" href="#">
-					                  <span data-feather="file-text"></span>
+					                  <span data-feather="file-text" id="dashboard-edit-username"></span>
 					                  Email and username
 					                </a>
 					              </li>
 					              <li class="nav-item">
-					                <a class="nav-link" href="#">
+					                <a class="nav-link" href="#" id=dashboard-edit-password>
 					                  <span data-feather="file-text"></span>
 					                  Password
 					                </a>
@@ -309,7 +309,6 @@ if(session_id() == ''){
 					                </tr>
 					              </thead>
 					              <tbody id="reservations-container">
-
 					              </tbody>
 					            </table>
 					          </div>

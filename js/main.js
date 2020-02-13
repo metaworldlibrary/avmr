@@ -159,7 +159,7 @@ $(document).ready(function () {
 					reservation_confirm(obj.user_id, room_id);
 				}
 				session_status= check_login_ui(obj);
-				//fill_reservations(obj.user_id);
+				fill_reservations(obj.user_id);
 				return session_status;
 			}
 			else {
@@ -269,27 +269,34 @@ $(document).ready(function () {
 		},
 		function(data){
 			if (data!=0) {
+				$('#reservations-container').empty();
 				var obj = jQuery.parseJSON(data);
-				alert(Object.keys(obj).length);
+				//alert(Object.keys(obj).length);
 				$.each(obj, function(key, value) {
+					var status;
+					if (value.status==1) status="Approved";
+					else status = "Waiting";
 					$('#reservations-container').append(`
 					<tr>
 						<td>`+ value.ID + `</td>
-						<td id="reservation-room-name"></td>
-						<td id="reservation-num-people"></td>
-						<td id="reservation-price"></td>
+						<td id="reservation-room-name-`+key+`"></td>
+						<td id="reservation-num-people-`+key+`"></td>
+						<td id="reservation-price-`+key+`"></td>
 						<td>`+ value.date_in + `</td>
 						<td>`+ value.date_out + `</td>
-						<td>`+ value.status + `</td>
+						<td>`+ status + `</td>
 						<td><button class="btn btn-lg btn-primary btn-block" type="button" id="edit-submit">Edit</button></td>
 					</tr>`);
+					find_room_by_id(value.room_id, 2, key);
+
 				});
 				//find_room_by_id(obj, 2);
 			}
 		});
 	}//find reservation list end
 
-	function find_room_by_id(roomid, action){
+
+	function find_room_by_id(roomid, action, key){
 		$.post("src/find_room_id.php", //create a POST request
 		{
 			room_id: roomid
@@ -298,16 +305,18 @@ $(document).ready(function () {
 			try {
 				var obj = jQuery.parseJSON(data);
 				switch (action) {
-					case 1:
+					case 1: //filling confirmation page
 						$('#confirm-card-title').text(obj.room_name + " #" + obj.room_accommodation_num);
 						$('#confirm-card-description').text(obj.room_desc);
 						$('#confirm-card-price').text(obj.price);
 						$('#confirm-card-numpeople').text(obj.room_num);
 						$("#confirm-create").attr("disabled", false);
 						break;
-					case 2:
-						$('#reservation-room-name').text(obj.room_name + " #" + obj.room_accommodation_num);
-					default:
+					case 2://Filling dashboard reservations
+						$('#reservation-room-name-'+key).text(obj.room_name + " #" + obj.room_accommodation_num);
+						$('#reservation-num-people-'+key).text(obj.room_num);
+						$('#reservation-price-'+key).text(obj.price);
+						break
 				}
 			}
 			catch (err) {
