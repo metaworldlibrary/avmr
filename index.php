@@ -36,7 +36,7 @@ if(session_id() == ''){
 				<li class="nav-item"><a class="nav-link" href="#" data-target="#main-content" data-slide-to="3">About</a></li>
 				<li class="nav-item"><a class="nav-link" href="#" data-target="#main-content" data-slide-to="4">Contact us!</a></li>
 			</ul>
-			<a class="btn btn-success m-2" href="#" data-target="#main-content" data-slide-to="1">Book now!</a>
+			<a id="navbar-book" class="btn btn-success m-2" href="#" data-target="#main-content" data-slide-to="1">Book now!</a>
 		</div>
 
 		<div class="collapse navbar-collapse justify-content-end text-white" id="navbarNav">
@@ -68,7 +68,8 @@ if(session_id() == ''){
 
 				<!--book section room Section Carousel ITEM 1-->
 				<div class="container-fluid carousel-item row-center">
-					<section id="book-section" class= "container-fluid w-75 row-center">
+					<section id="book-section" class= "container-fluid w-75 column-center">
+            <a id="book-title" class="h1 text-center mt-4 font-weight-bold title">STEP 1: FIND A ROOM</a>
 						<div class="container-fluid	row row-center">
 							<div class="col-md-3">
 								<form class="form-horizontal">
@@ -255,7 +256,7 @@ if(session_id() == ''){
 					              <li class="nav-item">
 					                <a class="nav-link" href="#" id="dashboard-cancel-reservation">
 					                  <span data-feather="file-text"></span>
-					                  Cancel
+					                  Cancel reservation
 					                </a>
 					              </li>
 					            </ul>
@@ -296,7 +297,7 @@ if(session_id() == ''){
 
 					          <h2>Edit reservations</h2>
 					          <div class="table-responsive">
-					            <table class="table table-striped table-sm">
+					            <table class="table table-striped table-sm" id="reservation-table">
 					              <thead>
 					                <tr>
 					                  <th>Reservation ID</th>
