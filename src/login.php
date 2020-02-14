@@ -3,7 +3,6 @@
 			session_start();
 	}
 	require "db_library.php"; //PHP file where the database proccessing is actually done
-
 	$results= userlogin($_POST["login_username"], $_POST["login_password"]);
 	if (count($results)>0){
 		$_SESSION["user_id"] = $results["ID"]; //creates SESSION variable with the ID.

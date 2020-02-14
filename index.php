@@ -31,7 +31,7 @@ if(session_id() == ''){
 		<div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav mx-2">
 				<li class="nav-item active"><a class="nav-link" href="#" data-target="#main-content" data-slide-to="0"><b>Home</b><span class="sr-only">(current)</span></a></li>
-				<li class="nav-item"><a class="nav-link" href="#" data-target="#main-content" data-slide-to="1">Pricing</a></li>
+				<li class="nav-item"><a class="nav-link" href="#" data-target="#main-content" data-slide-to="1" id="navbar-rooms">Rooms & Rates</a></li>
 				<li class="nav-item"><a class="nav-link" href="#" data-target="#main-content" data-slide-to="2">Activities</a></li>
 				<li class="nav-item"><a class="nav-link" href="#" data-target="#main-content" data-slide-to="3">About</a></li>
 				<li class="nav-item"><a class="nav-link" href="#" data-target="#main-content" data-slide-to="4">Contact us!</a></li>
@@ -69,7 +69,7 @@ if(session_id() == ''){
 				<!--book section room Section Carousel ITEM 1-->
 				<div class="container-fluid carousel-item row-center">
 					<section id="book-section" class= "container-fluid w-75 column-center">
-            <a id="book-title" class="h1 text-center mt-4 font-weight-bold title">STEP 1: FIND A ROOM</a>
+            <a id="book-title" class="h1 text-center mt-4 font-weight-bold title">CREATING RESERVATION</a>
 						<div class="container-fluid	row row-center">
 							<div class="col-md-3">
 								<form class="form-horizontal">
@@ -275,8 +275,8 @@ if(session_id() == ''){
 					                </a>
 					              </li>
 					              <li class="nav-item">
-					                <a class="nav-link" href="#">
-					                  <span data-feather="file-text" id="dashboard-edit-username"></span>
+					                <a class="nav-link" href="#" id="dashboard-edit-username">
+					                  <span data-feather="file-text"></span>
 					                  Email and username
 					                </a>
 					              </li>
@@ -295,8 +295,8 @@ if(session_id() == ''){
 					            <h1 class="h1 mb-3 text-center font-weight-bold title">DASHBOARD</h1>
 					          </div>
 
-					          <h2>Edit reservations</h2>
-					          <div class="table-responsive">
+					          <h2 id="dashboard-header">Edit reservations</h2>
+					          <div class="table-responsive" id="dashboard-table-container">
 					            <table class="table table-striped table-sm" id="reservation-table">
 					              <thead>
 					                <tr>
@@ -314,6 +314,69 @@ if(session_id() == ''){
 					              </tbody>
 					            </table>
 					          </div>
+
+                    <div id="dashboard-account-section">
+                      <div id="dashboard-info-container">
+                        <div class="col-md-5 container-fluid h-100">
+                          <form class="form-horizontal">
+                            <label class="mt-3 h6 font-weight-bold">Full name.</label>
+                            <div class="form-inline">
+                              <input type="text" class="form-control w-50" id="dashboard-firstname" placeholder="First Name" required>
+                              <input type="text" class="form-control w-50" id="dashboard-lastname" placeholder="Last Name" required>
+                            </div>
+                            <div class="form-horizontal">
+                              <label class="mt-3 h6 font-weight-bold">Landline Number.</label>
+                              <input class="form-control" type="tel" id="dashboard-phone" name="d-phone" placeholder="(312) 414-7057">
+                            </div>
+                            <div class="form-horizontal">
+                              <label class="mt-3 h6 font-weight-bold">Mobile Number.</label>
+                              <input class="form-control" type="tel" id="dashboard-mobile" name="d-mobile" placeholder="(312) 414-7057">
+                            </div>
+                            <a class="btn btn-primary my-3 text-white" id="dashboard-info-update">Update</a>
+                          </form>
+                        </div>
+                      </div>
+
+                      <div id="dashboard-credentials-container">
+                        <div class="col-md-5 container-fluid h-100">
+                          <form class="form-horizontal">
+                            <div class="form-horizontal">
+                              <label class="mt-3 h6 font-weight-bold">Current password.</label>
+                              <input class="form-control" type="password" id="dashboard-credentials-password" placeholder="Current password" required>
+                            </div>
+                            <div class="form-horizontal">
+                              <label class="mt-5 h6 font-weight-bold">Username.</label>
+                              <input class="form-control col-8" type="text" id="dashboard-credentials-username"placeholder="johndoe13" required>
+                            </div>
+                            <div class="form-horizontal">
+                              <label class="mt-3 h6 font-weight-bold">Email.</label>
+                              <input class="form-control col-8" type="email" id="dashboard-credentials-email" placeholder="johndoe@mail.com" required>
+                            </div>
+                            <a class="btn btn-primary my-3 text-white" id="dashboard-credentials-update">Update</a>
+                          </form>
+                        </div>
+                      </div>
+
+                      <div id="dashboard-password-container">
+                        <div class="col-md-5 container-fluid h-100">
+                          <form class="form-horizontal">
+                            <div class="form-horizontal">
+                              <label class="mt-3 h6 font-weight-bold">Current password.</label>
+                              <input class="form-control" type="password" id="dashboard-password-current" placeholder="Current password" required>
+                            </div>
+                            <div class="form-horizontal">
+                              <label class="mt-5 h6 font-weight-bold">New password.</label>
+                              <input class="form-control col-8" type="password" id="dashboard-password-new" placeholder="New password" required>
+                            </div>
+                            <div class="form-horizontal">
+                              <label class="mt-3 h6 font-weight-bold">Confirm new password.</label>
+                              <input class="form-control col-8" type="password" id="dashboard-password-renew" placeholder="Re-Type new password" required>
+                            </div>
+                            <a class="btn btn-primary my-3 text-white" id="dashboard-password-update">Update</a>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
 					        </main>
 					      </div>
 					    </div>

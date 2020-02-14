@@ -125,6 +125,44 @@ function delete_reservation($res_id) {
   return 1;
 }
 
+function update_user_info($id, $firstname, $lastname, $landline, $mobile) {
+	//Getting the connection from above
+	global $mysqli;
+	//preparing the query and executing the query, first line is the template and the ? will be replaced
+	$stmt = $mysqli->prepare ("UPDATE guestinfo SET name_first=?, name_last=?, no_mobile=?, no_landline=? WHERE ID=?");
+  $stmt->bind_param("ssssi", $firstname, $lastname, $landline, $mobile, $id);  //replacing the ? in the query, first param are the type (s for string)
+	$stmt->execute(); //executing the query
+  return 1;
+}
+
+function update_user_credentials($id, $email, $username, $password) {
+	//Getting the connection from above
+	global $mysqli;
+  $stmt = $mysqli->prepare ("UPDATE guestinfo SET email=?, username=? WHERE ID=?");
+  $stmt->bind_param("ssi", $email, $username, $id);  //replacing the ? in the query, first param are the type (s for string)
+
+  $userData = find_user_by_id($id);
+  if ($password<>$userData["password"])
+    exit("old_missmatch");
+  $stmt->execute(); //executing the query
+  return 1;
+}
+
+function update_user_password($id, $currpass, $newpass, $repass) {
+	//Getting the connection from above
+	global $mysqli;
+  $stmt = $mysqli->prepare ("UPDATE guestinfo SET password=? WHERE ID=?");
+  $stmt->bind_param("si", $newpass, $id);  //replacing the ? in the query, first param are the type (s for string)
+
+  $userData = find_user_by_id($id);
+  if ($newpass<>$userData["password"])
+    exit("old_missmatch");
+  if ($newpass<>$repass)
+    exit("new_mismatch");
+  $stmt->execute(); //executing the query
+  return 1;
+}
+
 function find_room_by_id($id) {
 	//Getting the connection from above
 	global $mysqli;
