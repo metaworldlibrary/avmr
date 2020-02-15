@@ -97,17 +97,10 @@ $(document).ready(function () {
 		check_session(0);
 	});
 
-	$('#reservations-container').on('click', '.btn', function(){
+	$('#reservations-container').on('click', '.del-reservation', function(){
 		reservationID = $(this).parent().siblings(":first").text();
-		switch (submit_mode) {
-			case 2:
-				$("#main-content").carousel(1);
-				$("#book-title").text("UPDATING RESERVATION");
-				break;
-			case 3:
-				reservation_delete(reservationID);
-				break;
-		}
+		alert(reservationID);
+		reservation_delete(reservationID);
 	});
 
 	$('#dashboard-add-room').on('click', function(){
@@ -115,8 +108,8 @@ $(document).ready(function () {
 		submit_mode = 1;
 	});
 
-	$('#dashboard-edit-reservation').on('click', function(event) {
-		$('#dashboard-header').text("Edit reservations");
+	$('#dashboard-walk-in').on('click', function(event) {
+		$('#dashboard-header').text("Walk-in Management");
 		$('#dashboard-table-container').show();
 		$('#dashboard-account-section').hide();
 		$('#dashboard-info-container').siblings().hide();
@@ -231,7 +224,7 @@ $(document).ready(function () {
 	}
 
 	//user login
-	function user_login(user, pass, redirect, action){
+	function user_login(user, pass, action){
 		$.post("src/login.php", //create a POST request
 		{
 			login_username: user, //sending the variable with the username through POST
@@ -239,7 +232,7 @@ $(document).ready(function () {
 		},
 		function(data){ //If the POST request was successful, this function is executed.
 			if (data == "username") { //checking the data, 0= failed login
-				alert("Username or email not found");
+				alert("ID not found");
 				return;
 			}
 			else if (data=="password"){
@@ -254,22 +247,16 @@ $(document).ready(function () {
 						break;
 					default: //normal login
 						check_session(0);
-						login = obj.email;
-						password = obj.password;
-						guestid = obj.user_id;
+						login = obj.ID;
+						password = obj.staff_pass;
 						fill_confirm_view(obj);
 						fill_dashboard_view(obj);
-						if (redirect!=-1){
-							$('#main-content').carousel(redirect);
-							$("#main-content").carousel({interval: 0});
-							$('#main-content').carousel('pause');
-						}
 				}
 			}
 		});
 	}//user login end
 
-	function find_user_by_id(userID, action){
+	function find_user_by_id(userID, action, key){
 		$.post("src/find_user_by_id.php",{
 				user_id: userID
 			}, function(data){
@@ -277,15 +264,17 @@ $(document).ready(function () {
 					var obj=jQuery.parseJSON(data);
 					switch (action) {
 						case 1:
-							fill_dashboard_view(obj);
+							$("#reservation-guest-name-"+key).text(obj.name_first + " " + obj.name_last);
 							break;
 						case 2:
 							update_info(obj.ID, $("#dashboard-firstname").val(), $("#dashboard-lastname").val(), $("#dashboard-phone").val(), $("#dashboard-mobile").val());
 							break;
 						case 3:
 							update_credentials(obj.ID, $("#dashboard-credentials-username").val(), $("#dashboard-credentials-email").val(), $("#dashboard-credentials-password").val());
+							break;
 						case 4:
 							update_password(obj.ID, $("#dashboard-password-current").val(), $("#dashboard-password-new").val(), $("#dashboard-password-renew").val());
+							break;
 					}
 				}
 				else {
@@ -350,15 +339,10 @@ $(document).ready(function () {
 		$('#navbar-dashboard').hide();
 		$('#member-area').hide();
 		$('#login-form').show();
-		$('#login-form2').show();
 		$('#navbar-sign-in').show();
 		$('#signup-container').show();
 		$('#signup-or').show();
-		$('#navbar-sign-in-label').text('Already got a reservation? sign in to check:');
-		$('#login-contact-label').text('ALREADY HAVE AN ACCOUNT?')
-		$('#login-contact-label2').text('Please sign in');
-		$('#login_username2').attr("disabled", false);
-		$('#sign-out2').hide();
+		$('#navbar-sign-in-label').text('This section is staff only, please login first');
 	}//logout ui check end
 
 	//fill confirmation data
@@ -511,8 +495,8 @@ $(document).ready(function () {
 			},
 			function(data){
 				if (data!=0) {
-					$('#dashboard-cancel-reservation').click();
 					alert("The reservation was canceled");
+					$('#navbar-dashboard').click();
 				}
 				else {
 					alert("There was an issue with your request, please try again");
@@ -524,19 +508,7 @@ $(document).ready(function () {
 
 	//fill reservation tables
 	function fill_reservations(guestid, action){
-		var buttonClass, buttonText;
-		switch (action) {
-			case 3:
-				buttonClass = "btn-danger";
-				buttonText = "Cancel";
-				break;
-			default:
-				buttonClass = "btn-primary";
-				buttonText = "Edit";
-		}
-		$.post("src/reservation_list.php",{
-			user_id: guestid
-		},
+		$.post("src/reservation_list.php",
 		function(data){
 			if (data!=0) {
 				$('#reservations-container').empty();
@@ -549,14 +521,17 @@ $(document).ready(function () {
 					<tr>
 						<td id="">`+ value.ID + `</td>
 						<td id="reservation-room-name-`+key+`"></td>
+						<td id="reservation-guest-name-`+key+`"></td>
 						<td id="reservation-num-people-`+key+`"></td>
 						<td id="reservation-price-`+key+`"></td>
 						<td>`+ value.date_in + `</td>
 						<td>`+ value.date_out + `</td>
 						<td>`+ status + `</td>
-						<td><button class="btn btn-lg ` + buttonClass + ` btn-block" type="button">` + buttonText + `</button></td>
+						<td><button class="edit-reservation btn btn-lg btn-primary btn-block" type="button">Edit</button></td>
+						<td><button class="del-reservation btn btn-lg btn-danger btn-block" type="button">Cancel</button></td>
 					</tr>`);
 					find_room_by_id(value.room_id, 2, key);
+					find_user_by_id(value.guest_id, 1, key);
 				});
 			}
 		});
