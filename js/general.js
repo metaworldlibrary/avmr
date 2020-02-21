@@ -18,7 +18,7 @@ Vue.component('nav-bar', {
 			</div>
 
 			<div class="collapse navbar-collapse justify-content-end text-white" id="navbarNav">
-				<b><a id="navbar-sign-in-label">Already got a reservation? sign in to check:</a></b>
+				<b><a id="nav-signin-label">Already got a reservation? sign in to check:</a></b>
 				<a class="btn btn-primary m-2" href="#" id="navbar-sign-in" data-target="#main-content" data-slide-to="5">Sign in</a>
 				<a class="btn btn btn-success m-2" id="navbar-dashboard" href="#" data-target="#main-content" data-slide-to="5">Dashboard</a>
 				<a class="btn btn btn-outline-primary m-2" id="navbar-sign-out">Sign out</a>

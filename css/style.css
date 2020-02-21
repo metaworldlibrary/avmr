@@ -115,7 +115,7 @@ bottom:0;
 width:100%;
 }
 
-#navbar-sign-out, #navbar-dashboard, #member-area, #sign-out2, #dashboard-account-section{
+#nav-signout-btn, #nav-db-btn, #dashboard-section, #sign-out2, #dashboard-account-section{
 	display:none;
 }
 

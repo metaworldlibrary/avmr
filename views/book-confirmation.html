@@ -1,0 +1,54 @@
+<div id="confirmation" class="container-fluid w-75 column-center">
+  <form class="form-horizontal column-center">
+    <label class="h1 mb-3 font-weight-bold title">CONFIRM RESERVATION</label>
+
+    <div class="form-inline">
+      <label class="mx-1 h6 font-weight-bold">Name.</label>
+      <input type="text" class="form-control w-50" id="confirm-firstname" disabled="true">
+    </div>
+    <div class="form-inline">
+      <label class="mx-1 h6 font-weight-bold">Last name.</label>
+      <input type="text" class="form-control w-50" id="confirm-lastname" disabled="true">
+    </div>
+    <div class="form-inline">
+      <label class="mx-1 h6 font-weight-bold">Username.</label>
+      <input type="text" class="form-control w-50" id="confirm-username" disabled="true">
+    </div>
+    <div class="form-inline">
+      <label class="mx-1 h6 font-weight-bold">E-Mail.</label>
+      <input type="text" class="form-control w-50" id="confirm-email" disabled="true">
+    </div>
+    <div class="form-inline">
+      <label class="mx-1 h6 font-weight-bold">Mobile No.</label>
+      <input type="text" class="form-control w-50" id="confirm-NoMobile" disabled="true">
+    </div>
+    <div class="form-inline">
+      <label class="mx-1 h6 font-weight-bold">Landline No.</label>
+      <input type="text" class="form-control w-50" id="confirm-NoLandline" disabled="true">
+    </div>
+
+    <div class="card bg-secondary border-dark my-2 w-50">
+      <div class="row no-gutters">
+        <div class="col-md-5 fill"><img src="img/room1.jpg" class="card-img"></div>
+        <div class="col-md-7">
+          <div class="card-body">
+            <h4 class="card-title" id="confirm-card-title"></h4>
+            <p class="card-text text-justify" id="confirm-card-description"></p>
+          </div>
+          <div class="card-footer container-fluid text-center">
+            <div class="container-fluid">
+              <div class="container-fluid row row-cols-3 no-gutters row-center">
+                <div class="col text-center no-gutters row-center"><i class="material-icons">attach_money</i><a id="confirm-card-price"></a></div>
+                <div class="col text-center no-gutters row-center"><i class="material-icons mr-2">people</i><a id="confirm-card-numpeople"></a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class"container row-center">
+      <button type="button" class="mx-2 btn btn-danger" href="#" data-target="#main-content" data-slide-to="1" id="cancel-create">Cancel</button>
+      <button type="submit" class="mx-2 btn btn-success" href="#" data-target="#main-content" data-slide-to="7" id="confirm-create">Book room</button>
+    </div>
+  </form>
+</div>
