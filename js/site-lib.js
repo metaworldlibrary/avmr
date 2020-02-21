@@ -255,6 +255,7 @@ function clear_all(num){
   }
 }//clear page fields
 
+//Find room
 function find_room_by_id(roomid, action, key){
   $.post("src/find_room_id.php", //create a POST request
   {
@@ -293,5 +294,51 @@ function fill_dashboard_view(myCallback){
   $("#dashboard-credentials-username").val(myCallback.username);
   $("#dashboard-credentials-email").val(myCallback.email);
 }//filling_dashboard fields
+
+//searching rooms
+function search_rooms(datein, dateout, num){
+  $.post("src/search_room_list.php", //create a POST request
+  {
+    room_checkindate:  datein, //sending the variable with the password through POST
+    room_checkoutdate: dateout,
+    room_pax: num
+  },
+  function(data){ //If the POST request was successful, this function is executed.
+    try {
+      var obj = jQuery.parseJSON(data);
+      var rooms = $('#rooms-container');
+      rooms.empty();
+      var cards = $();
+      $.each(obj, function(key, value) {
+        cards =`<div class="card bg-secondary border-dark w-100 my-2">
+        <div class="row no-gutters">
+          <div class="col-md-5 fill">
+            <img src="img/room1.jpg" class="card-img">
+          </div>
+          <div class="col-md-7">
+            <div class="card-body">
+              <h4 class="card-title">`+value.room_name+` #`+value.room_accommodation_num+`</h4>
+              <p class="card-text text-justify">`+value.room_desc+`</p>
+            </div>
+            <div class="card-footer container-fluid text-center">
+              <div class="container-fluid">
+                <div class="container-fluid row row-cols-3 no-gutters row-center">
+                  <div class="col text-center no-gutters row-center"><i class="material-icons">attach_money</i><a>`+value.price+`</a></div>
+                  <div class="col text-center no-gutters row-center"><i class="material-icons mr-2">people</i><a>`+value.room_num+`</a></div>
+                  <div class="col text-center no-gutters"><a class="btn btn-success btn-xs" id="`+value.ID+`" href="#" data-target="#main-content" data-slide-to="5">Select</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>`;
+        rooms.append(cards);
+      });
+    }
+      catch (err) {
+      alert("Something went wrong with your search, verify if the data is correct");
+    }
+  });
+}//searching room end
 
 ////////////////////////////////////////////////////////////////////////////////

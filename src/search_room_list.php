@@ -34,7 +34,23 @@
 		$ids=rtrim($ids, ",");
 
 		if(count($booked_rooms) > 0){
-	    $stmt = "SELECT * FROM accommodationinfo WHERE NOT ID IN ($ids) AND room_num >= $pax";
+			$stmt =
+			"SELECT accommodationtype.id,
+			       accommodationtype.room_name,
+			       Count(accommodationtype.id) AS number_of_rooms,
+			       accommodationinfo.price,
+			       accommodationtype.room_type_desc,
+			       accommodationtype.card_picture
+			FROM   accommodationinfo
+			       INNER JOIN accommodationtype
+			               ON( accommodationinfo.room_type = accommodationtype.id )
+			WHERE  ( accommodationinfo.room_num >= $pax )
+			       AND ( accommodationinfo.status = 0 )
+						 AND (NOT accommodationinfo.ID IN ($ids))
+			GROUP  BY accommodationtype.id,
+			          accommodationinfo.price
+			ORDER  BY accommodationtype.id";
+	    //$stmt = "SELECT * FROM accommodationinfo WHERE NOT ID IN ($ids) AND room_num >= $pax";
 			//$stmt = "SELECT * FROM `accommodationinfo` WHERE NOT `ID` IN (10, 11, 12) AND `room_num` >= 5";
 			$result = $mysqli->query($stmt);
 			$a_rooms = $result->fetch_all(MYSQLI_ASSOC);
@@ -52,7 +68,11 @@
 	function date_range_compare ($period_start, $period_end){
 		global $mysqli;
 		//search the room with the given date range
-		$stmt = "SELECT room_id FROM reservationqueue WHERE NOT date_in > $period_end OR date_out < $period_start";
+		$stmt =
+		"SELECT room_id
+		FROM reservationqueue
+		WHERE NOT date_in > $period_end
+			OR date_out < $period_start";
 		//$stmt = "SELECT `room_id` FROM `reservationqueue` WHERE NOT `date_in` >  20200229 OR `date_out` < 20200201";
 		$result = $mysqli->query($stmt);
 

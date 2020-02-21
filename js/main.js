@@ -56,5 +56,17 @@ $(document).ready(function () {
 		$.post("src/logout.php");
     $('#home-section').fadeIn(500).siblings().hide();
 	});//sign off from navbar end
+
+  //Room search
+	$('#room_search').on('click', function(){
+		search_rooms($("#room_checkindate").val(), $("#room_checkoutdate").val(), $("#room_pax").val());
+	}); //room search end
+
+  //Room cards button
+  $('#rooms-container').on('click', '.btn', function(){
+		room_id = event.target.id;
+		find_room_by_id(room_id, 1);
+	});//Rooms card button end
+
   ////////////////////////////////////////////////////////////////////
 });
