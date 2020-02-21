@@ -77,6 +77,7 @@ function fill_reservations(guestid, action){
       var obj = jQuery.parseJSON(data);
       $.each(obj, function(key, value) {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         var status, button;
         if (value.status==1) {
           status="Approved";
@@ -87,6 +88,8 @@ function fill_reservations(guestid, action){
           button ='<button class="edit-reservation btn btn-lg btn-primary btn-block" type="button" disabled>Edit</button>'
         }
 =======
+=======
+>>>>>>> Stashed changes
         var status, editbutton;
         if (value.status==1){
           status="Approved";
@@ -96,6 +99,9 @@ function fill_reservations(guestid, action){
           status = "Waiting";
           editbutton = `<td><button class="edit-reservation btn btn-lg btn-primary btn-block" type="button" disabled >Edit</button></td>`;
         } 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
         $('#reservations-container').append(`
         <tr>
@@ -108,13 +114,19 @@ function fill_reservations(guestid, action){
           <td>`+ value.date_out + `</td>
           <td>`+ status + `</td>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
           <td>`+ button +`</td>
 =======
+=======
+>>>>>>> Stashed changes
           <td>`+ value.reservation_code +`</td>
           <td><button class="upload-reservation btn btn-lg btn-primary btn-block" type="button">Upload</button></td>
           `
           +editbutton+
           `
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
           <td><button class="del-reservation btn btn-lg btn-danger btn-block" type="button">Cancel</button></td>
         </tr>`);

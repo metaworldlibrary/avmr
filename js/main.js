@@ -69,4 +69,28 @@ $(document).ready(function () {
 	});//Rooms card button end
 
   ////////////////////////////////////////////////////////////////////
+  var date1 = new Date();
+  date1.setDate(date1.getDate()+1);
+  
+  var d = new Date();
+  var now = new Date(date1.getFullYear(), date1.getMonth(), date1.getDate()+1);
+  $('#startDate').datepicker('update', now);
+
+
+  $('#room_checkindate').datepicker({
+      startDate: date1,
+      autoclose: true
+  }).on("changeDate", function(e){
+    var d= new Date(e.date);
+    console.log (d.getDate())
+
+    $("#room_checkoutdate").datepicker("setStartDate", e.date);
+    $('#room_checkoutdate').datepicker('update', e.date);
+    console.log (e);
+  });
+
+  $('#room_checkoutdate').datepicker({
+      autoclose: true
+  })
+
 });
