@@ -64,8 +64,8 @@ $(document).ready(function () {
 
   //Room cards button
   $('#rooms-container').on('click', '.btn', function(){
-		room_id = event.target.id;
-		find_room_by_id(room_id, 1);
+		//room_id = event.target.id;
+    $('#sign-up-section').fadeIn(500).siblings().hide();
 	});//Rooms card button end
 
   ////////////////////////////////////////////////////////////////////

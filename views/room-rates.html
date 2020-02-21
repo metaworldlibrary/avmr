@@ -1,27 +1,34 @@
 <!--/Book section-->
 <div id="book-section" class= "container-fluid text-white column-center">
   <a id="book-title" class="h1 text-center mt-4 font-weight-bold title">CREATING RESERVATION</a>
-  <div class="container-fluid	row row-center">
-    <div class="col-md-3">
+    <div class="my-3">
       <form class="form-horizontal">
-        <div class="form-group">
-          <label >Check-In Date</label>
-          <input type="date" class="form-control" id="room_checkindate">
+        <div class="form-inline">
+          <label for="room_checkindate">Check-In:</label>
+          <input type="date" class="form-control m-2" id="room_checkindate" required>
+          <label for="room_checkoutdate" class="ml-4">Check-Out:</label>
+          <input type="date" class="form-control m-2" id="room_checkoutdate" required>
+          <label for="room_pax" class="ml-3">No. Guest</label>
+          <input type="number" class="form-control m-2" id="room_pax" required>
+          <a class="btn btn-primary m-2" id="room_search">Search</a>
         </div>
-        <div class="form-group">
-          <label >Check-Out Date</label>
-          <input type="date" class="form-control" id="room_checkoutdate">
-        </div>
-        <div>
-          <label >Number of Guest</label>
-          <input type="number" class="form-control" id="room_pax">
-        </div>
-        <a class="btn btn-primary m-2" id="room_search">Search</a>
       </form>
     </div>
     <!--cards-->
-    <div id="rooms-container" class="d-inline-block container-fluid col-md-8 bg-light border border-secondary rounded-lg column-center"></div>
+    <div id="search-overlay"></div>
+    <div id="rooms-container" class="table-responsive container-fluid bg-dark border border-secondary rounded-lg column-center">
+      <table class="table table-striped table-sm" id="reservation-table" ">
+        <tbody class="row-center">
+          <tr>
+            <td>
+              <div class="card-group" id="room-type-table" style="display:none">
+                <!--cards goes here-->
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     <!--cards-->
-  </div>
 </div>
 <!--/book Section-->

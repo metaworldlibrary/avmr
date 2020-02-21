@@ -38,7 +38,6 @@ if(session_id() == ''){
       include "views/sign-in.html";
       include "views/dashboard.html";
     ?>
-  </div>
   <!--Content-->
 
   <?php include "views/footer.html";?>

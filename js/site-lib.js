@@ -76,9 +76,15 @@ function fill_reservations(guestid, action){
       $('#reservations-container').empty();
       var obj = jQuery.parseJSON(data);
       $.each(obj, function(key, value) {
-        var status;
-        if (value.status==1) status="Approved";
-        else status = "Waiting";
+        var status, button;
+        if (value.status==1) {
+          status="Approved";
+          button='<button class="edit-reservation btn btn-lg btn-primary btn-block" type="button">Edit</button>';
+        }
+        else {
+          status = "Waiting";
+          button ='<button class="edit-reservation btn btn-lg btn-primary btn-block" type="button" disabled>Edit</button>'
+        }
         $('#reservations-container').append(`
         <tr>
           <td id="">`+ value.ID + `</td>
@@ -89,7 +95,7 @@ function fill_reservations(guestid, action){
           <td>`+ value.date_in + `</td>
           <td>`+ value.date_out + `</td>
           <td>`+ status + `</td>
-          <td><button class="edit-reservation btn btn-lg btn-primary btn-block" type="button">Edit</button></td>
+          <td>`+ button +`</td>
           <td><button class="del-reservation btn btn-lg btn-danger btn-block" type="button">Cancel</button></td>
         </tr>`);
         find_room_by_id(value.room_id, 2, key);
@@ -306,33 +312,33 @@ function search_rooms(datein, dateout, num){
   function(data){ //If the POST request was successful, this function is executed.
     try {
       var obj = jQuery.parseJSON(data);
-      var rooms = $('#rooms-container');
-      rooms.empty();
+      var rooms = $('#room-type-table');
+      rooms.hide().empty();
       var cards = $();
       $.each(obj, function(key, value) {
-        cards =`<div class="card bg-secondary border-dark w-100 my-2">
-        <div class="row no-gutters">
-          <div class="col-md-5 fill">
-            <img src="img/room1.jpg" class="card-img">
-          </div>
-          <div class="col-md-7">
-            <div class="card-body">
-              <h4 class="card-title">`+value.room_name+` #`+value.room_accommodation_num+`</h4>
-              <p class="card-text text-justify">`+value.room_desc+`</p>
-            </div>
-            <div class="card-footer container-fluid text-center">
-              <div class="container-fluid">
-                <div class="container-fluid row row-cols-3 no-gutters row-center">
-                  <div class="col text-center no-gutters row-center"><i class="material-icons">attach_money</i><a>`+value.price+`</a></div>
-                  <div class="col text-center no-gutters row-center"><i class="material-icons mr-2">people</i><a>`+value.room_num+`</a></div>
-                  <div class="col text-center no-gutters"><a class="btn btn-success btn-xs" id="`+value.ID+`" href="#" data-target="#main-content" data-slide-to="5">Select</a></div>
-                </div>
+        cards =
+        `<div class="card">
+          <img class="card-img-top" src="` + value.card_picture + `" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">` + value.room_name + `</h5>
+            <p class="card-text">` + value.room_type_desc + `</p>
+            <div class="input-group">
+              <select class="custom-select" id="price-package-`+ value.id +`">
+
+              </select>
+              <div class="input-group-append">
+                <button class="btn btn-success" type="button">Book</button>
               </div>
             </div>
           </div>
-        </div>
+          <div class="card-footer text-center">
+            <input type="hidden" value="` + value.id + `">
+            <a class="font-weight-bold">ROOMS LEFT: ` + value.number_of_rooms + `</a>
+          </div>
         </div>`;
-        rooms.append(cards);
+        //<a class="btn btn-success text-white" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Details</a>
+        rooms.append(cards).fadeIn(500);
+        price_pack_fill(value.id, datein, dateout, num);
       });
     }
       catch (err) {
@@ -340,5 +346,27 @@ function search_rooms(datein, dateout, num){
     }
   });
 }//searching room end
+
+function price_pack_fill(typeid, datein, dateout, num){
+  $.post("src/search_price_package.php",
+  {
+    type_id: typeid,
+    room_checkindate: datein,
+    room_checkoutdate: dateout,
+    room_pax: num
+  },
+  function(data){
+    var obj = jQuery.parseJSON(data);
+    $.each(obj, function(key, value) {
+      var option;
+      if (key==0)
+        option= '<option selected value="'+value.price+'">'+value.max_people+' people for $'+value.price+'</option>';
+      else
+        option= '<option value="'+value.price+'">'+value.max_people+' people for $'+value.price+'</option>';
+      $('#price-package-'+ typeid).append(option);
+    });
+
+  });
+}
 
 ////////////////////////////////////////////////////////////////////////////////
