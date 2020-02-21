@@ -68,5 +68,30 @@ $(document).ready(function () {
     $('#sign-up-section').fadeIn(500).siblings().hide();
 	});//Rooms card button end
 
+  //Room cards button
+  $('#reservations-container').on('click', '.upload-reservation', function(){
+    //room_id = event.target.id;
+    var button = $(event.relatedTarget) // Button that triggered the modal
+  });//room cards end
+
+  //upload file
+  $('#file-upload-btn').on('click', function(){
+    var postData = new FormData();
+    postData.append('file', $("#file-input")[0].files[0]);
+    $.ajax({
+      type:'POST',
+      url:'src/upload_file.php',
+      processData: false,
+      contentType: false,
+      data : postData,
+      success:function(data){
+        console.log("File Uploaded");
+      }
+    });
+  }); //upload file end
+  $("#file-upload-form").submit(function(e) {
+
+  });
+
   ////////////////////////////////////////////////////////////////////
 });

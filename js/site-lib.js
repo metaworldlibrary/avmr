@@ -76,27 +76,15 @@ function fill_reservations(guestid, action){
       $('#reservations-container').empty();
       var obj = jQuery.parseJSON(data);
       $.each(obj, function(key, value) {
-<<<<<<< Updated upstream
-        var status, button;
-        if (value.status==1) {
-          status="Approved";
-          button='<button class="edit-reservation btn btn-lg btn-primary btn-block" type="button">Edit</button>';
-        }
-        else {
-          status = "Waiting";
-          button ='<button class="edit-reservation btn btn-lg btn-primary btn-block" type="button" disabled>Edit</button>'
-        }
-=======
         var status, editbutton;
         if (value.status==1){
           status="Approved";
           editbutton = `<td><button class="edit-reservation btn btn-lg btn-primary btn-block" type="button">Edit</button></td>`;
-        } 
+        }
         else{
           status = "Waiting";
           editbutton = `<td><button class="edit-reservation btn btn-lg btn-primary btn-block" type="button" disabled >Edit</button></td>`;
-        } 
->>>>>>> Stashed changes
+        }
         $('#reservations-container').append(`
         <tr>
           <td id="">`+ value.ID + `</td>
@@ -107,15 +95,11 @@ function fill_reservations(guestid, action){
           <td>`+ value.date_in + `</td>
           <td>`+ value.date_out + `</td>
           <td>`+ status + `</td>
-<<<<<<< Updated upstream
-          <td>`+ button +`</td>
-=======
           <td>`+ value.reservation_code +`</td>
-          <td><button class="upload-reservation btn btn-lg btn-primary btn-block" type="button">Upload</button></td>
+          <td><button class="upload-reservation btn btn-lg btn-primary btn-block" type="button" data-toggle="modal" data-target="#upload-modal" data-whatever="@mdo">Upload</button></td>
           `
           +editbutton+
           `
->>>>>>> Stashed changes
           <td><button class="del-reservation btn btn-lg btn-danger btn-block" type="button">Cancel</button></td>
         </tr>`);
         find_room_by_id(value.room_id, 2, key);
@@ -356,7 +340,7 @@ function search_rooms(datein, dateout, num){
             <a class="font-weight-bold">ROOMS LEFT: ` + value.number_of_rooms + `</a>
           </div>
         </div>`;
-        //<a class="btn btn-success text-white" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Details</a>
+        //<a class="btn btn-success text-white" data-toggle="modal" data-target="#upload-modal" data-whatever="@mdo">Details</a>
         rooms.append(cards).fadeIn(500);
         price_pack_fill(value.id, datein, dateout, num);
       });
