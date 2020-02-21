@@ -14,21 +14,15 @@
 
           <ul class="nav flex-column">
             <li class="nav-item">
-              <a class="nav-link active mt-2" href="#" id="dashboard-edit-reservation">
+              <a class="nav-link active mt-2" href="#" id="dashboard-reservation-list">
                 <span data-feather="file-text"></span>
-                Edit reservations <span class="sr-only">(current)</span>
+                Reservations List <span class="sr-only">(current)</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#" id="dashboard-add-room">
                 <span data-feather="file-text"></span>
-                Add room
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#" id="dashboard-cancel-reservation">
-                <span data-feather="file-text"></span>
-                Cancel reservation
+                Add Reservation
               </a>
             </li>
           </ul>
@@ -67,7 +61,7 @@
           <h1 class="h1 mb-3 text-center font-weight-bold title">DASHBOARD</h1>
         </div>
 
-        <h2 id="dashboard-header">Edit reservations</h2>
+        <h2 id="dashboard-header">Reservation List</h2>
         <div class="table-responsive" id="dashboard-table-container">
           <table class="table table-striped table-sm" id="reservation-table">
             <thead>
@@ -78,6 +72,7 @@
                 <th>Price</th>
                 <th>Date-In</th>
                 <th>Date-out</th>
+                <th>Reference Code</th>
                 <th>Status</th>
                 <th></th>
               </tr>
