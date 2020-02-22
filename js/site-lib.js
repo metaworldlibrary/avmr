@@ -76,23 +76,6 @@ function fill_reservations(guestid, action){
       $('#reservations-container').empty();
       var obj = jQuery.parseJSON(data);
       $.each(obj, function(key, value) {
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-        var status, button;
-        if (value.status==1) {
-          status="Approved";
-          button='<button class="edit-reservation btn btn-lg btn-primary btn-block" type="button">Edit</button>';
-        }
-        else {
-          status = "Waiting";
-          button ='<button class="edit-reservation btn btn-lg btn-primary btn-block" type="button" disabled>Edit</button>'
-        }
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
         var status, editbutton;
         if (value.status==1){
           status="Approved";
@@ -102,13 +85,6 @@ function fill_reservations(guestid, action){
           status = "Waiting";
           editbutton = `<td><button class="edit-reservation btn btn-lg btn-primary btn-block" type="button" disabled >Edit</button></td>`;
         } 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
         $('#reservations-container').append(`
         <tr>
           <td id="">`+ value.ID + `</td>
@@ -119,27 +95,11 @@ function fill_reservations(guestid, action){
           <td>`+ value.date_in + `</td>
           <td>`+ value.date_out + `</td>
           <td>`+ status + `</td>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-          <td>`+ button +`</td>
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
           <td>`+ value.reservation_code +`</td>
           <td><button class="upload-reservation btn btn-lg btn-primary btn-block" type="button">Upload</button></td>
           `
           +editbutton+
           `
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
           <td><button class="del-reservation btn btn-lg btn-danger btn-block" type="button">Cancel</button></td>
         </tr>`);
         find_room_by_id(value.room_id, 2, key);
