@@ -84,7 +84,11 @@ function fill_reservations(guestid, action){
         else{
           status = "Waiting";
           editbutton = `<td><button class="edit-reservation btn btn-lg btn-primary btn-block" type="button" disabled >Edit</button></td>`;
+<<<<<<< HEAD
         }
+=======
+        } 
+>>>>>>> design-2
         $('#reservations-container').append(`
         <tr>
           <td id="">`+ value.ID + `</td>
@@ -96,8 +100,15 @@ function fill_reservations(guestid, action){
           <td>`+ value.date_out + `</td>
           <td>`+ status + `</td>
           <td>`+ value.reservation_code +`</td>
+<<<<<<< HEAD
           <td><button class="upload-reservation btn btn-lg btn-primary btn-block" type="button" data-toggle="modal" data-target="#upload-modal" data-whatever="@mdo">Upload</button></td>
           `+editbutton+`
+=======
+          <td><button class="upload-reservation btn btn-lg btn-primary btn-block" type="button">Upload</button></td>
+          `
+          +editbutton+
+          `
+>>>>>>> design-2
           <td><button class="del-reservation btn btn-lg btn-danger btn-block" type="button">Cancel</button></td>
         </tr>`);
         find_room_by_id(value.room_id, 2, key);
