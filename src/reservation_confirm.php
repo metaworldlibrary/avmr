@@ -24,7 +24,7 @@
 		$reference = getToken(10);
 		//preparing the query and executing the query, first line is the template and the ? will be replaced
 		$stmt = $mysqli->prepare ("INSERT INTO reservationqueue (guest_id, room_id, date_in, date_out, reference_code) VALUES (?,?,?,?,?)");
-	  $stmt->bind_param("iiss", $guest_id, $room_id, $datein, $dateout, $reference);  //replacing the ? in the query, first param are the type (s for string)
+	  $stmt->bind_param("iisss", $guest_id, $room_id, $datein, $dateout, $reference);  //replacing the ? in the query, first param are the type (s for string)
 		$stmt->execute(); //executing the query
 	  return 1;
 	}

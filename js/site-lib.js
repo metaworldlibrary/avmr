@@ -1,70 +1,7 @@
 //FUNCTIONS
 
-//user login
-function user_login(user, pass, action){
-  $.post("src/login.php", //create a POST request
-  {
-    login_username: user, //sending the variable with the username through POST
-    login_password: pass //sending the variable with the password through POST
-  },
-  function(data){ //If the POST request was successful, this function is executed.
-    if (data == "username") { //checking the data, 0= failed login
-      alert("Username not found");
-      return;
-    }
-    else if (data=="password"){
-      alert("The password didn't match");
-      return;
-      }
-    else {
-      var obj = jQuery.parseJSON(data);
-      switch (action) {
-        case 1: //Creating account and login
-          check_session(action);
-          break;
-        default: //normal login
-          check_session(0);
-          login = obj.ID;
-          password = obj.password;
-          fill_confirm_view(obj);
-          fill_dashboard_view(obj);
-      }
-    }
-  });
-}//user
 
-function check_session(action){
-  $.post("src/check_session.php", function(data){
-    if(data!=0){
-      var obj = jQuery.parseJSON(data);
-      switch (action) {
-        case 1://reserving room
-          reservation_confirm(obj.user_id, room_id, action);
-          break;
-        case 2://updating room
-          reservation_confirm(obj.user_id, room_id, action, reservationID);
-          break;
-        case 4://
-          find_user_by_id(obj.user_id, 2);
-          break;
-        case 5:
-          find_user_by_id(obj.user_id, 3);
-          break;
-        case 6:
-          find_user_by_id(obj.user_id, 4);
-          break;
-        default:
-          check_login_ui(obj);
-          fill_reservations(obj.user_id, action);
-          find_user_by_id(obj.user_id, 1);
-      }
-    }
-    else {
-      session_status= check_logout_ui();
-      return session_status;
-    }
-  });
-}//check session end
+
 
 function fill_reservations(guestid, action){
   $.post("src/reservation_list.php", {
@@ -99,11 +36,6 @@ function fill_reservations(guestid, action){
 
           <td><button class="upload-reservation btn btn-lg btn-primary btn-block" type="button" data-toggle="modal" data-target="#upload-modal" data-whatever="@mdo">Upload</button></td>
           `+editbutton+`
-
-          <td><button class="upload-reservation btn btn-lg btn-primary btn-block" type="button">Upload</button></td>
-          `
-          +editbutton+
-          `
           <td><button class="del-reservation btn btn-lg btn-danger btn-block" type="button">Cancel</button></td>
         </tr>`);
         find_room_by_id(value.room_id, 2, key);
@@ -150,61 +82,7 @@ function find_user_by_id(userID, action, key){
     });
   }
 
-//creating reservation
-function reservation_confirm(guestid, roomid, action, reservationID){
-  switch (action) {
-    case 1:
-      $.post("src/reservation_confirm.php",
-      {
-        guest_id: guestid,
-        room_id: roomid,
-        date_in: $("#room_checkindate").val(),
-        date_out: $("#room_checkoutdate").val()
-      },
-      function(bookdata){
-        if (bookdata==1) {
-          alert("Reservation succeed");
-          clear_all();
-          $('#main-content').carousel(6);
-          $("#main-content").carousel({interval: 0});
-          $('#main-content').carousel('pause');
-        }
-        else {
-          alert("We couldn't process your reservation request, please try again.");
-          $('#main-content').carousel(0);
-          $("#main-content").carousel({interval: 0});
-          $('#main-content').carousel('pause');
-        }
-      });
-      break;
-    case 2:
-      $.post("src/reservation_update.php",
-      {
-        reservation_id: reservationID,
-        room_id: roomid,
-        date_in: $("#room_checkindate").val(),
-        date_out: $("#room_checkoutdate").val()
-      },
-      function(bookdata){
-        if (bookdata==1) {
-          alert("Reservation update succeed");
-          clear_all();
-          $('#main-content').carousel(6);
-          $("#main-content").carousel({interval: 0});
-          $('#main-content').carousel('pause');
-        }
-        else {
-          alert("We couldn't process your update request, please try again.");
-          $('#main-content').carousel(0);
-          $("#main-content").carousel({interval: 0});
-          $('#main-content').carousel('pause');
-        }
-      });
-      break;
-  }
-  submit_mode = 0;
-  check_session(submit_mode);
-}//creating reservation end
+
 
 //login ui check
 function check_login_ui(myCallback){
@@ -237,7 +115,7 @@ function check_logout_ui(){
 
 //clear page fields
 function clear_all(num){
-  $('#rooms-container').empty();
+  $('#room-type-table').empty();
   $("#confirm-firstname").empty();
   $("#confirm-lastname").empty();
   $("#confirm-email").empty();
