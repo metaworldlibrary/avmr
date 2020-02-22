@@ -19,6 +19,7 @@ if(session_id() == ''){
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/core.css">
   <link rel="stylesheet" href="css/admin.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker3.min.css">
 </head>
 
 <body class="site">
@@ -51,6 +52,16 @@ if(session_id() == ''){
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   <!-- Custom JS/JQuery Script-->
   <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+  <!--Datepicker control-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+  <!---Moment.js-->
+<<<<<<< Updated upstream
+  <scrip src="https://raw.githubusercontent.com/moment/moment/master/moment.js"></script>
+=======
+  <script src="js/moment.js"></script>
+>>>>>>> Stashed changes
+  
+  
   <script>
   feather.replace()
   </script>

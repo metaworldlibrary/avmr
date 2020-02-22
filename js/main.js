@@ -64,15 +64,39 @@ $(document).ready(function () {
 
   //Room cards button
   $('#rooms-container').on('click', '.btn', function(){
-		//room_id = event.target.id;
+		room_id = event.target.id;
     $('#sign-up-section').fadeIn(500).siblings().hide();
+    $("#confirmation-card-img").attr("src", $("#room-picture-"+ room_id).attr("src"));
+    $("#confirmation-card-title").text($("#room-title-"+ room_id).text());
+    $("#confirmation-card-desc").text($("#room-desc-"+ room_id).text());
+    $("#confirmation-card-price").text($("#opt-"+ room_id).text());
+    $("#confirmation-card-price").val($("#opt-"+ room_id).val());
 	});//Rooms card button end
 
-  //Room cards button
+  $('#signup-create').on('click', function(){
+		login = $("#signup-email").val();
+		password = $("#signup-password").val();
+		$("#confirm-firstname").val($("#signup-firstname").val());
+		$("#confirm-lastname").val($("#signup-lastname").val());
+		$("#confirm-email").val($("#signup-email").val());
+		$("#confirm-NoMobile").val($("#signup-NoMobile").val());
+		$("#confirm-NoLandline").val($("#signup-NoLandline").val());
+		$("#confirm-username").val($("#signup-username").val());
+		$('#confirmation').fadeIn(500).siblings().hide();
+		submit_mode = 1;
+	});//send contact info to confirmation page end
+
+
   $('#reservations-container').on('click', '.upload-reservation', function(){
     //room_id = event.target.id;
-    var button = $(event.relatedTarget) // Button that triggered the modal
-  });//room cards end
+    //var button = $(event.relatedTarget) // Button that triggered the modal
+  });
+
+  $('#confirm-create').on('click', function(){
+    $("#confirm-create").attr("disabled", true);
+      $.post("src/logout.php");
+        signup_confirm(1);
+  });////Confirmation page
 
   //upload file
   $('#file-upload-btn').on('click', function(){
@@ -88,10 +112,28 @@ $(document).ready(function () {
         console.log("File Uploaded");
       }
     });
-  }); //upload file end
-  $("#file-upload-form").submit(function(e) {
 
-  });
+  }); //upload file end
 
   ////////////////////////////////////////////////////////////////////
+
+
+  function signup_confirm(action){
+    //creating new account
+    $.post("src/signup.php",{
+      signup_firstname: $("#signup-firstname").val(),
+      signup_lastname:  $("#signup-lastname").val(),
+      signup_email: login,
+      signup_username: $("#signup-username").val(),
+      signup_password: password,
+      signup_mobile: $("#signup-NoMobile").val(),
+    },
+    function(){
+      switch (action) {
+        case 1:
+          user_login(login, password, -1, action);
+          break;
+      }
+    });
+  }//sign up confirm end
 });

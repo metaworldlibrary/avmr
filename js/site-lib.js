@@ -25,7 +25,7 @@ function user_login(user, pass, action){
         default: //normal login
           check_session(0);
           login = obj.ID;
-          password = obj.staff_pass;
+          password = obj.password;
           fill_confirm_view(obj);
           fill_dashboard_view(obj);
       }
@@ -66,7 +66,6 @@ function check_session(action){
   });
 }//check session end
 
-//fill reservation tables
 function fill_reservations(guestid, action){
   $.post("src/reservation_list.php", {
     user_id:guestid
@@ -85,7 +84,8 @@ function fill_reservations(guestid, action){
           status = "Waiting";
           editbutton = `<td><button class="edit-reservation btn btn-lg btn-primary btn-block" type="button" disabled >Edit</button></td>`;
         }
-        $('#reservations-container').append(`
+
+      $('#reservations-container').append(`
         <tr>
           <td id="">`+ value.ID + `</td>
           <td id="reservation-room-name-`+key+`"></td>
@@ -97,6 +97,8 @@ function fill_reservations(guestid, action){
           <td>`+ status + `</td>
           <td>`+ value.reservation_code +`</td>
           <td><button class="upload-reservation btn btn-lg btn-primary btn-block" type="button" data-toggle="modal" data-target="#upload-modal" data-whatever="@mdo">Upload</button></td>
+          `+editbutton+`
+          <td><button class="upload-reservation btn btn-lg btn-primary btn-block" type="button">Upload</button></td>
           `
           +editbutton+
           `
@@ -105,9 +107,10 @@ function fill_reservations(guestid, action){
         find_room_by_id(value.room_id, 2, key);
         find_user_by_id(value.guest_id, 1, key);
       });
-    }
+    };
   });
-}//fill reservation tables end
+}
+//fill reservation tables end
 
 //fill confirmation data
 function fill_confirm_view(myCallback){
@@ -115,7 +118,6 @@ function fill_confirm_view(myCallback){
   $("#confirm-lastname").val(myCallback.name_last);
   $("#confirm-email").val(myCallback.email);
   $("#confirm-NoMobile").val(myCallback.no_mobile);
-  $("#confirm-NoLandline").val(myCallback.no_landline);
   $("#confirm-username").val(myCallback.username);
 }//fill confirmation data end
 
@@ -322,22 +324,22 @@ function search_rooms(datein, dateout, num){
       $.each(obj, function(key, value) {
         cards =
         `<div class="card">
-          <img class="card-img-top" src="` + value.card_picture + `" alt="Card image cap">
+          <img class="card-img-top" id="room-picture-`+ value.id +`" src="` + value.card_picture + `" alt="Card image cap">
           <div class="card-body">
-            <h5 class="card-title">` + value.room_name + `</h5>
-            <p class="card-text">` + value.room_type_desc + `</p>
+            <h5 class="card-title" id="room-title-`+ value.id +`">` + value.room_name + `</h5>
+            <p class="card-text" id="room-desc-`+ value.id +`">` + value.room_type_desc + `</p>
             <div class="input-group">
               <select class="custom-select" id="price-package-`+ value.id +`">
 
               </select>
               <div class="input-group-append">
-                <button class="btn btn-success" type="button">Book</button>
+                <button class="btn btn-success" type="button" id="` + value.id + `">Book</button>
               </div>
             </div>
           </div>
           <div class="card-footer text-center">
             <input type="hidden" value="` + value.id + `">
-            <a class="font-weight-bold">ROOMS LEFT: ` + value.number_of_rooms + `</a>
+            <a class="font-weight-bold" id="rleft-`+ value.id +`">ROOMS LEFT: ` + value.number_of_rooms + `</a>
           </div>
         </div>`;
         //<a class="btn btn-success text-white" data-toggle="modal" data-target="#upload-modal" data-whatever="@mdo">Details</a>
@@ -364,13 +366,14 @@ function price_pack_fill(typeid, datein, dateout, num){
     $.each(obj, function(key, value) {
       var option;
       if (key==0)
-        option= '<option selected value="'+value.price+'">'+value.max_people+' people for $'+value.price+'</option>';
+        option= '<option id="opt-'+typeid+'" selected value="'+value.price+'">'+value.max_people+' people for $'+value.price+'</option>';
       else
-        option= '<option value="'+value.price+'">'+value.max_people+' people for $'+value.price+'</option>';
+        option= '<option id="opt-'+typeid+'" value="'+value.price+'">'+value.max_people+' people for $'+value.price+'</option>';
       $('#price-package-'+ typeid).append(option);
     });
-
   });
 }
+
+
 
 ////////////////////////////////////////////////////////////////////////////////
