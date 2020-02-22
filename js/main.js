@@ -116,7 +116,7 @@ $(document).ready(function () {
   }); //upload file end
 
   ////////////////////////////////////////////////////////////////////
-<<<<<<< HEAD
+
 
 
   function signup_confirm(action){
@@ -137,10 +137,10 @@ $(document).ready(function () {
       }
     });
   }//sign up confirm end
-=======
+
   var date1 = new Date();
   date1.setDate(date1.getDate()+1);
-  
+
   var d = new Date();
   var now = new Date(date1.getFullYear(), date1.getMonth(), date1.getDate()+1);
   $('#startDate').datepicker('update', now);
@@ -160,5 +160,5 @@ $(document).ready(function () {
       autoclose: true
   })
 
->>>>>>> 5364ccb5b000a6d7bcae1a0bb1f6f0c4d7be4bd5
+
 });

@@ -55,13 +55,13 @@ if(session_id() == ''){
   <!--Datepicker control-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
   <!---Moment.js-->
-<<<<<<< Updated upstream
+
   <scrip src="https://raw.githubusercontent.com/moment/moment/master/moment.js"></script>
-=======
+
   <script src="js/moment.js"></script>
->>>>>>> Stashed changes
-  
-  
+
+
+
   <script>
   feather.replace()
   </script>

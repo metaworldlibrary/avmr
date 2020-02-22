@@ -83,21 +83,9 @@ function fill_reservations(guestid, action){
         else{
           status = "Waiting";
           editbutton = `<td><button class="edit-reservation btn btn-lg btn-primary btn-block" type="button" disabled >Edit</button></td>`;
-<<<<<<< Updated upstream
-<<<<<<< HEAD
         }
-<<<<<<< HEAD
 
       $('#reservations-container').append(`
-=======
-=======
-        } 
->>>>>>> design-2
-=======
-        } 
->>>>>>> Stashed changes
-        $('#reservations-container').append(`
->>>>>>> 5364ccb5b000a6d7bcae1a0bb1f6f0c4d7be4bd5
         <tr>
           <td id="">`+ value.ID + `</td>
           <td id="reservation-room-name-`+key+`"></td>
@@ -108,39 +96,21 @@ function fill_reservations(guestid, action){
           <td>`+ value.date_out + `</td>
           <td>`+ status + `</td>
           <td>`+ value.reservation_code +`</td>
-<<<<<<< Updated upstream
-<<<<<<< HEAD
+
           <td><button class="upload-reservation btn btn-lg btn-primary btn-block" type="button" data-toggle="modal" data-target="#upload-modal" data-whatever="@mdo">Upload</button></td>
           `+editbutton+`
-<<<<<<< HEAD
-=======
-=======
-=======
->>>>>>> Stashed changes
->>>>>>> 5364ccb5b000a6d7bcae1a0bb1f6f0c4d7be4bd5
+
           <td><button class="upload-reservation btn btn-lg btn-primary btn-block" type="button">Upload</button></td>
           `
           +editbutton+
           `
-<<<<<<< Updated upstream
->>>>>>> design-2
-=======
->>>>>>> Stashed changes
           <td><button class="del-reservation btn btn-lg btn-danger btn-block" type="button">Cancel</button></td>
         </tr>`);
         find_room_by_id(value.room_id, 2, key);
         find_user_by_id(value.guest_id, 1, key);
       });
-    };
-<<<<<<< HEAD
+    }
   });
-=======
-<<<<<<< Updated upstream
-  }
-=======
-  })
->>>>>>> Stashed changes
->>>>>>> 5364ccb5b000a6d7bcae1a0bb1f6f0c4d7be4bd5
 }
 //fill reservation tables end
 
