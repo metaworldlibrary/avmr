@@ -106,17 +106,6 @@ $(document).ready(function () {
       startDate: date1,
       autoclose: true
   }).on("changeDate", function(e){
-<<<<<<< Updated upstream
-    var d= new Date(e.date);
-    console.log (d.getDate())
-
-    $("#room_checkoutdate").datepicker("setStartDate", e.date);
-    $('#room_checkoutdate').datepicker('update', e.date);
-    console.log (e);
-  });
-
-  $('#room_checkoutdate').datepicker({
-=======
     var d = new Date(moment(e.date).add(1, 'd'));
     $("#room_checkoutdate").datepicker("setStartDate", d);
     $('#room_checkoutdate').datepicker('update', d);
@@ -124,7 +113,6 @@ $(document).ready(function () {
 
   $('#room_checkoutdate').datepicker({
       setStartDate: '1d',
->>>>>>> Stashed changes
       autoclose: true
   })
 
