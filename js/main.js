@@ -45,9 +45,9 @@ $(document).ready(function () {
   $('#nav-db-btn').on('click', function(){
     $('#dashboard-section').fadeIn(500).siblings().hide();
     submit_mode=2;
-		check_session(0);
+		//check_session(0);
   });
-  
+
 ////DASHBOARD REDIRECTS
 $('#dashboard-add-room').on('click', function(){
   $('#book-section').fadeIn(500).siblings().hide();
@@ -56,7 +56,7 @@ $('#dashboard-add-room').on('click', function(){
 $('#dashboard-reservation-list').on('click', function(){
     $('#dashboard-section').fadeIn(500).siblings().hide();
   });
-  
+
 
   $('#dashboard-edit-info').on('click', function(){
     $('#dashboard-account-section').fadeIn(500).siblings().hide();
@@ -72,7 +72,7 @@ $('#dashboard-reservation-list').on('click', function(){
     $('#dashboard-account-section').fadeIn(500).siblings().hide();
     $('#dashboard-password-container').fadeIn(500).siblings().hide();
   });
-  
+
 
   ////////////////////////////////////////////////////////////////////
 
@@ -92,6 +92,12 @@ $('#dashboard-reservation-list').on('click', function(){
 		$.post("src/logout.php");
     $('#home-section').fadeIn(500).siblings().hide();
 	});//sign off from navbar end
+
+  $('#sign-out2').on('click', function(){
+		check_logout_ui();
+		clear_all(1);
+		$.post("src/logout.php");
+  });
 
   //Room search
 	$('#room_search').on('click', function(){
@@ -320,4 +326,3 @@ $('#dashboard-reservation-list').on('click', function(){
 
 
 });
-

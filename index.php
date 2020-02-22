@@ -2,7 +2,7 @@
 if(session_id() == ''){
   session_start();
 }
-var_dump($_SESSION);
+//var_dump($_SESSION);
 ?>
 <!doctype html>
 <html lang="en">
@@ -39,6 +39,7 @@ var_dump($_SESSION);
       include "views/sign-in.html";
       include "views/dashboard.html";
     ?>
+  </div>
   <!--Content-->
 
   <?php include "views/footer.html";?>
