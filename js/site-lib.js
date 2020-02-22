@@ -78,6 +78,7 @@ function fill_reservations(guestid, action){
       $.each(obj, function(key, value) {
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         var status, button;
         if (value.status==1) {
           status="Approved";
@@ -90,6 +91,8 @@ function fill_reservations(guestid, action){
 =======
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
         var status, editbutton;
         if (value.status==1){
           status="Approved";
@@ -100,6 +103,9 @@ function fill_reservations(guestid, action){
           editbutton = `<td><button class="edit-reservation btn btn-lg btn-primary btn-block" type="button" disabled >Edit</button></td>`;
         } 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -115,8 +121,11 @@ function fill_reservations(guestid, action){
           <td>`+ status + `</td>
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
           <td>`+ button +`</td>
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
           <td>`+ value.reservation_code +`</td>
@@ -125,6 +134,9 @@ function fill_reservations(guestid, action){
           +editbutton+
           `
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
