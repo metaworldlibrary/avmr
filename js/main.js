@@ -94,4 +94,38 @@ $(document).ready(function () {
   });
 
   ////////////////////////////////////////////////////////////////////
+  var date1 = new Date();
+  date1.setDate(date1.getDate()+1);
+  
+  var d = new Date();
+  var now = new Date(date1.getFullYear(), date1.getMonth(), date1.getDate()+1);
+  $('#startDate').datepicker('update', now);
+
+
+  $('#room_checkindate').datepicker({
+      startDate: date1,
+      autoclose: true
+  }).on("changeDate", function(e){
+<<<<<<< Updated upstream
+    var d= new Date(e.date);
+    console.log (d.getDate())
+
+    $("#room_checkoutdate").datepicker("setStartDate", e.date);
+    $('#room_checkoutdate').datepicker('update', e.date);
+    console.log (e);
+  });
+
+  $('#room_checkoutdate').datepicker({
+=======
+    var d = new Date(moment(e.date).add(1, 'd'));
+    $("#room_checkoutdate").datepicker("setStartDate", d);
+    $('#room_checkoutdate').datepicker('update', d);
+  });
+
+  $('#room_checkoutdate').datepicker({
+      setStartDate: '1d',
+>>>>>>> Stashed changes
+      autoclose: true
+  })
+
 });

@@ -97,17 +97,16 @@ function fill_reservations(guestid, action){
           <td>`+ status + `</td>
           <td>`+ value.reservation_code +`</td>
           <td><button class="upload-reservation btn btn-lg btn-primary btn-block" type="button" data-toggle="modal" data-target="#upload-modal" data-whatever="@mdo">Upload</button></td>
-          `
-          +editbutton+
-          `
+          `+editbutton+`
           <td><button class="del-reservation btn btn-lg btn-danger btn-block" type="button">Cancel</button></td>
         </tr>`);
         find_room_by_id(value.room_id, 2, key);
         find_user_by_id(value.guest_id, 1, key);
       });
-    }
-  });
-}//fill reservation tables end
+    };
+  }
+}
+//fill reservation tables end
 
 //fill confirmation data
 function fill_confirm_view(myCallback){
