@@ -1,8 +1,4 @@
 //FUNCTIONS
-
-
-
-
 function fill_reservations(guestid, action){
   $.post("src/reservation_list.php", {
     user_id:guestid
@@ -82,8 +78,6 @@ function find_user_by_id(userID, action, key){
     });
   }
 
-
-
 //login ui check
 function check_login_ui(myCallback){
   $('#nav-signout-btn').show();
@@ -100,6 +94,7 @@ function check_login_ui(myCallback){
   $('#login_username2').val(myCallback.email);
   $('#sign-out2').show();
 }//login ui check end
+
 
 //logout ui check
 function check_logout_ui(){
@@ -120,30 +115,28 @@ function clear_all(num){
   $("#confirm-lastname").empty();
   $("#confirm-email").empty();
   $("#confirm-NoMobile").empty();
-  $("#confirm-NoLandline").empty();
   $("#confirm-username").empty();
 
-  $('#confirm-card-title').empty();
-  $('#confirm-card-description').empty();
-  $('#confirm-card-price').empty();
-  $('#confirm-card-numpeople').empty();
+  $('#confirmation-card-title').empty();
+  $('#confirmation-card-desc').empty();
+  $('#confirmation-card-price').empty();
+  $('#confirmation-card-img').empty();
 
-  $("#signup-firstname").empty(),
-  $("#signup-lastname").empty(),
-  $("#signup-email").empty(),
-  $("#signup-username").empty(),
-  $("#signup-password").empty(),
-  $("#signup-repassword").empty(),
-  $("#signup-NoMobile").empty(),
-  $("#signup-NoLandline").empty()
+  $("#signup-firstname").empty();
+  $("#signup-lastname").empty();
+  $("#signup-email").empty();
+  $("#signup-username").empty();
+  $("#signup-password").empty();
+  $("#signup-repassword").empty();
+  $("#signup-NoMobile").empty();
   if (num==1) {
-    $("#reservations-container").empty()
-    $("#dashboard-firstname").empty()
-    $("#dashboard-lastname").empty()
-    $("#dashboard-phone").empty()
-    $("#dashboard-mobile").empty()
-    $("#dashboard-credentials-username").empty()
-    $("#dashboard-credentials-email").empty()
+    $("#reservations-container").empty();
+    $("#dashboard-firstname").empty();
+    $("#dashboard-lastname").empty();
+    $("#dashboard-phone").empty();
+    $("#dashboard-mobile").empty();
+    $("#dashboard-credentials-username").empty();
+    $("#dashboard-credentials-email").empty();
   }
 }//clear page fields
 

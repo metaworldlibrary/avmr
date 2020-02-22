@@ -17,6 +17,8 @@ $(document).ready(function () {
   });
 
   $('#nav-book').on('click', function(){
+    submit_mode = 1;
+    $("#book-title").text("CREATING RESERVATION");
     $('#book-section').fadeIn(500).siblings().hide();
   });
 
@@ -33,6 +35,8 @@ $(document).ready(function () {
   });
 
   $('#nav-book-btn').on('click', function(){
+    submit_mode = 1;
+    $("#book-title").text("CREATING RESERVATION");
     $('#book-section').fadeIn(500).siblings().hide();
   });
 
@@ -42,25 +46,35 @@ $(document).ready(function () {
 
   $('#nav-db-btn').on('click', function(){
     $('#dashboard-section').fadeIn(500).siblings().hide();
+    submit_mode=2;
   });
   ////////////////////////////////////////////////////////////////////
 
   //CLICKS
   $("#login-btn").click(function() { //When clicking "Sign in" in the login form.
     user_login($("#login_username").val(), $("#login_password").val(), 0);
+    $('#dashboard-section').fadeIn(500).siblings().hide();
   }); //login from navbar end
 
   $("#login-btn2").click(function() { //When clicking "Sign in" in the login form.
+    event.preventDefault();
 		user_login($("#login_username2").val(), $("#login_password2").val(), 0);
     $('#confirmation').fadeIn(500).siblings().hide();
 	});//login from booking end
 
   $('#nav-signout-btn').on('click', function(){
-		check_logout_ui();
+    check_logout_ui();
 		clear_all(1);
 		$.post("src/logout.php");
     $('#home-section').fadeIn(500).siblings().hide();
 	});//sign off from navbar end
+
+  //sign off from booking
+	$('#sign-out2').on('click', function(){
+		check_logout_ui();
+		$.post("src/logout.php");
+    $('#form-signup-section').fadeIn(500).siblings().hide();
+	});//sign off from booking end
 
   //Room search
 	$('#room_search').on('click', function(){
