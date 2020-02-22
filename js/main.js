@@ -17,6 +17,8 @@ $(document).ready(function () {
   });
 
   $('#nav-book').on('click', function(){
+    submit_mode = 1;
+    $("#book-title").text("CREATING RESERVATION");
     $('#book-section').fadeIn(500).siblings().hide();
   });
 
@@ -42,7 +44,36 @@ $(document).ready(function () {
 
   $('#nav-db-btn').on('click', function(){
     $('#dashboard-section').fadeIn(500).siblings().hide();
+    submit_mode=2;
+		check_session(0);
   });
+  
+////DASHBOARD REDIRECTS
+$('#dashboard-add-room').on('click', function(){
+  $('#book-section').fadeIn(500).siblings().hide();
+});
+
+$('#dashboard-reservation-list').on('click', function(){
+    $('#dashboard-section').fadeIn(500).siblings().hide();
+  });
+  
+
+  $('#dashboard-edit-info').on('click', function(){
+    $('#dashboard-account-section').fadeIn(500).siblings().hide();
+    $('#dashboard-info-container').fadeIn(500).siblings().hide();
+  });
+
+  $('#dashboard-edit-username').on('click', function(){
+    $('#dashboard-account-section').fadeIn(500).siblings().hide();
+    $('#dashboard-credentials-container').fadeIn(500).siblings().hide();
+  });
+
+  $('#dashboard-edit-password').on('click', function(){
+    $('#dashboard-account-section').fadeIn(500).siblings().hide();
+    $('#dashboard-password-container').fadeIn(500).siblings().hide();
+  });
+  
+
   ////////////////////////////////////////////////////////////////////
 
   //CLICKS
@@ -121,6 +152,7 @@ $(document).ready(function () {
       data : postData,
       success:function(data){
         console.log("File Uploaded");
+        $('#upload-modal').modal('hide');
       }
     });
 
@@ -284,7 +316,8 @@ $(document).ready(function () {
   $('#room_checkoutdate').datepicker({
       setStartDate: '1d',
       autoclose: true
-  })
+  });
 
 
 });
+
