@@ -1,72 +1,4 @@
 //FUNCTIONS
-
-//user login
-function user_login(user, pass, action){
-  $.post("src/login.php", //create a POST request
-  {
-    login_username: user, //sending the variable with the username through POST
-    login_password: pass //sending the variable with the password through POST
-  },
-  function(data){ //If the POST request was successful, this function is executed.
-    if (data == "username") { //checking the data, 0= failed login
-      alert("Username not found");
-      return;
-    }
-    else if (data=="password"){
-      alert("The password didn't match");
-      return;
-      }
-    else {
-      var obj = jQuery.parseJSON(data);
-      switch (action) {
-        case 1: //Creating account and login
-          check_session(action);
-          break;
-        default: //normal login
-          check_session(0);
-          login = obj.ID;
-          password = obj.staff_pass;
-          fill_confirm_view(obj);
-          fill_dashboard_view(obj);
-      }
-    }
-  });
-}//user
-
-function check_session(action){
-  $.post("src/check_session.php", function(data){
-    if(data!=0){
-      var obj = jQuery.parseJSON(data);
-      switch (action) {
-        case 1://reserving room
-          reservation_confirm(obj.user_id, room_id, action);
-          break;
-        case 2://updating room
-          reservation_confirm(obj.user_id, room_id, action, reservationID);
-          break;
-        case 4://
-          find_user_by_id(obj.user_id, 2);
-          break;
-        case 5:
-          find_user_by_id(obj.user_id, 3);
-          break;
-        case 6:
-          find_user_by_id(obj.user_id, 4);
-          break;
-        default:
-          check_login_ui(obj);
-          fill_reservations(obj.user_id, action);
-          find_user_by_id(obj.user_id, 1);
-      }
-    }
-    else {
-      session_status= check_logout_ui();
-      return session_status;
-    }
-  });
-}//check session end
-
-//fill reservation tables
 function fill_reservations(guestid, action){
   $.post("src/reservation_list.php", {
     user_id:guestid
@@ -80,12 +12,11 @@ function fill_reservations(guestid, action){
         if (value.status==1){
           status="Approved";
           editbutton = `<td><button class="edit-reservation btn btn-lg btn-primary btn-block" type="button">Edit</button></td>`;
-        } 
+        }
         else{
           status = "Waiting";
           editbutton = `<td><button class="edit-reservation btn btn-lg btn-primary btn-block" type="button" disabled >Edit</button></td>`;
-        } 
-        
+        }
         $('#reservations-container').append(`
         <tr>
           <td id="">`+ value.ID + `</td>
@@ -97,10 +28,9 @@ function fill_reservations(guestid, action){
           <td>`+ value.date_out + `</td>
           <td>`+ status + `</td>
           <td>`+ value.reservation_code +`</td>
-          <td><button class="upload-reservation btn btn-lg btn-primary btn-block" type="button">Upload</button></td>
-          `
-          +editbutton+
-          `
+
+          <td><button class="upload-reservation btn btn-lg btn-primary btn-block" type="button" data-toggle="modal" data-target="#upload-modal" data-whatever="@mdo">Upload</button></td>
+          `+editbutton+`
           <td><button class="del-reservation btn btn-lg btn-danger btn-block" type="button">Cancel</button></td>
         </tr>`);
         find_room_by_id(value.room_id, 2, key);
@@ -108,7 +38,8 @@ function fill_reservations(guestid, action){
       });
     }
   });
-}//fill reservation tables end
+}
+//fill reservation tables end
 
 //fill confirmation data
 function fill_confirm_view(myCallback){
@@ -116,7 +47,6 @@ function fill_confirm_view(myCallback){
   $("#confirm-lastname").val(myCallback.name_last);
   $("#confirm-email").val(myCallback.email);
   $("#confirm-NoMobile").val(myCallback.no_mobile);
-  $("#confirm-NoLandline").val(myCallback.no_landline);
   $("#confirm-username").val(myCallback.username);
 }//fill confirmation data end
 
@@ -147,62 +77,6 @@ function find_user_by_id(userID, action, key){
     });
   }
 
-//creating reservation
-function reservation_confirm(guestid, roomid, action, reservationID){
-  switch (action) {
-    case 1:
-      $.post("src/reservation_confirm.php",
-      {
-        guest_id: guestid,
-        room_id: roomid,
-        date_in: $("#room_checkindate").val(),
-        date_out: $("#room_checkoutdate").val()
-      },
-      function(bookdata){
-        if (bookdata==1) {
-          alert("Reservation succeed");
-          clear_all();
-          $('#main-content').carousel(6);
-          $("#main-content").carousel({interval: 0});
-          $('#main-content').carousel('pause');
-        }
-        else {
-          alert("We couldn't process your reservation request, please try again.");
-          $('#main-content').carousel(0);
-          $("#main-content").carousel({interval: 0});
-          $('#main-content').carousel('pause');
-        }
-      });
-      break;
-    case 2:
-      $.post("src/reservation_update.php",
-      {
-        reservation_id: reservationID,
-        room_id: roomid,
-        date_in: $("#room_checkindate").val(),
-        date_out: $("#room_checkoutdate").val()
-      },
-      function(bookdata){
-        if (bookdata==1) {
-          alert("Reservation update succeed");
-          clear_all();
-          $('#main-content').carousel(6);
-          $("#main-content").carousel({interval: 0});
-          $('#main-content').carousel('pause');
-        }
-        else {
-          alert("We couldn't process your update request, please try again.");
-          $('#main-content').carousel(0);
-          $("#main-content").carousel({interval: 0});
-          $('#main-content').carousel('pause');
-        }
-      });
-      break;
-  }
-  submit_mode = 0;
-  check_session(submit_mode);
-}//creating reservation end
-
 //login ui check
 function check_login_ui(myCallback){
   $('#nav-signout-btn').show();
@@ -220,6 +94,7 @@ function check_login_ui(myCallback){
   $('#sign-out2').show();
 }//login ui check end
 
+
 //logout ui check
 function check_logout_ui(){
   $('#nav-signout-btn').hide();
@@ -234,35 +109,33 @@ function check_logout_ui(){
 
 //clear page fields
 function clear_all(num){
-  $('#rooms-container').empty();
+  $('#room-type-table').empty();
   $("#confirm-firstname").empty();
   $("#confirm-lastname").empty();
   $("#confirm-email").empty();
   $("#confirm-NoMobile").empty();
-  $("#confirm-NoLandline").empty();
   $("#confirm-username").empty();
 
-  $('#confirm-card-title').empty();
-  $('#confirm-card-description').empty();
-  $('#confirm-card-price').empty();
-  $('#confirm-card-numpeople').empty();
+  $('#confirmation-card-title').empty();
+  $('#confirmation-card-desc').empty();
+  $('#confirmation-card-price').empty();
+  $('#confirmation-card-img').empty();
 
-  $("#signup-firstname").empty(),
-  $("#signup-lastname").empty(),
-  $("#signup-email").empty(),
-  $("#signup-username").empty(),
-  $("#signup-password").empty(),
-  $("#signup-repassword").empty(),
-  $("#signup-NoMobile").empty(),
-  $("#signup-NoLandline").empty()
+  $("#signup-firstname").empty();
+  $("#signup-lastname").empty();
+  $("#signup-email").empty();
+  $("#signup-username").empty();
+  $("#signup-password").empty();
+  $("#signup-repassword").empty();
+  $("#signup-NoMobile").empty();
   if (num==1) {
-    $("#reservations-container").empty()
-    $("#dashboard-firstname").empty()
-    $("#dashboard-lastname").empty()
-    $("#dashboard-phone").empty()
-    $("#dashboard-mobile").empty()
-    $("#dashboard-credentials-username").empty()
-    $("#dashboard-credentials-email").empty()
+    $("#reservations-container").empty();
+    $("#dashboard-firstname").empty();
+    $("#dashboard-lastname").empty();
+    $("#dashboard-phone").empty();
+    $("#dashboard-mobile").empty();
+    $("#dashboard-credentials-username").empty();
+    $("#dashboard-credentials-email").empty();
   }
 }//clear page fields
 
@@ -324,25 +197,25 @@ function search_rooms(datein, dateout, num){
       $.each(obj, function(key, value) {
         cards =
         `<div class="card">
-          <img class="card-img-top" src="` + value.card_picture + `" alt="Card image cap">
+          <img class="card-img-top" id="room-picture-`+ value.id +`" src="` + value.card_picture + `" alt="Card image cap">
           <div class="card-body">
-            <h5 class="card-title">` + value.room_name + `</h5>
-            <p class="card-text">` + value.room_type_desc + `</p>
+            <h5 class="card-title" id="room-title-`+ value.id +`">` + value.room_name + `</h5>
+            <p class="card-text" id="room-desc-`+ value.id +`">` + value.room_type_desc + `</p>
             <div class="input-group">
               <select class="custom-select" id="price-package-`+ value.id +`">
 
               </select>
               <div class="input-group-append">
-                <button class="btn btn-success" type="button">Book</button>
+                <button class="btn btn-success" type="button" id="` + value.id + `">Book</button>
               </div>
             </div>
           </div>
           <div class="card-footer text-center">
             <input type="hidden" value="` + value.id + `">
-            <a class="font-weight-bold">ROOMS LEFT: ` + value.number_of_rooms + `</a>
+            <a class="font-weight-bold" id="rleft-`+ value.id +`">ROOMS LEFT: ` + value.number_of_rooms + `</a>
           </div>
         </div>`;
-        //<a class="btn btn-success text-white" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Details</a>
+        //<a class="btn btn-success text-white" data-toggle="modal" data-target="#upload-modal" data-whatever="@mdo">Details</a>
         rooms.append(cards).fadeIn(500);
         price_pack_fill(value.id, datein, dateout, num);
       });
@@ -366,13 +239,14 @@ function price_pack_fill(typeid, datein, dateout, num){
     $.each(obj, function(key, value) {
       var option;
       if (key==0)
-        option= '<option selected value="'+value.price+'">'+value.max_people+' people for $'+value.price+'</option>';
+        option= '<option id="opt-'+typeid+'" selected value="'+value.price+'">'+value.max_people+' people for $'+value.price+'</option>';
       else
-        option= '<option value="'+value.price+'">'+value.max_people+' people for $'+value.price+'</option>';
+        option= '<option id="opt-'+typeid+'" value="'+value.price+'">'+value.max_people+' people for $'+value.price+'</option>';
       $('#price-package-'+ typeid).append(option);
     });
-
   });
 }
+
+
 
 ////////////////////////////////////////////////////////////////////////////////

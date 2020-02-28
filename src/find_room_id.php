@@ -18,7 +18,21 @@
 		//Getting the connection from above
 		global $mysqli;
 		//preparing the query and executing the query, first line is the template and the ? will be replaced
-		$stmt = $mysqli->prepare ("SELECT room_name, room_accommodation_num, price, room_desc, room_num FROM accommodationinfo WHERE ID = ?");
+		$stmt = $mysqli->prepare (
+			"SELECT
+			    accommodationtype.room_name,
+			    accommodationinfo.room_accommodation_num,
+			    accommodationinfo.price,
+			    accommodationinfo.room_desc,
+			    accommodationinfo.room_num
+			FROM
+			    accommodationinfo
+			INNER JOIN accommodationtype ON
+			    (
+			        accommodationinfo.room_type = accommodationtype.ID
+			    )
+			WHERE
+			    accommodationinfo.ID = ?");
 	  $stmt->bind_param("i", $id);  //replacing the ? in the query, first param are the type (s for string)
 		$stmt->execute(); //executing the query
 

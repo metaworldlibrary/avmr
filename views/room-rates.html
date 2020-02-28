@@ -3,41 +3,24 @@
   <a id="book-title" class="h1 text-center mt-4 font-weight-bold title">CREATING RESERVATION</a>
     <div class="my-3">
       <form class="form-horizontal">
-<<<<<<< Updated upstream
         <div class="form-inline">
           <label for="room_checkindate">Check-In:</label>
-          <input type="date" class="form-control m-2" id="room_checkindate" required>
+          <input type="text" class="form-control m-2" id="room_checkindate" required>
           <label for="room_checkoutdate" class="ml-4">Check-Out:</label>
-          <input type="date" class="form-control m-2" id="room_checkoutdate" required>
+          <input type="text" class="form-control m-2" id="room_checkoutdate" required>
           <label for="room_pax" class="ml-3">No. Guest</label>
           <input type="number" class="form-control m-2" id="room_pax" required>
           <a class="btn btn-primary m-2" id="room_search">Search</a>
         </div>
-=======
-        <div class="form-group">
-          <label >Check-In Date</label>
-          <input type="text" class="form-control" id="room_checkindate" data-provide="datepicker">
-        </div>
-        <div class="form-group">
-          <label >Check-Out Date</label>
-          <input type="text" class="form-control " id="room_checkoutdate" data-provide="datepicker">
-        </div>
-        <div>
-          <label >Number of Guest</label>
-          <input type="number" class="form-control" id="room_pax">
-        </div>
-        <a class="btn btn-primary m-2" id="room_search">Search</a>
->>>>>>> Stashed changes
       </form>
     </div>
     <!--cards-->
-    <div id="search-overlay"></div>
     <div id="rooms-container" class="table-responsive container-fluid bg-dark border border-secondary rounded-lg column-center">
       <table class="table table-striped table-sm" id="reservation-table" ">
         <tbody class="row-center">
           <tr>
             <td>
-              <div class="card-group" id="room-type-table" style="display:none">
+              <div class="card-group" id="room-type-table">
                 <!--cards goes here-->
               </div>
             </td>
