@@ -1,0 +1,123 @@
+window.addEventListener('load', function() {
+    plusDivs(1, 0);
+    plusDivs(1, 1);
+    plusDivs(1, 2);
+    plusDivs(1, 3);
+    plusDivs(1, 4);
+    plusDivs(1, 5);
+    plusDivs(1, 6);
+    plusDivs(1, 7);
+})
+
+
+function marg1(){
+	var slider = document.querySelector('#slider');
+	slider.style.marginLeft='-100%';
+	function marg2(){
+		var slider = document.querySelector('#slider');
+	slider.style.marginLeft='-200%';
+		function marg0(){
+	var slider = document.querySelector('#slider');
+	slider.style.marginLeft='0';
+			setTimeout(marg1, 8000);
+		}
+		setTimeout(marg0, 8000);
+	}
+	setTimeout(marg2, 8000);
+}
+setInterval(slid, 7500);
+setInterval(para, 7200);
+setInterval(head, 7200);
+setInterval(line, 7300);
+setTimeout(marg1, 8000);
+setInterval(slid2, 8500);
+setInterval(head2, 8700);
+setInterval(para2, 8700);
+setInterval(line2, 8600);
+
+function slid(){
+	var s=document.querySelectorAll('.s lid');
+	var i;
+	for(i=0; i<s.length; i++){
+		s[i].style.transform='scale(.8)';
+	}
+}
+
+function slid2(){
+	var s=document.querySelectorAll('.slid');
+	var i;
+	for(i=0; i<s.length; i++){
+		s[i].style.transform='scale(1)';
+	}
+}
+
+function head(){
+	var h=document.querySelectorAll('h1');
+	var i;
+	for(i=0; i<h.length; i++){
+		h[i].style.top='70px';
+	}
+}
+
+function head2(){
+	var h=document.querySelectorAll('h1');
+	var i;
+	for(i=0; i<h.length; i++){
+		h[i].style.top='0';
+	}
+}
+
+function para(){
+	var p=document.querySelectorAll('p');
+	var i;
+	for(i=0; i<p.length; i++){
+		p[i].style.bottom='40px';
+	}
+}
+
+function para2(){
+	var p=document.querySelectorAll('p');
+	var i;
+	for(i=0; i<p.length; i++){
+		p[i].style.bottom='0';
+	}
+}
+
+function line(){
+	var l=document.querySelectorAll('.line');
+	var i;
+	for(i=0; i<l.length; i++){
+		l[i].style.transform='scale(0)';
+	}
+}
+
+function line2(){
+	var l=document.querySelectorAll('.line');
+	var i;
+	for(i=0; i<l.length; i++){
+		l[i].style.transform='scale(1)';
+	}
+}
+
+
+var slideIndex = [1, 1];
+var slideId = ["mySlides1", "mySlides2", "mySlides3", "mySlides4", "mySlides5", "mySlides6", "mySlides7", "mySlides8"];
+
+function plusDivs(n, no) {
+  showDivs(slideIndex[no] += n, no);
+}
+
+function showDivs(n, no) {
+  var i;
+  var x = document.getElementsByClassName(slideId[no]);
+  if (n > x.length) {
+    slideIndex[no] = 1
+  }
+  if (n < 1) {
+    slideIndex[no] = x.length
+  }
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  x[slideIndex[no] - 1].style.display = "block";
+}
