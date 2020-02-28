@@ -51,12 +51,12 @@ $(document).ready(function () {
 ////DASHBOARD REDIRECTS
 $('#dashboard-add-room').on('click', function(){
   $('#book-section').fadeIn(500).siblings().hide();
+  submit_mode = 1;
 });
 
 $('#dashboard-reservation-list').on('click', function(){
     $('#dashboard-section').fadeIn(500).siblings().hide();
   });
-
 
   $('#dashboard-edit-info').on('click', function(){
     $('#dashboard-account-section').fadeIn(500).siblings().hide();
@@ -73,7 +73,16 @@ $('#dashboard-reservation-list').on('click', function(){
     $('#dashboard-password-container').fadeIn(500).siblings().hide();
   });
 
+  $('#reservations-container').on('click', '.edit-reservation', function(){
+    $('#book-section').fadeIn(500).siblings().hide();
+    reservationID = $(this).parent().siblings(":first").text();
+    submit_mode = 2;
+  });
 
+  $('#reservations-container').on('click', '.del-reservation', function(){
+    reservationID = $(this).parent().siblings(":first").text();
+    reservation_delete(reservationID);
+  });
   ////////////////////////////////////////////////////////////////////
 
   //CLICKS
@@ -127,12 +136,6 @@ $('#dashboard-reservation-list').on('click', function(){
 		$('#confirmation').fadeIn(500).siblings().hide();
 		submit_mode = 1;
 	});//send contact info to confirmation page end
-
-
-  $('#reservations-container').on('click', '.upload-reservation', function(){
-    //room_id = event.target.id;
-    //var button = $(event.relatedTarget) // Button that triggered the modal
-  });
 
   $('#confirm-create').on('click', function(){
     $("#confirm-create").attr("disabled", true);

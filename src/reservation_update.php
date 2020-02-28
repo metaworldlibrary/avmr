@@ -3,7 +3,7 @@
 			session_start();
 	}
 	require "db_connection.php"; //PHP file where the database proccessing is actually done
-
+	
 	$sqldatein=date('Ymd',strtotime($_POST["date_in"]));
 	$sqldateout=date('Ymd',strtotime($_POST["date_out"]));
 

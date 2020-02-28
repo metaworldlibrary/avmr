@@ -247,6 +247,23 @@ function price_pack_fill(typeid, datein, dateout, num){
   });
 }
 
-
+function reservation_delete(resID){
+  var del = confirm("Are you sure you want to cancel this reservation?");
+  if (del==true) {
+    $.post("src/reservation_delete.php",{
+      res_id: resID
+    },
+    function(data){
+      if (data!=0) {
+        alert("The reservation was canceled");
+        $('#navbar-dashboard').click();
+      }
+      else {
+        alert("There was an issue with your request, please try again");
+        check_session(0);
+      }
+    });
+  }
+}
 
 ////////////////////////////////////////////////////////////////////////////////
