@@ -2,6 +2,7 @@
 	if(session_id() == ''){
 			session_start();
 	}
+
 	require "db_connection.php"; //PHP file where the database proccessing is actually done
 	require "generate_reference_code.php";//generate reference code
 
