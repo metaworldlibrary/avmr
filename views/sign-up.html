@@ -1,0 +1,60 @@
+<!--/Sign up Section -->
+<div id="sign-up-section" class="container-fluid w-75 row-center">
+  <!--Sign-up form-->
+  <div class="container-fluid row h-100 w-100 row-center">
+    <div class="col-md-5 container-fluid h-100" id="signup-container">
+      <form class="form-horizontal">
+        <label class="h2 my-3 font-weight-bold title">GUEST DETAILS</label>
+        <div class="form-inline">
+          <input type="text" class="form-control w-50" id="signup-lastname" placeholder="Last Name" required>
+          <input type="text" class="form-control w-50" id="signup-firstname" placeholder="First Name" required>
+        </div>
+        <div class="form-horizontal">
+          <label class="mt-3 h6 font-weight-bold">Email</label>
+          <input type="email" class="form-control" id="signup-email" required>
+        </div>
+        <div class="form-group">
+          <label class="mt-3 mt-2 h6 font-weight-bold">Mobile No.</label>
+          <input type="text" class="form-control" id="signup-NoMobile" placeholder="(+63)XXX-XXX-XXXX" required>
+        </div>
+        <div class="form-group">
+          <label class="mt-3 mt-2 h6 font-weight-bold">Username</label>
+          <input type="text" class="form-control" id="signup-username" placeholder="Username" required>
+        </div>
+        <div class="form-group">
+          <label class="mt-3 mt-2 h6 font-weight-bold">Password</label>
+          <input type="password" class="form-control" id="signup-password" placeholder="Password" required>
+        </div>
+        <div class="form-group">
+          <label class="mt-3 mt-2 h6 font-weight-bold">Re-Enter Password</label>
+          <input type="password" class="form-control" id="signup-repassword" placeholder="Confirm Password" required>
+        </div>
+        <button type="submit" class="btn btn-primary mb-3" id="signup-create">Submit</button>
+      </form>
+    </div>
+    <!--/Sign-up form-->
+
+    <div class="col-md-2 container-fluid w-100 column-center" id="signup-or"><a class="h1 font-weight-bold">OR</a></div>
+
+    <!--Sign-up login-->
+    <div class="col-md-5 container-fluid w-100 column-center">
+      <form class="form-signin column-center" id="login-form2">
+        <div><label class="h3 text-center font-weight-bold title" id="login-contact-label">ALREADY HAVE AN ACCOUNT?</label></div>
+        <h1 class="mb-3 h6 font-weight-bold" id="login-contact-label2">Please sign in</h1>
+        <label for="login_username" class="sr-only">Email address</label>
+        <input type="text" id="login_username2" class="form-control" placeholder="Email address or Username" required autofocus>
+        <label for="login_password" class="sr-only">Password</label>
+        <input type="password" id="login_password2" class="form-control" placeholder="Password" required>
+
+        <div class="checkbox mb-3">
+          <label>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" id="login-btn2">Next</button>
+        <button class="btn btn-lg btn-secondary btn-block" type="submit" id="sign-out2">This is not me</button>
+      </form>
+    </div>
+    <!--/sign-up login-->
+  </div>
+</div>

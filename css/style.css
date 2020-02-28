@@ -109,19 +109,30 @@ body {
 	align-items: center;
 }
 
-.card-footer{
-position:absolute;
-bottom:0;
-width:100%;
+
+
+.card{
+	max-width: 383px;
+}
+.card-img-top{
+	width: 383px;
+	height: 180px;
 }
 
-#navbar-sign-out, #navbar-dashboard, #member-area, #sign-out2, #login_password2b{
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#nav-signout-btn, #nav-db-btn, #dashboard-section, #sign-out2, #dashboard-account-section{
 	display:none;
 }
 
 #rooms-container{
-	overflow-y: scroll;
-	height: 400px;
+	height: auto;
+	min-height: 400px;
+
 }
 
 #book-Section{
