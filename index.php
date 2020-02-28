@@ -56,16 +56,9 @@ if(session_id() == ''){
   <!--Datepicker control-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
   <!---Moment.js-->
-
-  <scrip src="https://raw.githubusercontent.com/moment/moment/master/moment.js"></script>
-
   <script src="js/moment.js"></script>
 
-
-
-  <script>
-  feather.replace()
-  </script>
+  <script>feather.replace()</script>
   <script src="js/main.js"></script>
   <script src="js/site-lib.js"></script>
 </body>

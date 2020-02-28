@@ -17,8 +17,7 @@ function fill_reservations(guestid, action){
           status = "Waiting";
           editbutton = `<td><button class="edit-reservation btn btn-lg btn-primary btn-block" type="button" disabled >Edit</button></td>`;
         }
-
-      $('#reservations-container').append(`
+        $('#reservations-container').append(`
         <tr>
           <td id="">`+ value.ID + `</td>
           <td id="reservation-room-name-`+key+`"></td>
@@ -139,6 +138,7 @@ function clear_all(num){
     $("#dashboard-credentials-email").empty();
   }
 }//clear page fields
+
 
 //Find room
 function find_room_by_id(roomid, action, key){

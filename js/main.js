@@ -314,6 +314,7 @@ $('#dashboard-reservation-list').on('click', function(){
       startDate: date1,
       autoclose: true
   }).on("changeDate", function(e){
+
     var d = new Date(moment(e.date).add(1, 'd'));
     $("#room_checkoutdate").datepicker("setStartDate", d);
     $('#room_checkoutdate').datepicker('update', d);
